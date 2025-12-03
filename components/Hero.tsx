@@ -20,10 +20,10 @@ export const Hero: React.FC<HeroProps> = ({ theme }) => {
 
   const getImageSrc = () => {
     switch (theme) {
-      case 'dark': return 'nobrutaldarkthemeone.jpg';
-      case 'brutal': return 'lightbrutal.jpg';
-      case 'dark-brutal': return 'darkbrutalism.jpg';
-      default: return 'MYIMAGE.jpg';
+      case 'dark': return '/nobrutaldarkthemeone.jpg';
+      case 'brutal': return '/lightbrutal.jpg';
+      case 'dark-brutal': return '/darkbrutalism.jpg';
+      default: return '/MYIMAGE.jpg';
     }
   };
 
