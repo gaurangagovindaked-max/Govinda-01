@@ -1,0 +1,147 @@
+
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Govinda Chauhan | AI Software Developer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;700&family=Great+Vibes&family=Italianno&family=Pixelify+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+      tailwind.config = {
+        darkMode: 'class',
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['Inter', 'sans-serif'],
+              display: ['Space Grotesk', 'sans-serif'],
+              mono: ['JetBrains Mono', 'monospace'],
+              signature: ['Italianno', 'cursive'],
+              pixel: ['Pixelify Sans', 'monospace'],
+            },
+            colors: {
+              background: 'var(--background)',
+              foreground: 'var(--foreground)',
+              cherry: '#ff3333',
+              acid: '#ccff00',
+            },
+            letterSpacing: {
+              tighter: '-0.05em',
+              tight: '-0.025em',
+            },
+            boxShadow: {
+              'brutal': '5px 5px 0px 0px rgba(0,0,0,1)',
+              'brutal-white': '5px 5px 0px 0px rgba(255,255,255,1)',
+              'brutal-acid': '5px 5px 0px 0px #ccff00',
+              'brutal-hover': '2px 2px 0px 0px rgba(0,0,0,1)',
+              'brutal-hover-white': '2px 2px 0px 0px rgba(255,255,255,1)',
+            }
+          }
+        }
+      }
+    </script>
+    <style>
+      :root {
+        --background: #ffffff;
+        --foreground: #0a0a0a;
+      }
+      .dark {
+        --background: #050505;
+        --foreground: #ffffff;
+      }
+      .brutal {
+        --background: #ffffff;
+        --foreground: #000000;
+      }
+      .dark-brutal {
+        --background: #000000;
+        --foreground: #ffffff;
+      }
+      
+      body {
+        background-color: var(--background);
+        color: var(--foreground);
+        position: relative;
+        transition: background-color 0.3s ease, color 0.3s ease;
+      }
+
+      /* Noise Texture Overlay for Default/Dark */
+      body:not(.brutal-mode):not(.dark-brutal-mode)::before {
+        content: "";
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0.03;
+        pointer-events: none;
+        z-index: 9999;
+        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+      }
+      
+      /* Brutal Mode Specifics */
+      .brutal-mode {
+        background-color: #ffffff;
+        background-image: radial-gradient(#e5e5e5 1px, transparent 1px);
+        background-size: 32px 32px;
+      }
+
+      .dark-brutal-mode {
+        background-color: #000000;
+        /* Significantly reduced grid for cleaner look */
+        background-image: radial-gradient(#1a1a1a 1px, transparent 1px);
+        background-size: 48px 48px;
+      }
+      
+      .brutal-grid {
+        background-size: 40px 40px;
+        background-image:
+          linear-gradient(to right, rgba(0, 0, 0, 0.03) 1px, transparent 1px),
+          linear-gradient(to bottom, rgba(0, 0, 0, 0.03) 1px, transparent 1px);
+      }
+      
+      /* Light Brutal Selection */
+      .brutal-mode ::selection {
+        background: #ff3333;
+        color: white;
+      }
+      
+      /* Dark Brutal Selection - The "Totaiya" Style */
+      .dark-brutal-mode ::selection {
+        background: #ccff00;
+        color: black;
+      }
+
+      .no-scrollbar::-webkit-scrollbar {
+        display: none;
+      }
+      .no-scrollbar {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+      }
+      ::selection {
+        background: rgba(99, 102, 241, 0.2);
+        color: inherit;
+      }
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "react/": "https://aistudiocdn.com/react@^19.2.0/",
+    "react": "https://aistudiocdn.com/react@^19.2.0",
+    "lucide-react": "https://aistudiocdn.com/lucide-react@^0.555.0",
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
+    "framer-motion": "https://aistudiocdn.com/framer-motion@^12.23.25",
+    "@google/genai": "https://aistudiocdn.com/@google/genai@^0.1.2"
+  }
+}
+</script>
+<link rel="stylesheet" href="/index.css">
+</head>
+  <body>
+    <div id="root"></div>
+  <script type="module" src="/index.tsx"></script>
+</body>
+</html>
