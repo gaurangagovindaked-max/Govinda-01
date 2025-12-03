@@ -58,7 +58,7 @@ export const ChatBot: React.FC<ChatBotProps> = ({ theme }) => {
       } else if (scrollY > projectsSection - buffer) {
         setThoughtBubble("Wait till you see the code! 💻");
       } else if (scrollY < 100) {
-        setThoughtBubble("Psst! Ask me about AI agents.");
+        setThoughtBubble("Psst! Ask me about Govinda.");
       }
     };
 
