@@ -54,11 +54,11 @@ export const ChatBot: React.FC<ChatBotProps> = ({ theme }) => {
       } else if (scrollY > researchSection - buffer) {
         setThoughtBubble("He reads a lot of papers. 📚");
       } else if (scrollY > experienceSection - buffer) {
-        setThoughtBubble("Look at that timeline! ⏳");
+        setThoughtBubble("I am Govinda Assistant Ask me! ");
       } else if (scrollY > projectsSection - buffer) {
         setThoughtBubble("Wait till you see the code! 💻");
       } else if (scrollY < 100) {
-        setThoughtBubble("Psst! Ask me about Govinda.");
+        setThoughtBubble("Psst! Govinda wants you to switch themes");
       }
     };
 
