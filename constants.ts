@@ -6,7 +6,7 @@ export const RESUME = {
     location: "Delhi, India",
     role: "Founder-minded AI Systems Builder"
   },
-  summary: "Govinda builds proof-heavy AI systems: agent cockpits, video evaluation frameworks, physics-from-video research tools, supply-chain safety layers, and mobile control surfaces. The pattern is simple: turn frontier AI ideas into inspectable software that real people can run, test, and trust.",
+  summary: "In the last 4 years, Govinda has built and shipped over 200 projects ranging from full-stack webapps and mobile applications to custom slack bots and private client systems. He is dedicated to building proof-heavy agent infrastructure, terminal cockpits, and secure evaluation layers that turn frontier AI ideas into production-ready software.",
   skills: [
     "Agentic Systems",
     "Founder Engineering",
@@ -29,12 +29,12 @@ export const RESUME = {
     {
       role: "Founder / Builder",
       company: "Independent AI Systems Lab",
-      duration: "2025–2026",
-      description: "Built and open-sourced a portfolio of agent infrastructure, applied AI research tools, and mobile products designed to make AI workflows visible, measurable, and safer.",
+      duration: "2022–2026",
+      description: "Designed, engineered, and shipped more than 200 client and public systems—from responsive web applications and cross-platform mobile apps to specialized Slack bots and private client integrations.",
       points: [
         "Shipped Doorway, Kairo, CHIMERA, AETHER, VideoUnit, Flow Mobile, and CEO Hunt as public proof-of-work.",
-        "Created research-grade prototypes around video understanding, temporal assertions, and physics parameter extraction.",
-        "Designed products as full systems: frontend, backend, developer tooling, documentation, and operational safety."
+        "Engineered production-grade environments handling full-stack pipelines, mobile control surfaces, and custom automations.",
+        "Built local-first desktop infrastructure, research prototypes, and pre-execution supply chain security layers."
       ]
     },
     {
@@ -160,8 +160,8 @@ export const RESUME = {
     }
   ],
   vision: {
-    startup: "Govinda OS",
-    tagline: "Founder energy, research depth, shipped proof.",
+    startup: "Doorway",
+    tagline: "From apps to orchestration, and now all-in on building the future of agentic harness.",
     description: "The long-term arc: make AI systems observable, testable, and useful enough to become infrastructure. Not demos. Not pitch-deck vapor. Working tools, public repos, measured behavior, and products that compound."
   }
 };

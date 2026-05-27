@@ -16,58 +16,69 @@ import { Vision } from './components/Vision';
 import { Theme } from './types';
 
 function App() {
-  const [theme, setTheme] = useState<Theme>('light');
+  const [theme, setTheme] = useState<Theme>('dark'); // Set default to dark for premium impact
   const [isLoading, setIsLoading] = useState(true);
 
   const toggleTheme = () => {
-    setTheme(prev => {
-      if (prev === 'light') return 'dark';
-      if (prev === 'dark') return 'brutal';
-      if (prev === 'brutal') return 'dark-brutal';
-      return 'light';
-    });
+    setTheme(prev => (prev === 'light' ? 'dark' : 'light'));
   };
 
   useEffect(() => {
     // Reset classes
     document.documentElement.classList.remove('dark');
-    document.body.classList.remove('brutal-mode');
-    document.body.classList.remove('dark-brutal-mode');
-
     if (theme === 'dark') {
       document.documentElement.classList.add('dark');
-    } else if (theme === 'brutal') {
-      document.body.classList.add('brutal-mode');
-    } else if (theme === 'dark-brutal') {
-      document.body.classList.add('dark-brutal-mode');
     }
   }, [theme]);
 
-  // Loading state is now handled by the LoadingScreen component's animation cycle
   const handleLoadingComplete = () => {
     setIsLoading(false);
   };
 
   const isDark = theme === 'dark';
-  const isLightBrutal = theme === 'brutal';
-  const isDarkBrutal = theme === 'dark-brutal';
-  const isAnyBrutal = isLightBrutal || isDarkBrutal;
 
   if (isLoading) {
     return <LoadingScreen theme={theme} onComplete={handleLoadingComplete} />;
   }
 
   return (
-    <div className={`min-h-screen transition-colors duration-500 ${isDark ? 'bg-[#0a0a0a] text-white' :
-      isLightBrutal ? 'bg-white text-black' :
-        isDarkBrutal ? 'bg-black text-white' :
-          'bg-white text-neutral-900'
-      }`}>
+    <div className={`min-h-screen transition-colors duration-500 ${isDark ? 'bg-[#030303] text-zinc-100' : 'bg-[#fcfcfd] text-zinc-900'}`}>
       <Navigation theme={theme} toggleTheme={toggleTheme} />
 
       <Hero theme={theme} />
 
       <SkillTicker skills={RESUME.skills} theme={theme} />
+
+      {/* Stats Section */}
+      <section className="py-20 px-6 relative overflow-hidden z-10">
+        <div className="container mx-auto max-w-[1600px]">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+            {[
+              { value: "200+", label: "Projects Built & Shipped", desc: "Webapps, mobile apps, Slack bots, and custom systems in 4 years." },
+              { value: "Founder-Grade", label: "Product Vision", desc: "Bridging complex backend research with premium frontends." },
+              { value: "IIT Patna", label: "Academic Grounding", desc: "Deep knowledge in Computer Science & Data Analytics." },
+              { value: "Agent Infrastructure", label: "Obsession", desc: "Building observability, testability, and trust gates for frontier AI." }
+            ].map((stat, idx) => (
+              <div 
+                key={idx}
+                className="glass-card rounded-[2rem] p-8 flex flex-col justify-between min-h-[220px]"
+              >
+                <div>
+                  <h3 className={`text-4xl md:text-5xl font-display font-extrabold tracking-tight mb-2 bg-gradient-to-r ${isDark ? 'from-violet-400 to-indigo-300' : 'from-indigo-600 to-violet-600'} bg-clip-text text-transparent`}>
+                    {stat.value}
+                  </h3>
+                  <div className="text-sm font-mono uppercase tracking-widest font-bold mb-4 opacity-80">
+                    {stat.label}
+                  </div>
+                </div>
+                <p className="text-xs opacity-60 leading-relaxed font-sans">
+                  {stat.desc}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
 
       {/* Mission Statement */}
       <MissionStatement theme={theme} summary={RESUME.summary} />
@@ -75,29 +86,22 @@ function App() {
       {/* Engineered Reality (Projects) */}
       <Section id="projects" theme={theme} className="py-32">
         <div className="container mx-auto max-w-[1600px]">
-          <div className={`flex flex-col md:flex-row items-start md:items-end justify-between mb-24 pb-8 gap-8 ${isLightBrutal ? 'border-b-4 border-black' :
-            isDarkBrutal ? 'border-b-4 border-white' :
-              'border-b border-neutral-200 dark:border-neutral-800'
-            }`}>
+          <div className="flex flex-col md:flex-row items-start md:items-end justify-between mb-20 pb-8 gap-8 border-b border-zinc-200 dark:border-zinc-800">
             <div>
-              <span className={`block text-xs font-mono uppercase tracking-widest mb-4 ${isDark ? 'text-indigo-400' :
-                isLightBrutal ? 'bg-cherry text-white px-2 py-1 inline-block font-bold' :
-                  isDarkBrutal ? 'bg-acid text-black px-2 py-1 inline-block font-bold' :
-                    'text-indigo-600'
-                }`}>
+              <span className={`block text-xs font-mono uppercase tracking-widest mb-4 ${isDark ? 'text-indigo-400' : 'text-indigo-600'}`}>
                 Selected Works
               </span>
-              <h2 className={`font-display text-5xl md:text-7xl font-bold tracking-tighter ${isDark || isDarkBrutal ? 'text-white' : 'text-neutral-900'
-                }`}>
-                {isAnyBrutal ? 'PUBLIC_PROOF' : 'Shipped Proof.'}
+              <h2 className="font-display text-5xl md:text-7xl font-extrabold tracking-tighter">
+                Shipped Proof.
               </h2>
             </div>
-            <a href="https://github.com/GC-WORK11" target="_blank" rel="noopener noreferrer" className={`flex items-center gap-4 text-sm font-bold uppercase tracking-widest hover:text-indigo-500 transition-colors ${isDark ? 'text-white' :
-              isLightBrutal ? 'text-black hover:bg-black hover:text-white px-6 py-3 border-4 border-black shadow-brutal hover:shadow-none hover:translate-x-[4px] hover:translate-y-[4px] transition-all' :
-                isDarkBrutal ? 'text-white hover:bg-white hover:text-black px-6 py-3 border-4 border-white shadow-brutal-white hover:shadow-none hover:translate-x-[4px] hover:translate-y-[4px] transition-all' :
-                  'text-black'
-              }`}>
-              {!isAnyBrutal && <div className={`w-12 h-[1px] ${isDark ? 'bg-white' : 'bg-black'}`} />}
+            <a 
+              href="https://github.com/GC-WORK11" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className={`flex items-center gap-4 text-sm font-bold uppercase tracking-widest transition-all duration-300 group hover:opacity-80`}
+            >
+              <div className={`w-12 h-[1px] transition-all duration-300 group-hover:w-16 ${isDark ? 'bg-zinc-100' : 'bg-zinc-900'}`} />
               GitHub Archive
             </a>
           </div>
@@ -116,22 +120,13 @@ function App() {
       </Section>
 
       {/* Trajectory (Experience & Education) */}
-      <section id="experience" className={`py-32 px-6 ${isDark ? 'bg-[#050505]' :
-        isLightBrutal ? 'bg-white brutal-grid border-y-4 border-black' :
-          isDarkBrutal ? 'bg-black dark-brutal-grid border-y-4 border-white' :
-            'bg-white'
-        }`}>
+      <section id="experience" className="py-32 px-6">
         <div className="container mx-auto max-w-[1600px]">
           <div className="mb-24">
-            <h2 className={`font-display text-6xl md:text-8xl font-bold tracking-tighter mb-6 ${isDark || isDarkBrutal ? 'text-white' : isLightBrutal ? 'text-black' : 'text-neutral-900'
-              }`}>
-              {isAnyBrutal ? 'BUILD_HISTORY' : 'Builder Arc.'}
+            <h2 className="font-display text-6xl md:text-8xl font-extrabold tracking-tighter mb-6">
+              Builder Arc.
             </h2>
-            <p className={`text-lg md:text-xl max-w-xl ${isDark ? 'text-neutral-500' :
-              isLightBrutal ? 'text-black font-mono border-l-4 border-cherry pl-4' :
-                isDarkBrutal ? 'text-white font-mono border-l-4 border-acid pl-4' :
-                  'text-neutral-500'
-              }`}>
+            <p className="text-lg md:text-xl max-w-xl opacity-60 leading-relaxed font-sans">
               Not a conventional resume. A compact map of education, teaching, research obsession, and shipped founder-grade systems.
             </p>
           </div>
@@ -145,22 +140,13 @@ function App() {
       </section>
 
       {/* Research */}
-      <section id="research" className={`py-32 px-6 ${isDark ? 'bg-neutral-900' :
-        isLightBrutal ? 'bg-white' :
-          isDarkBrutal ? 'bg-black' :
-            'bg-neutral-50'
-        }`}>
+      <section id="research" className={`py-32 px-6 ${isDark ? 'bg-[#050505]' : 'bg-zinc-50'}`}>
         <div className="container mx-auto max-w-[1600px]">
           <div className="flex flex-col md:flex-row items-start md:items-end justify-between mb-16 gap-4">
-            <h2 className={`font-display text-5xl md:text-6xl font-bold tracking-tighter ${isDark || isDarkBrutal ? 'text-white' : 'text-neutral-900'
-              }`}>
+            <h2 className="font-display text-5xl md:text-6xl font-extrabold tracking-tighter">
               Papers, PRDs & Systems Thinking
             </h2>
-            <span className={`text-sm font-mono uppercase tracking-widest ${isDark ? 'text-neutral-500' :
-              isLightBrutal ? 'text-white bg-black px-2 py-1 font-bold' :
-                isDarkBrutal ? 'text-black bg-acid px-2 py-1 font-bold' :
-                  'text-neutral-500'
-              }`}>
+            <span className="text-sm font-mono uppercase tracking-widest opacity-60">
               Research notes, architecture docs, and technical theses
             </span>
           </div>
@@ -182,27 +168,17 @@ function App() {
       <Vision theme={theme} />
 
       {/* Footer */}
-      <footer id="contact" className={`py-24 px-6 ${isDark ? 'bg-[#050505] border-t border-neutral-900' :
-        isLightBrutal ? 'bg-black text-white border-t-8 border-cherry' :
-          isDarkBrutal ? 'bg-black text-white border-t-8 border-acid' :
-            'bg-white border-t border-neutral-100'
-        }`}>
+      <footer id="contact" className={`py-24 px-6 border-t ${isDark ? 'bg-black border-zinc-900' : 'bg-zinc-100 border-zinc-200'}`}>
         <div className="container mx-auto max-w-[1600px]">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-24">
             <div>
-              <h2 className={`font-display text-5xl font-bold tracking-tight mb-8 ${isDark || isAnyBrutal ? 'text-white' : 'text-neutral-900'
-                }`}>
+              <h2 className="font-display text-5xl font-extrabold tracking-tight mb-8">
                 Start a Conversation.
               </h2>
-              <a href={`mailto:${RESUME.header.email}`} className={`text-2xl md:text-4xl font-light hover:text-indigo-500 transition-colors underline decoration-1 underline-offset-8 ${isDark ? 'text-neutral-300' :
-                isLightBrutal ? 'text-cherry decoration-white font-mono hover:bg-white hover:text-black hover:decoration-transparent p-2 transition-all' :
-                  isDarkBrutal ? 'text-acid decoration-white font-mono hover:bg-white hover:text-black hover:decoration-transparent p-2 transition-all' :
-                    'text-neutral-700'
-                }`}>
+              <a href={`mailto:${RESUME.header.email}`} className={`text-2xl md:text-4xl font-light hover:text-indigo-500 transition-colors underline decoration-1 underline-offset-8 ${isDark ? 'text-neutral-300' : 'text-neutral-700'}`}>
                 {RESUME.header.email}
               </a>
-              <p className={`mt-8 text-lg ${isDark ? 'text-neutral-500' : isAnyBrutal ? 'text-neutral-400 font-mono' : 'text-neutral-500'
-                }`}>
+              <p className="mt-8 text-lg opacity-60">
                 {RESUME.header.location}
               </p>
             </div>
@@ -236,15 +212,14 @@ function App() {
                       }}
                       target={link ? "_blank" : "_self"}
                       rel={link ? "noopener noreferrer" : ""}
-                      className={`text-base font-bold uppercase tracking-widest hover:text-indigo-500 transition-colors ${isDark ? 'text-white' : isLightBrutal ? 'text-white hover:text-cherry' : isDarkBrutal ? 'text-white hover:text-acid' : 'text-black'
-                        }`}
+                      className={`text-base font-bold uppercase tracking-widest hover:text-indigo-500 transition-colors ${isDark ? 'text-white' : 'text-black'}`}
                     >
                       {social}
                     </a>
                   );
                 })}
               </div>
-              <p className={`text-xs text-neutral-500 uppercase tracking-widest`}>
+              <p className="text-xs opacity-50 uppercase tracking-widest">
                 © 2025 Govinda Chauhan. All Rights Reserved.
               </p>
             </div>

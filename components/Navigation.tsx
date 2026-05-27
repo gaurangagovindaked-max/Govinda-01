@@ -36,114 +36,81 @@ export const Navigation: React.FC<NavigationProps> = ({ theme, toggleTheme }) =>
   ];
 
   const getNavBg = () => {
-    if (!scrolled) return 'bg-transparent';
-    if (isDark) return 'bg-neutral-950/80 backdrop-blur-lg border-b border-neutral-800';
-    if (isLightBrutal) return 'bg-white border-b-4 border-black';
-    if (isDarkBrutal) return 'bg-black border-b-4 border-white';
-    return 'bg-white/80 backdrop-blur-lg border-b border-neutral-100';
+    if (!scrolled) return 'bg-transparent border-transparent py-6';
+    if (isDark) return 'bg-neutral-950/70 border border-neutral-800/80 shadow-[0_10px_30px_rgba(0,0,0,0.5)] py-4 backdrop-blur-xl';
+    return 'bg-white/70 border border-neutral-200/80 shadow-[0_10px_30px_rgba(0,0,0,0.05)] py-4 backdrop-blur-xl';
   };
 
   return (
     <>
-      <motion.nav
-        initial={{ y: -100 }}
-        animate={{ y: 0 }}
-        transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-        className={`fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 py-2 md:px-12 transition-all duration-300 ${getNavBg()}`}
-      >
-        <div className="flex items-center gap-2">
-          {/* Animated Signature - Key forces reload on theme change or scroll state change */}
-          <div className="relative group overflow-hidden">
-            <Signature theme={theme} key={`${theme}-${scrolled ? 'scrolled' : 'top'}`} />
-            {/* Highlight Underline for Brutal - Visual Accent Only */}
-            {isAnyBrutal && (
-              <span className={`absolute bottom-2 left-10 right-10 h-[2px] -z-10 opacity-30 ${isLightBrutal ? 'bg-cherry' : 'bg-acid'}`}></span>
-            )}
+      <div className="fixed top-6 left-0 right-0 z-50 flex justify-center px-6">
+        <motion.nav
+          initial={{ y: -100, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+          className={`flex items-center justify-between w-full max-w-[1400px] px-8 rounded-full transition-all duration-500 ${getNavBg()}`}
+        >
+          <div className="flex items-center gap-2">
+            <div className="relative group overflow-hidden">
+              <Signature theme={theme} key={`${theme}-${scrolled ? 'scrolled' : 'top'}`} />
+            </div>
           </div>
-        </div>
 
-        {/* Desktop Menu */}
-        <div className="hidden md:flex items-center gap-12">
-          {navLinks.map((link) => (
-            <a
-              key={link.name}
-              href={link.href}
-              className={`text-sm font-bold uppercase tracking-widest transition-colors relative group ${isDark ? 'text-neutral-400 hover:text-white' :
-                isLightBrutal ? 'text-black hover:text-white' :
-                  isDarkBrutal ? 'text-white hover:text-black' :
-                    'text-neutral-600 hover:text-black'
+          {/* Desktop Menu */}
+          <div className="hidden md:flex items-center gap-8">
+            {navLinks.map((link) => (
+              <a
+                key={link.name}
+                href={link.href}
+                className={`text-xs font-mono font-bold uppercase tracking-widest transition-colors relative group py-2 ${
+                  isDark ? 'text-neutral-400 hover:text-white' : 'text-neutral-600 hover:text-black'
                 }`}
+              >
+                <span className="relative z-10">{link.name}</span>
+                <span className={`absolute bottom-0 left-0 w-full h-[2px] scale-x-0 group-hover:scale-x-100 transition-transform origin-left ${
+                  isDark ? 'bg-indigo-400' : 'bg-indigo-600'
+                }`} />
+              </a>
+            ))}
+
+            <button
+              onClick={toggleTheme}
+              className={`flex items-center justify-center w-9 h-9 transition-all rounded-full border ${
+                isDark 
+                  ? 'bg-neutral-900 border-neutral-800 hover:bg-neutral-800 text-white' 
+                  : 'bg-white border-neutral-200 hover:bg-neutral-50 text-black'
+              }`}
             >
-              <span className="relative z-10">{link.name}</span>
-              {/* Brutal Hover Block */}
-              {isAnyBrutal && (
-                <span className={`absolute inset-0 -z-0 scale-x-0 group-hover:scale-x-110 group-hover:scale-y-125 transition-transform origin-center ${isLightBrutal ? 'bg-black' : 'bg-acid'
-                  }`} />
-              )}
-            </a>
-          ))}
+              {isDark ? <Sun size={15} /> : <Moon size={15} />}
+            </button>
+          </div>
 
-          <button
-            onClick={toggleTheme}
-            className={`flex items-center justify-center w-10 h-10 transition-all ${isDark ? 'bg-neutral-800 hover:bg-neutral-700 text-white rounded-full' :
-              isLightBrutal ? 'bg-cherry text-white border-2 border-black shadow-brutal hover:shadow-none hover:translate-x-[2px] hover:translate-y-[2px]' :
-                isDarkBrutal ? 'bg-acid text-black border-2 border-white shadow-brutal-white hover:shadow-none hover:translate-x-[2px] hover:translate-y-[2px]' :
-                  'bg-neutral-100 hover:bg-neutral-200 text-black rounded-full'
+          {/* Mobile Toggle */}
+          <div className="flex items-center gap-4 md:hidden">
+            <button
+              onClick={toggleTheme}
+              className={`p-2 rounded-full border transition-all ${
+                isDark 
+                  ? 'bg-neutral-900 border-neutral-800 text-white' 
+                  : 'bg-white border-neutral-200 text-black'
               }`}
-          >
-            {isDark ? <Sun size={18} /> :
-              isLightBrutal ? <Moon size={18} /> :
-                isDarkBrutal ? <Terminal size={18} /> :
-                  <Square size={18} fill="currentColor" />}
-          </button>
-
-          {/* Reference "Resume" Button Style */}
-          {isAnyBrutal && (
-            <a
-              href="#"
-              onClick={(e) => {
-                e.preventDefault();
-                const event = new CustomEvent('trigger-chat', {
-                  detail: { message: `Well, contact Govinda on his email: ${RESUME.header.email}` }
-                });
-                window.dispatchEvent(event);
-              }}
-              className={`hidden lg:block px-6 py-2 text-sm font-bold uppercase border-2 transition-all ${isLightBrutal
-                ? 'border-black text-black hover:bg-black hover:text-white'
-                : 'border-white text-white hover:bg-white hover:text-black'
-                }`}>
-              Resume
-            </a>
-          )}
-        </div>
-
-        {/* Mobile Toggle */}
-        <div className="flex items-center gap-4 md:hidden">
-          <button
-            onClick={toggleTheme}
-            className={`p-2 rounded-full transition-colors ${isDark ? 'bg-neutral-800 text-white' :
-              isLightBrutal ? 'bg-white border-2 border-black shadow-brutal text-black rounded-none' :
-                isDarkBrutal ? 'bg-black border-2 border-white shadow-brutal-white text-white rounded-none' :
-                  'bg-neutral-100 text-black'
-              }`}
-          >
-            {isDark ? <Sun size={18} /> :
-              isLightBrutal ? <Moon size={18} /> :
-                isDarkBrutal ? <Terminal size={18} /> :
-                  <Square size={18} />}
-          </button>
-          <button onClick={() => setMenuOpen(true)} className={isDark || isDarkBrutal ? 'text-white' : 'text-black'}>
-            <Menu size={24} />
-          </button>
-        </div>
-      </motion.nav>
+            >
+              {isDark ? <Sun size={15} /> : <Moon size={15} />}
+            </button>
+            <button 
+              onClick={() => setMenuOpen(true)} 
+              className={`p-1 rounded-full ${isDark ? 'text-white' : 'text-black'}`}
+            >
+              <Menu size={20} />
+            </button>
+          </div>
+        </motion.nav>
+      </div>
 
       {/* Mobile Menu Overlay */}
       <AnimatePresence>
         {menuOpen && (
           <motion.div
-            initial={{ opacity: 0, x: '100%' }}
-            animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: '100%' }}
             transition={{ type: "spring", damping: 30, stiffness: 300 }}
             className={`fixed inset-0 z-[60] flex flex-col items-center justify-center gap-8 md:hidden ${isDark ? 'bg-neutral-950 text-white' :

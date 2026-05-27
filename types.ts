@@ -1,5 +1,5 @@
 
-export type Theme = 'light' | 'dark' | 'brutal' | 'dark-brutal';
+export type Theme = 'light' | 'dark';
 
 export interface Project {
   title: string;

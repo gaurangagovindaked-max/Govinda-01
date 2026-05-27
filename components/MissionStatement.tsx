@@ -10,9 +10,6 @@ interface MissionStatementProps {
 
 export const MissionStatement: React.FC<MissionStatementProps> = ({ theme, summary }) => {
     const isDark = theme === 'dark';
-    const isLightBrutal = theme === 'brutal';
-    const isDarkBrutal = theme === 'dark-brutal';
-    const isAnyBrutal = isLightBrutal || isDarkBrutal;
 
     // Split summary into words for the animation
     const words = summary.split(' ');
@@ -46,57 +43,39 @@ export const MissionStatement: React.FC<MissionStatementProps> = ({ theme, summa
         },
     };
 
-    if (isAnyBrutal) {
-        return (
-            <section id="about" className={`py-32 px-6 ${isLightBrutal ? 'bg-white border-y-4 border-black' : 'bg-black border-y-4 border-white'
-                }`}>
-                <div className="container mx-auto max-w-[1600px] text-left">
-                    <Reveal width="fit-content">
-                        <span className={`inline-block text-xs font-mono uppercase tracking-widest mb-8 px-4 py-2 ${isLightBrutal ? 'bg-black text-white font-bold shadow-brutal-red' : 'bg-acid text-black font-bold shadow-brutal-red'
-                            }`}>
-                            Mission Statement
-                        </span>
-                    </Reveal>
-                    <h2 className={`font-display text-3xl md:text-5xl lg:text-7xl leading-tight font-black uppercase tracking-tighter ${isLightBrutal ? 'text-black' : 'text-white'
-                        }`}>
-                        "{summary}"
-                    </h2>
-                </div>
-            </section>
-        );
-    }
-
     return (
-        <section id="about" className={`py-32 px-6 ${isDark ? 'bg-neutral-900' : 'bg-neutral-50'}`}>
-            <div className="container mx-auto max-w-4xl text-center">
+        <section id="about" className="py-24 px-6 relative overflow-hidden">
+            <div className="container mx-auto max-w-5xl text-center">
                 <Reveal width="100%">
-                    <span className={`inline-block text-xs font-mono uppercase tracking-widest mb-12 px-4 py-2 rounded-full border ${isDark ? 'border-neutral-700 text-neutral-400' : 'border-neutral-300 text-neutral-500'
-                        }`}>
+                    <span className={`inline-block text-[10px] font-mono uppercase tracking-[0.2em] mb-10 px-4 py-1.5 rounded-full border ${
+                        isDark ? 'border-zinc-800 bg-zinc-900/40 text-zinc-400' : 'border-zinc-200 bg-zinc-50 text-zinc-600'
+                    }`}>
                         Mission Statement
                     </span>
                 </Reveal>
 
-                <motion.div
-                    style={{ overflow: "hidden", display: "flex", flexWrap: "wrap", justifyContent: "center" }}
-                    variants={container}
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={{ once: true, margin: "-10%" }}
-                >
-                    {words.map((word, index) => (
-                        <motion.span
-                            variants={child}
-                            style={{ marginRight: "0.25em" }}
-                            key={index}
-                            className={`font-display text-2xl md:text-4xl lg:text-5xl leading-tight font-medium ${isDark
-                                    ? 'bg-clip-text text-transparent bg-gradient-to-r from-white via-neutral-200 to-neutral-500'
-                                    : 'bg-clip-text text-transparent bg-gradient-to-r from-neutral-900 via-neutral-700 to-neutral-500'
+                <div className="glass-card p-10 md:p-16 rounded-[2.5rem] relative">
+                    <motion.div
+                        style={{ overflow: "hidden", display: "flex", flexWrap: "wrap", justifyContent: "center" }}
+                        variants={container}
+                        initial="hidden"
+                        whileInView="visible"
+                        viewport={{ once: true, margin: "-10%" }}
+                    >
+                        {words.map((word, index) => (
+                            <motion.span
+                                variants={child}
+                                style={{ marginRight: "0.25em" }}
+                                key={index}
+                                className={`font-display text-xl sm:text-2xl md:text-3xl lg:text-4xl leading-relaxed font-bold ${
+                                    isDark ? 'text-zinc-100' : 'text-zinc-800'
                                 }`}
-                        >
-                            {word}
-                        </motion.span>
-                    ))}
-                </motion.div>
+                            >
+                                {word}
+                            </motion.span>
+                        ))}
+                    </motion.div>
+                </div>
             </div>
         </section>
     );

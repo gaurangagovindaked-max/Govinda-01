@@ -44,85 +44,87 @@
     </script>
     <style>
       :root {
-        --background: #ffffff;
-        --foreground: #0a0a0a;
+        --background: #fcfcfd;
+        --foreground: #09090b;
+        --card-bg: rgba(255, 255, 255, 0.7);
+        --card-border: rgba(9, 9, 11, 0.05);
+        --glow-color: rgba(99, 102, 241, 0.15);
       }
       .dark {
-        --background: #050505;
-        --foreground: #ffffff;
-      }
-      .brutal {
-        --background: #ffffff;
-        --foreground: #000000;
-      }
-      .dark-brutal {
-        --background: #000000;
-        --foreground: #ffffff;
+        --background: #030303;
+        --foreground: #fafafa;
+        --card-bg: rgba(9, 9, 11, 0.6);
+        --card-border: rgba(255, 255, 255, 0.08);
+        --glow-color: rgba(139, 92, 246, 0.25);
       }
       
       body {
         background-color: var(--background);
         color: var(--foreground);
         position: relative;
-        transition: background-color 0.3s ease, color 0.3s ease;
+        transition: background-color 0.5s cubic-bezier(0.16, 1, 0.3, 1), color 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+        overflow-x: hidden;
       }
 
-      /* Noise Texture Overlay for Default/Dark */
-      body:not(.brutal-mode):not(.dark-brutal-mode)::before {
+      /* Noise Texture Overlay for Premium Organic Feel */
+      body::before {
         content: "";
         position: fixed;
         top: 0;
         left: 0;
         width: 100%;
         height: 100%;
-        opacity: 0.03;
+        opacity: 0.015;
         pointer-events: none;
         z-index: 9999;
-        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
-      }
-      
-      /* Brutal Mode Specifics */
-      .brutal-mode {
-        background-color: #ffffff;
-        background-image: radial-gradient(#e5e5e5 1px, transparent 1px);
-        background-size: 32px 32px;
+        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
       }
 
-      .dark-brutal-mode {
-        background-color: #000000;
-        /* Significantly reduced grid for cleaner look */
-        background-image: radial-gradient(#1a1a1a 1px, transparent 1px);
-        background-size: 48px 48px;
+      .premium-glow {
+        box-shadow: 0 0 40px 10px var(--glow-color);
       }
       
-      .brutal-grid {
-        background-size: 40px 40px;
-        background-image:
-          linear-gradient(to right, rgba(0, 0, 0, 0.03) 1px, transparent 1px),
-          linear-gradient(to bottom, rgba(0, 0, 0, 0.03) 1px, transparent 1px);
-      }
-      
-      /* Light Brutal Selection */
-      .brutal-mode ::selection {
-        background: #ff3333;
-        color: white;
-      }
-      
-      /* Dark Brutal Selection - The "Totaiya" Style */
-      .dark-brutal-mode ::selection {
-        background: #ccff00;
-        color: black;
+      /* Glass Card */
+      .glass-card {
+        background: var(--card-bg);
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+        border: 1px solid var(--card-border);
+        transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
       }
 
-      .no-scrollbar::-webkit-scrollbar {
-        display: none;
+      .glass-card:hover {
+        border-color: rgba(99, 102, 241, 0.3);
+        box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.1);
+        transform: translateY(-4px);
       }
-      .no-scrollbar {
-        -ms-overflow-style: none;
-        scrollbar-width: none;
+
+      .dark .glass-card:hover {
+        border-color: rgba(139, 92, 246, 0.4);
+        box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.5);
       }
+
+      /* Scrollbar */
+      ::-webkit-scrollbar {
+        width: 8px;
+        height: 8px;
+      }
+      ::-webkit-scrollbar-track {
+        background: transparent;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: rgba(99, 102, 241, 0.15);
+        border-radius: 999px;
+      }
+      .dark ::-webkit-scrollbar-thumb {
+        background: rgba(139, 92, 246, 0.2);
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: rgba(99, 102, 241, 0.3);
+      }
+      
       ::selection {
-        background: rgba(99, 102, 241, 0.2);
+        background: rgba(99, 102, 241, 0.25);
         color: inherit;
       }
     </style>

@@ -22,9 +22,6 @@ export const Vision: React.FC<VisionProps> = ({ theme }) => {
     }, []);
 
     const isDark = theme === 'dark';
-    const isLightBrutal = theme === 'brutal';
-    const isDarkBrutal = theme === 'dark-brutal';
-    const isAnyBrutal = isLightBrutal || isDarkBrutal;
 
     // Mouse parallax effect
     const mouseX = useMotionValue(0);
@@ -45,90 +42,78 @@ export const Vision: React.FC<VisionProps> = ({ theme }) => {
     // Parallax transforms
     const backgroundX = useTransform(smoothMouseX, [-0.5, 0.5], ['-5%', '5%']);
     const backgroundY = useTransform(smoothMouseY, [-0.5, 0.5], ['-5%', '5%']);
-    const textX = useTransform(smoothMouseX, [-0.5, 0.5], ['2%', '-2%']);
-    const textY = useTransform(smoothMouseY, [-0.5, 0.5], ['2%', '-2%']);
+    const textX = useTransform(smoothMouseX, [-0.5, 0.5], ['1.5%', '-1.5%']);
+    const textY = useTransform(smoothMouseY, [-0.5, 0.5], ['1.5%', '-1.5%']);
 
     return (
         <section
             id="vision"
             ref={containerRef}
             onMouseMove={handleMouseMove}
-            className={`relative py-40 px-6 overflow-hidden min-h-[80vh] flex items-center justify-center ${isDark ? 'bg-black' :
-                isLightBrutal ? 'bg-white border-t-4 border-black' :
-                    isDarkBrutal ? 'bg-black border-t-4 border-white' :
-                        'bg-neutral-900'
-                }`}
+            className={`relative py-40 px-6 overflow-hidden min-h-[85vh] flex items-center justify-center ${
+                isDark ? 'bg-black text-white' : 'bg-zinc-50 text-zinc-900'
+            }`}
         >
             {/* Dynamic Background */}
             <motion.div
-                style={{ x: backgroundX, y: backgroundY, scale: 1.1 }}
+                style={{ x: backgroundX, y: backgroundY, scale: 1.05 }}
                 className="absolute inset-0 pointer-events-none"
             >
-                {isLightBrutal ? (
-                    <div className="absolute inset-0 opacity-10 brutal-grid animate-pulse-slow"></div>
-                ) : isDarkBrutal ? (
-                    <div className="absolute inset-0 opacity-10 dark-brutal-grid animate-pulse-slow"></div>
-                ) : (
-                    <>
-                        {/* Starfield / Particles */}
-                        <div className="absolute inset-0 opacity-20">
-                            {[...Array(20)].map((_, i) => (
-                                <motion.div
-                                    key={i}
-                                    className={`absolute rounded-full ${isDark ? 'bg-indigo-500' : 'bg-blue-400'}`}
-                                    initial={{
-                                        x: Math.random() * 100 + "%",
-                                        y: Math.random() * 100 + "%",
-                                        scale: Math.random() * 0.5 + 0.5,
-                                        opacity: Math.random() * 0.5 + 0.2
-                                    }}
-                                    animate={{
-                                        y: [null, Math.random() * 100 + "%"],
-                                        opacity: [0.2, 0.8, 0.2]
-                                    }}
-                                    transition={{
-                                        duration: Math.random() * 10 + 10,
-                                        repeat: Infinity,
-                                        ease: "linear"
-                                    }}
-                                    style={{
-                                        width: Math.random() * 4 + 2 + "px",
-                                        height: Math.random() * 4 + 2 + "px",
-                                    }}
-                                />
-                            ))}
-                        </div>
+                {/* Starfield / Particles */}
+                <div className="absolute inset-0 opacity-30">
+                    {[...Array(25)].map((_, i) => (
+                        <motion.div
+                            key={i}
+                            className={`absolute rounded-full ${isDark ? 'bg-indigo-500' : 'bg-indigo-400'}`}
+                            initial={{
+                                x: Math.random() * 100 + "%",
+                                y: Math.random() * 100 + "%",
+                                scale: Math.random() * 0.5 + 0.5,
+                                opacity: Math.random() * 0.4 + 0.2
+                            }}
+                            animate={{
+                                y: [null, Math.random() * 100 + "%"],
+                                opacity: [0.15, 0.7, 0.15]
+                            }}
+                            transition={{
+                                duration: Math.random() * 12 + 8,
+                                repeat: Infinity,
+                                ease: "linear"
+                            }}
+                            style={{
+                                width: Math.random() * 3 + 2 + "px",
+                                height: Math.random() * 3 + 2 + "px",
+                            }}
+                        />
+                    ))}
+                </div>
 
-                        {/* Glow Orb */}
-                        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-indigo-600 rounded-full blur-[150px] opacity-10 animate-pulse-slow" />
-                    </>
-                )}
+                {/* Glow Orb */}
+                <div className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] rounded-full blur-[140px] opacity-10 animate-pulse-slow ${
+                    isDark ? 'bg-indigo-600' : 'bg-indigo-300'
+                }`} />
             </motion.div>
 
             {/* Content Container */}
             <motion.div
                 style={{ x: textX, y: textY }}
-                className="container mx-auto max-w-6xl relative z-10 text-center"
+                className="container mx-auto max-w-5xl relative z-10 text-center"
             >
                 <Reveal width="100%">
                     <motion.p
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.6 }}
-                        className={`font-mono text-sm md:text-base tracking-[0.3em] uppercase mb-8 ${isLightBrutal ? 'text-white bg-black inline-block px-4 py-2 transform -rotate-1' :
-                            isDarkBrutal ? 'text-black bg-white inline-block px-4 py-2 transform rotate-1' :
-                                'text-indigo-400'
-                            }`}
+                        className={`font-mono text-xs md:text-sm tracking-[0.25em] uppercase mb-8 ${
+                            isDark ? 'text-indigo-400' : 'text-indigo-600'
+                        }`}
                     >
-                        {RESUME.vision.tagline}
+                        Long Term Arc
                     </motion.p>
                 </Reveal>
 
                 <Reveal width="100%" delay={0.1}>
-                    <h2 className={`font-display text-6xl md:text-8xl lg:text-[10rem] font-bold mb-12 tracking-tighter leading-[0.85] ${isLightBrutal ? 'text-black uppercase drop-shadow-[8px_8px_0px_#ff3333]' :
-                        isDarkBrutal ? 'text-white uppercase drop-shadow-[8px_8px_0px_#ccff00]' :
-                            'text-white'
-                        }`}>
+                    <h2 className="font-display text-6xl sm:text-7xl md:text-8xl font-extrabold mb-12 tracking-tighter leading-none">
                         <span className="inline-block relative">
                             <Shuffle
                                 text={RESUME.vision.startup}
@@ -139,53 +124,30 @@ export const Vision: React.FC<VisionProps> = ({ theme }) => {
                                 triggerOnHover={true}
                                 className="inline-block"
                             />
-                            {/* Glitch/Accent effect for non-brutal themes */}
-                            {!isAnyBrutal && (
-                                <motion.span
-                                    className="absolute -inset-1 text-indigo-500 opacity-30 blur-sm pointer-events-none"
-                                    animate={{
-                                        opacity: [0.2, 0.5, 0.2],
-                                        scale: [1, 1.02, 1],
-                                    }}
-                                    transition={{ duration: 2, repeat: Infinity }}
-                                >
-                                    {RESUME.vision.startup}
-                                </motion.span>
-                            )}
+                            {/* Glitch/Accent effect */}
+                            <motion.span
+                                className="absolute -inset-1 text-indigo-500 opacity-20 blur-sm pointer-events-none"
+                                animate={{
+                                    opacity: [0.1, 0.3, 0.1],
+                                    scale: [1, 1.01, 1],
+                                }}
+                                transition={{ duration: 3, repeat: Infinity }}
+                            >
+                                {RESUME.vision.startup}
+                            </motion.span>
                         </span>
                     </h2>
                 </Reveal>
 
                 <Reveal width="100%" delay={0.2}>
-                    <div className="relative inline-block">
-                        <p className={`text-xl md:text-3xl font-light leading-relaxed max-w-4xl mx-auto ${isLightBrutal ? 'text-black font-medium border-4 border-black p-8 shadow-brutal bg-white text-left md:text-center transform rotate-1' :
-                            isDarkBrutal ? 'text-white font-medium border-4 border-white p-8 shadow-brutal-white bg-black text-left md:text-center transform -rotate-1' :
-                                'text-neutral-300'
-                            }`}>
-                            {RESUME.vision.description}
-                        </p>
-
-                        {/* Decorative corners for non-brutal */}
-                        {!isAnyBrutal && (
-                            <>
-                                <div className="absolute -top-4 -left-4 w-8 h-8 border-t-2 border-l-2 border-indigo-500/50" />
-                                <div className="absolute -bottom-4 -right-4 w-8 h-8 border-b-2 border-r-2 border-indigo-500/50" />
-                            </>
-                        )}
+                    <div className="relative inline-block w-full">
+                        <div className="glass-card p-10 md:p-14 rounded-[2.5rem] relative max-w-4xl mx-auto">
+                            <p className="text-lg sm:text-2xl font-light leading-relaxed opacity-85">
+                                {RESUME.vision.description}
+                            </p>
+                        </div>
                     </div>
                 </Reveal>
-
-                {/* Mobile-specific touch hint or decoration */}
-                {isMobile && !isAnyBrutal && (
-                    <motion.div
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 0.5 }}
-                        transition={{ delay: 1, duration: 1 }}
-                        className="mt-12 text-neutral-600 text-xs font-mono uppercase tracking-widest"
-                    >
-            /// SYSTEM.INITIATED ///
-                    </motion.div>
-                )}
             </motion.div>
         </section>
     );
