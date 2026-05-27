@@ -21,7 +21,8 @@ export const RESUME = {
     "pi",
     "hermes agent",
     "claude",
-    "codex"
+    "codex",
+    "Cloudflare"
   ],
   education: {
     institute: "Indian Institute of Technology Patna",

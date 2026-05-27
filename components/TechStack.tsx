@@ -1,13 +1,8 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { RESUME } from '../constants';
-import { Theme } from '../types';
 
-interface TechStackProps {
-  theme: Theme;
-}
-
-export const TechStack: React.FC<TechStackProps> = ({ theme }) => {
+export const TechStack: React.FC = () => {
   const getLanguageIcon = (lang: string) => {
     const map: Record<string, string> = {
       'Typescript': 'typescript.svg',
@@ -41,14 +36,14 @@ export const TechStack: React.FC<TechStackProps> = ({ theme }) => {
         viewport={{ once: true, margin: "-10%" }}
         transition={{ duration: 0.5 }}
       >
-        <h3 className="text-xl font-bold text-zinc-900 dark:text-zinc-100 mb-4">
+        <h3 className="text-xl font-bold text-zinc-900 mb-4">
           Languages worked with
         </h3>
         <div className="flex flex-wrap gap-4">
           {RESUME.languages?.map((lang, idx) => {
             const icon = getLanguageIcon(lang);
             return (
-              <div key={idx} className="flex items-center gap-2 border border-zinc-200 dark:border-zinc-800 px-3 py-1.5 rounded bg-zinc-50 dark:bg-zinc-900 text-sm font-medium text-zinc-800 dark:text-zinc-200">
+              <div key={idx} className="flex items-center gap-2 border border-zinc-200 px-3 py-1.5 rounded bg-zinc-50 text-sm font-medium text-zinc-800">
                 {icon && <img src={`/assets/${icon}`} alt={lang} className="w-4 h-4 object-contain" />}
                 {lang}
               </div>
@@ -64,14 +59,25 @@ export const TechStack: React.FC<TechStackProps> = ({ theme }) => {
         viewport={{ once: true, margin: "-10%" }}
         transition={{ duration: 0.5, delay: 0.1 }}
       >
-        <h3 className="text-xl font-bold text-zinc-900 dark:text-zinc-100 mb-4">
+        <h3 className="text-xl font-bold text-zinc-900 mb-4">
           Tools worked with
         </h3>
         <div className="flex flex-wrap gap-4">
           {RESUME.tools?.map((tool, idx) => {
+            if (tool.toLowerCase() === 'cloudflare') {
+              return (
+                <div key={idx} className="flex items-center gap-2 border border-zinc-200 px-3 py-1.5 rounded bg-zinc-50 text-sm font-medium text-zinc-800 capitalize">
+                  <svg viewBox="0 0 24 24" className="w-4 h-4 fill-current text-[#F38020]">
+                    <path d="M16.92 12c-1.39-4.22-5.59-6.3-9.92-4.83a8.1 8.1 0 00-5 5A4.47 4.47 0 000 16.5 4.51 4.51 0 004.5 21h14A5.5 5.5 0 0024 15.5a5.45 5.45 0 00-2.85-4.8z" />
+                  </svg>
+                  {tool}
+                </div>
+              );
+            }
+
             const icon = getToolIcon(tool);
             return (
-              <div key={idx} className="flex items-center gap-2 border border-zinc-200 dark:border-zinc-800 px-3 py-1.5 rounded bg-zinc-50 dark:bg-zinc-900 text-sm font-medium text-zinc-800 dark:text-zinc-200 capitalize">
+              <div key={idx} className="flex items-center gap-2 border border-zinc-200 px-3 py-1.5 rounded bg-zinc-50 text-sm font-medium text-zinc-800 capitalize">
                 {icon && <img src={`/assets/${icon}`} alt={tool} className="w-4 h-4 object-contain" />}
                 {tool}
               </div>

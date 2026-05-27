@@ -34,13 +34,13 @@ export const Trajectory: React.FC<TrajectoryProps> = ({ education, experience })
           </span>
         </div>
         <div className="flex flex-col">
-          <h3 className="text-xl font-bold text-zinc-900 dark:text-zinc-100">
+          <h3 className="text-xl font-bold text-zinc-900">
             {education.institute}
           </h3>
-          <p className="text-base text-zinc-700 dark:text-zinc-300 mb-2">
+          <p className="text-base text-zinc-700 mb-2">
             {education.degree}
           </p>
-          <p className="text-sm text-zinc-600 dark:text-zinc-400">
+          <p className="text-sm text-zinc-600">
             {education.details}
           </p>
         </div>
@@ -62,13 +62,13 @@ export const Trajectory: React.FC<TrajectoryProps> = ({ education, experience })
             </span>
           </div>
           <div className="flex flex-col">
-            <h3 className="text-xl font-bold text-zinc-900 dark:text-zinc-100">
-              {exp.role} <span className="font-normal text-zinc-500 dark:text-zinc-400">@ {exp.company}</span>
+            <h3 className="text-xl font-bold text-zinc-900">
+              {exp.role} <span className="font-normal text-zinc-500">@ {exp.company}</span>
             </h3>
-            <p className="text-base text-zinc-700 dark:text-zinc-300 mt-2 mb-4">
+            <p className="text-base text-zinc-700 mt-2 mb-4">
               {exp.description}
             </p>
-            <ul className="list-disc list-inside text-sm text-zinc-600 dark:text-zinc-400 space-y-1">
+            <ul className="list-disc list-inside text-sm text-zinc-600 space-y-1">
               {exp.points.map((pt, i) => (
                 <li key={i}>{pt}</li>
               ))}
