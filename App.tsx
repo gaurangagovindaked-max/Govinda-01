@@ -80,8 +80,7 @@ function App() {
           </div>
           <div className="mt-4 md:mt-0 flex gap-4">
             <a href="https://github.com/GC-WORK11" target="_blank" rel="noopener noreferrer" className="hover:text-zinc-800">GitHub</a>
-            <a href="#" className="hover:text-zinc-800">Twitter</a>
-            <a href="#" className="hover:text-zinc-800">LinkedIn</a>
+            <a href="https://in.linkedin.com/in/govinda-flow" target="_blank" rel="noopener noreferrer" className="hover:text-zinc-800">LinkedIn</a>
           </div>
         </footer>
       </div>

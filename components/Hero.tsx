@@ -7,6 +7,8 @@ export const Hero: React.FC = () => {
       <img 
         src="/assets/Gemini_Generated_Image_.png" 
         alt={RESUME.header.name}
+        loading="eager"
+        fetchPriority="high"
         className="w-32 h-32 md:w-40 md:h-40 rounded-full object-cover shadow-sm border border-zinc-200"
       />
       <div>
@@ -21,8 +23,8 @@ export const Hero: React.FC = () => {
             GitHub
           </a>
           <span className="text-zinc-400">•</span>
-          <a href="#" className="text-blue-600 hover:underline">
-            Twitter
+          <a href="https://in.linkedin.com/in/govinda-flow" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">
+            LinkedIn
           </a>
           <span className="text-zinc-400">•</span>
           <a href={`mailto:${RESUME.header.email}`} className="text-blue-600 hover:underline">
