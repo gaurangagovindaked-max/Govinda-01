@@ -4,84 +4,164 @@ export const RESUME = {
     name: "GOVINDA CHAUHAN",
     email: "govindach.iitp@gmail.com",
     location: "Delhi, India",
-    role: "AI-driven Software Developer"
+    role: "Founder-minded AI Systems Builder"
   },
-  summary: "I build the bridge between abstract AI theory and practical reality. As a software developer and educator, I specialize in crafting autonomous agents, workflow automation systems, and next-generation digital interfaces that feel invisible yet powerful.",
+  summary: "Govinda builds proof-heavy AI systems: agent cockpits, video evaluation frameworks, physics-from-video research tools, supply-chain safety layers, and mobile control surfaces. The pattern is simple: turn frontier AI ideas into inspectable software that real people can run, test, and trust.",
   skills: [
-    "Artificial Intelligence",
-    "Workflow Automation",
-    "AGI Systems",
-    "React Native",
-    "System Design",
-    "Rapid Prototyping",
-    "Data Analytics",
-    "Neural Networks",
-    "Frontend Architecture",
-    "Product Engineering"
+    "Agentic Systems",
+    "Founder Engineering",
+    "Physics Intelligence",
+    "Video Evals",
+    "Developer Tools",
+    "Supply Chain Safety",
+    "Flutter Apps",
+    "Research Prototypes",
+    "Desktop Agents",
+    "Product Velocity"
   ],
   education: {
     institute: "Indian Institute of Technology Patna",
     degree: "BS in Computer Science & Data Analytics",
     batch: "2026",
-    details: "Focus on AGI & Education Systems. Relevant Coursework: Data Structures, Algorithms, Machine Learning, Deep Learning, Operating Systems."
+    details: "Computer Science and Data Analytics foundation, with independent work across AI agents, evaluation systems, simulation, computer vision, and high-velocity product engineering."
   },
   experience: [
     {
-      role: "Computer Science Teacher",
-      company: "High School (Delhi)",
-      duration: "2023–2024",
-      description: "Redefined early technical education by integrating AI modules into standard curriculum.",
+      role: "Founder / Builder",
+      company: "Independent AI Systems Lab",
+      duration: "2025–2026",
+      description: "Built and open-sourced a portfolio of agent infrastructure, applied AI research tools, and mobile products designed to make AI workflows visible, measurable, and safer.",
       points: [
-        "Taught CS fundamentals & digital literacy",
-        "Designed AI-related learning modules",
-        "Mentored students in logic & problem-solving"
+        "Shipped Doorway, Kairo, CHIMERA, AETHER, VideoUnit, Flow Mobile, and CEO Hunt as public proof-of-work.",
+        "Created research-grade prototypes around video understanding, temporal assertions, and physics parameter extraction.",
+        "Designed products as full systems: frontend, backend, developer tooling, documentation, and operational safety."
+      ]
+    },
+    {
+      role: "Computer Science Educator",
+      company: "Delhi",
+      duration: "2023–2024",
+      description: "Taught computing fundamentals while experimenting with AI-assisted learning systems and practical student-facing software.",
+      points: [
+        "Designed AI-aware learning modules and technical exercises.",
+        "Mentored students in logic, programming fundamentals, and product thinking.",
+        "Built the early conviction that education software should adapt to the learner, not the other way around."
       ]
     }
   ],
   projects: [
     {
-      title: "AI Workflow Systems",
-      category: "Automation",
-      description: "End-to-end AI pipelines for content creation and autonomous task execution. Integrating multi-agent systems to reduce human cognitive load.",
-      tags: ["Agentic AI", "Python", "LLMs"],
-      metric: "98% Efficiency"
+      title: "Doorway",
+      category: "Agent Cockpit",
+      description: "Local-first desktop cockpit for terminal agents, git worktrees, review/merge flows, plugins, and visible automation. Built for the next generation of agentic development.",
+      tags: ["Electron", "Agents", "Worktrees"],
+      metric: "Desktop OS for agents",
+      link: "https://github.com/GC-WORK11/doorway",
+      image: "https://opengraph.githubassets.com/govinda-doorway/GC-WORK11/doorway",
+      proof: "Public repo"
     },
     {
-      title: "Mobile Architecture",
-      category: "React Native",
-      description: "Production-ready mobile applications focusing on real-time components and AI-driven features. Clean UI with complex state management.",
-      tags: ["Expo", "React Native", "Real-time"],
-      metric: "<16ms Latency"
+      title: "AETHER",
+      category: "Physics Intelligence",
+      description: "Marker-free physics extraction from video: discover kinematic structure, estimate parameters, and produce simulation-ready models from observed motion.",
+      tags: ["Vision", "MuJoCo", "Research"],
+      metric: "Video → physics model",
+      link: "https://github.com/GC-WORK11/aether",
+      image: "https://opengraph.githubassets.com/govinda-aether/GC-WORK11/aether",
+      proof: "Benchmarks + architecture docs"
     },
     {
-      title: "Digital Portfolios",
-      category: "Web Engineering",
-      description: "Bespoke digital identities for professionals. Focusing on white-space aesthetics, micro-interactions, and performant render cycles.",
-      tags: ["React", "Framer Motion", "WebGL"],
-      metric: "100 Lighthouse"
+      title: "VideoUnit",
+      category: "AI Video Evals",
+      description: "Executable testing framework for AI-generated videos. Converts prompts into temporal assertions, finds frame-level failures, scores behavior, and emits reproducible reports.",
+      tags: ["Evals", "Video", "Testing"],
+      metric: "Prompts → contracts",
+      link: "https://github.com/GC-WORK11/video-unit",
+      image: "https://opengraph.githubassets.com/govinda-videounit/GC-WORK11/video-unit",
+      proof: "CLI + SDK + reports"
+    },
+    {
+      title: "Kairo",
+      category: "Agent Safety",
+      description: "Real-time cloud intelligence layer that checks package installs, terminal commands, and CI/CD changes against live software risk data before agents execute them.",
+      tags: ["Rust", "MCP", "Security"],
+      metric: "Risk gate for AI coding",
+      link: "https://github.com/GC-WORK11/kairo",
+      image: "https://opengraph.githubassets.com/govinda-kairo/GC-WORK11/kairo",
+      proof: "CLI + MCP + GitHub Action"
+    },
+    {
+      title: "CHIMERA",
+      category: "Research Engine",
+      description: "Autonomous multi-agent research workflow: scouts literature, reads PDFs, runs experiments, synthesizes reports, and critiques its own output.",
+      tags: ["Python", "Research", "Agents"],
+      metric: "7-agent pipeline",
+      link: "https://github.com/GC-WORK11/chimera",
+      image: "https://opengraph.githubassets.com/govinda-chimera/GC-WORK11/chimera",
+      proof: "Research automation"
+    },
+    {
+      title: "Flow Mobile",
+      category: "Mobile Control Surface",
+      description: "Flutter mobile interface for monitoring AI agent orchestration: fleet status, decisions, onboarding, and mobile-first operational views.",
+      tags: ["Flutter", "Agents", "Mobile"],
+      metric: "Agent ops in pocket",
+      link: "https://github.com/GC-WORK11/flow-mobile",
+      image: "https://opengraph.githubassets.com/govinda-flow/GC-WORK11/flow-mobile",
+      proof: "Public Flutter app"
+    },
+    {
+      title: "CEO Hunt",
+      category: "Startup Marketplace",
+      description: "Flutter platform for founders, investors, and operators with role-based onboarding, startup profiles, investor discovery, dashboards, posts, and Supabase schema.",
+      tags: ["Flutter", "Supabase", "Marketplace"],
+      metric: "Founder/investor graph",
+      link: "https://github.com/GC-WORK11/ceo-hunt-app",
+      image: "https://opengraph.githubassets.com/govinda-ceohunt/GC-WORK11/ceo-hunt-app",
+      proof: "Mobile product"
     }
   ],
   research: [
     {
-      title: "Modern Quick Ecommerce",
-      subtitle: "Logistics Optimization",
+      title: "AETHER Architecture",
+      subtitle: "Physics from Video",
       points: [
-        "Analyzed inefficiencies in speed-based models.",
-        "Proposed AI-assisted logistics solutions."
-      ]
+        "Research program for extracting exact physical parameters from mechanism videos.",
+        "Combines segmentation, tracking, kinematic discovery, differentiable simulation, and benchmark design."
+      ],
+      link: "https://github.com/GC-WORK11/aether/blob/main/ARCHITECTURE.md"
     },
     {
-      title: "AI in Education",
-      subtitle: "Pedagogical Shift",
+      title: "VideoUnit PRD",
+      subtitle: "Testing AI Video",
       points: [
-        "Researched traditional system limitations.",
-        "Designed AI-integrated personalized pathways."
-      ]
+        "Defines temporal contracts for AI-generated video behavior rather than relying on subjective visual judgment.",
+        "Frames video evaluation as executable assertions, failure localization, scoring, and reproducible evidence."
+      ],
+      link: "https://github.com/GC-WORK11/video-unit/blob/main/VIDEOUNIT_PRD.md"
+    },
+    {
+      title: "Kairo Risk Layer",
+      subtitle: "Agent Supply Chain Safety",
+      points: [
+        "Designs a pre-execution risk gate for AI coding agents touching packages, shell commands, and CI workflows.",
+        "Connects live risk sources such as advisories and package metadata to developer tooling."
+      ],
+      link: "https://github.com/GC-WORK11/kairo"
+    },
+    {
+      title: "CHIMERA Workflow",
+      subtitle: "Multi-Agent Research",
+      points: [
+        "Models research as a coordinated pipeline of scout, reader, experimenter, synthesizer, critic, and formatter agents.",
+        "Built to produce cited reports, runnable experiments, and adversarial review loops."
+      ],
+      link: "https://github.com/GC-WORK11/chimera"
     }
   ],
   vision: {
-    startup: "Vision47",
-    tagline: "Building the Operating System for India's Future",
-    description: "An upcoming AI-driven venture focused on next-generation software, automation, and digital innovation."
+    startup: "Govinda OS",
+    tagline: "Founder energy, research depth, shipped proof.",
+    description: "The long-term arc: make AI systems observable, testable, and useful enough to become infrastructure. Not demos. Not pitch-deck vapor. Working tools, public repos, measured behavior, and products that compound."
   }
 };

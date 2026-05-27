@@ -67,15 +67,15 @@ export const Hero: React.FC<HeroProps> = ({ theme }) => {
       return (
         <>
           {displayText.substring(0, aiArchIndex)}
-          <span className="mx-2 px-1 font-bold border-b-2 border-indigo-500 text-black">
-            {displayText.substring(aiArchIndex, aiArchIndex + 13)}
+          <span className="mx-1 md:mx-2 px-1 font-bold border-b-2 border-indigo-500 text-black whitespace-nowrap">
+            {displayText.substring(aiArchIndex, aiArchIndex + "AI Architecture".length)}
           </span>
-          {displayText.substring(aiArchIndex + 13, workflowsIndex)}
-          <span className="mx-2 px-1 font-bold border-b-2 border-indigo-500 text-black">
+          {displayText.substring(aiArchIndex + "AI Architecture".length, workflowsIndex)}
+          <span className="mx-1 md:mx-2 px-1 font-bold border-b-2 border-indigo-500 text-black whitespace-nowrap">
             {displayText.substring(workflowsIndex, workflowsIndex + 9)}
           </span>
           {displayText.substring(workflowsIndex + 9, educationIndex)}
-          <span className="mx-2 px-1 font-bold border-b-2 border-indigo-500 text-black">
+          <span className="mx-1 md:mx-2 px-1 font-bold border-b-2 border-indigo-500 text-black whitespace-nowrap">
             {displayText.substring(educationIndex, educationIndex + 9)}
           </span>
           {displayText.substring(educationIndex + 9)}
@@ -86,18 +86,18 @@ export const Hero: React.FC<HeroProps> = ({ theme }) => {
       return (
         <>
           Specializing in
-          <span className={`mx-2 px-1 font-bold ${isDark ? 'border-b-2 border-indigo-500 text-white' :
+          <span className={`mx-1 md:mx-2 px-1 font-bold whitespace-nowrap ${isDark ? 'border-b-2 border-indigo-500 text-white' :
             isLightBrutal ? 'bg-cherry text-white' :
               isDarkBrutal ? 'bg-acid text-black' :
                 'border-b-2 border-indigo-500 text-black'
             }`}>AI Architecture</span>,
-          <span className={`mx-2 px-1 font-bold ${isDark ? 'border-b-2 border-indigo-500 text-white' :
+          <span className={`mx-1 md:mx-2 px-1 font-bold whitespace-nowrap ${isDark ? 'border-b-2 border-indigo-500 text-white' :
             isLightBrutal ? 'bg-cherry text-white' :
               isDarkBrutal ? 'bg-acid text-black' :
                 'border-b-2 border-indigo-500 text-black'
             }`}>Workflows</span>,
           and
-          <span className={`mx-2 px-1 font-bold ${isDark ? 'border-b-2 border-indigo-500 text-white' :
+          <span className={`mx-1 md:mx-2 px-1 font-bold whitespace-nowrap ${isDark ? 'border-b-2 border-indigo-500 text-white' :
             isLightBrutal ? 'bg-cherry text-white' :
               isDarkBrutal ? 'bg-acid text-black' :
                 'border-b-2 border-indigo-500 text-black'

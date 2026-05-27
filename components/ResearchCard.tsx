@@ -1,18 +1,15 @@
 
 import React, { useState } from 'react';
 import { ArrowUpRight } from 'lucide-react';
-import { Theme } from '../types';
+import { ResearchItem, Theme } from '../types';
 import { motion } from 'framer-motion';
 
-interface ResearchCardProps {
-  title: string;
-  subtitle: string;
-  points: string[];
+interface ResearchCardProps extends ResearchItem {
   theme: Theme;
   index: number;
 }
 
-export const ResearchCard: React.FC<ResearchCardProps> = ({ title, subtitle, points, theme, index }) => {
+export const ResearchCard: React.FC<ResearchCardProps> = ({ title, subtitle, points, link, theme, index }) => {
   const [isHovered, setIsHovered] = useState(false);
   
   const isDark = theme === 'dark';
@@ -20,8 +17,13 @@ export const ResearchCard: React.FC<ResearchCardProps> = ({ title, subtitle, poi
   const isDarkBrutal = theme === 'dark-brutal';
   const isAnyBrutal = isLightBrutal || isDarkBrutal;
 
+  const CardShell = link ? motion.a : motion.div;
+
   return (
-    <motion.div 
+    <CardShell 
+        href={link}
+        target={link ? "_blank" : undefined}
+        rel={link ? "noopener noreferrer" : undefined}
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
@@ -97,6 +99,6 @@ export const ResearchCard: React.FC<ResearchCardProps> = ({ title, subtitle, poi
              }`} />
         </div>
 
-    </motion.div>
+    </CardShell>
   );
 };

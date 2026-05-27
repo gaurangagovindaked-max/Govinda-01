@@ -1,20 +1,15 @@
 
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ArrowUpRight, ArrowRight, Activity } from 'lucide-react';
-import { Theme } from '../types';
+import { ArrowUpRight, ArrowRight, Activity, Github } from 'lucide-react';
+import { Project, Theme } from '../types';
 
-interface ProjectCardProps {
-    title: string;
-    category: string;
-    description: string;
-    tags: string[];
-    metric: string;
+interface ProjectCardProps extends Project {
     theme: Theme;
     index: number;
 }
 
-export const ProjectCard: React.FC<ProjectCardProps> = ({ title, category, description, tags, metric, theme, index }) => {
+export const ProjectCard: React.FC<ProjectCardProps> = ({ title, category, description, tags, metric, link, image, proof, theme, index }) => {
     const [isHovered, setIsHovered] = useState(false);
 
     const isDark = theme === 'dark';
@@ -22,15 +17,20 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ title, category, descr
     const isDarkBrutal = theme === 'dark-brutal';
     const isAnyBrutal = isLightBrutal || isDarkBrutal;
 
+    const CardShell = link ? motion.a : motion.div;
+
     return (
-        <motion.div
+        <CardShell
+            href={link}
+            target={link ? "_blank" : undefined}
+            rel={link ? "noopener noreferrer" : undefined}
             layout
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-10%" }}
             transition={{ duration: isAnyBrutal ? 0.3 : 0.6, delay: index * 0.1, type: isAnyBrutal ? "spring" : "tween" }}
             whileHover={isLightBrutal ? { y: -5 } : isDarkBrutal ? { y: -5 } : { scale: 1.02 }}
-            className={`relative w-full group cursor-pointer h-full flex flex-col ${isDark ? 'text-white' : 'text-black'
+            className={`relative w-full group cursor-pointer h-full flex flex-col overflow-hidden ${isDark ? 'text-white' : 'text-black'
                 } ${isLightBrutal
                     ? 'rounded-none bg-white border-4 border-black shadow-brutal hover:shadow-brutal-hover transition-all'
                     : isDarkBrutal
@@ -67,6 +67,42 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ title, category, descr
             </AnimatePresence>
 
             {/* Content Container */}
+            {image && (
+                <div className={`relative z-20 aspect-[16/9] overflow-hidden border-b ${isLightBrutal ? 'border-black border-b-4' :
+                    isDarkBrutal ? 'border-white border-b-4' :
+                        isDark ? 'border-neutral-800' : 'border-neutral-200'
+                    }`}>
+                    <div className={`absolute inset-0 flex flex-col justify-end p-6 ${isLightBrutal ? 'bg-white brutal-grid' :
+                        isDarkBrutal ? 'bg-black dark-brutal-grid' :
+                            isDark ? 'bg-[radial-gradient(circle_at_20%_20%,rgba(99,102,241,0.18),transparent_35%),#111]' :
+                                'bg-[radial-gradient(circle_at_20%_20%,rgba(99,102,241,0.12),transparent_35%),#f8fafc]'
+                        }`}>
+                        <div className={`text-[10px] font-mono uppercase tracking-[0.25em] ${isDark || isDarkBrutal ? 'text-neutral-400' : 'text-neutral-500'}`}>
+                            public build capture
+                        </div>
+                        <div className={`mt-2 font-display text-4xl font-black tracking-tighter ${isDark || isDarkBrutal ? 'text-white' : 'text-black'}`}>
+                            {title}
+                        </div>
+                    </div>
+                    <img
+                        src={image}
+                        alt={`${title} preview`}
+                        loading="lazy"
+                        onError={(event) => {
+                            event.currentTarget.style.display = 'none';
+                        }}
+                        className="h-full w-full object-cover grayscale contrast-110 transition duration-700 group-hover:grayscale-0 group-hover:scale-105"
+                    />
+                    <div className={`absolute left-4 top-4 flex items-center gap-2 px-3 py-1 text-[10px] font-mono font-bold uppercase tracking-widest ${isLightBrutal ? 'bg-cherry text-white border-2 border-black' :
+                        isDarkBrutal ? 'bg-acid text-black border-2 border-white' :
+                            isDark ? 'bg-black/70 text-white' : 'bg-white/80 text-black'
+                        }`}>
+                        <Github size={12} />
+                        {proof || 'Public proof'}
+                    </div>
+                </div>
+            )}
+
             <div className="relative z-20 p-8 flex flex-col h-full flex-grow">
                 {/* Header */}
                 <div className="flex justify-between items-start mb-6">
@@ -84,6 +120,10 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ title, category, descr
                             {title}
                         </h3>
                     </div>
+                    <ArrowUpRight
+                        size={22}
+                        className={`mt-1 shrink-0 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1 ${isLightBrutal ? 'text-cherry' : isDarkBrutal ? 'text-acid' : isDark ? 'text-neutral-300' : 'text-neutral-800'}`}
+                    />
                 </div>
 
                 {/* Description */}
@@ -149,6 +189,6 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ title, category, descr
                 </>
             )}
 
-        </motion.div>
+        </CardShell>
     );
 };

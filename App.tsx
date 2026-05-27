@@ -89,16 +89,16 @@ function App() {
               </span>
               <h2 className={`font-display text-5xl md:text-7xl font-bold tracking-tighter ${isDark || isDarkBrutal ? 'text-white' : 'text-neutral-900'
                 }`}>
-                {isAnyBrutal ? 'BUILD_LOGS' : 'Engineered Reality.'}
+                {isAnyBrutal ? 'PUBLIC_PROOF' : 'Shipped Proof.'}
               </h2>
             </div>
-            <a href="#" className={`flex items-center gap-4 text-sm font-bold uppercase tracking-widest hover:text-indigo-500 transition-colors ${isDark ? 'text-white' :
+            <a href="https://github.com/GC-WORK11" target="_blank" rel="noopener noreferrer" className={`flex items-center gap-4 text-sm font-bold uppercase tracking-widest hover:text-indigo-500 transition-colors ${isDark ? 'text-white' :
               isLightBrutal ? 'text-black hover:bg-black hover:text-white px-6 py-3 border-4 border-black shadow-brutal hover:shadow-none hover:translate-x-[4px] hover:translate-y-[4px] transition-all' :
                 isDarkBrutal ? 'text-white hover:bg-white hover:text-black px-6 py-3 border-4 border-white shadow-brutal-white hover:shadow-none hover:translate-x-[4px] hover:translate-y-[4px] transition-all' :
                   'text-black'
               }`}>
               {!isAnyBrutal && <div className={`w-12 h-[1px] ${isDark ? 'bg-white' : 'bg-black'}`} />}
-              View Archive
+              GitHub Archive
             </a>
           </div>
 
@@ -125,14 +125,14 @@ function App() {
           <div className="mb-24">
             <h2 className={`font-display text-6xl md:text-8xl font-bold tracking-tighter mb-6 ${isDark || isDarkBrutal ? 'text-white' : isLightBrutal ? 'text-black' : 'text-neutral-900'
               }`}>
-              {isAnyBrutal ? 'TIMELINE_DATA' : 'Trajectory.'}
+              {isAnyBrutal ? 'BUILD_HISTORY' : 'Builder Arc.'}
             </h2>
             <p className={`text-lg md:text-xl max-w-xl ${isDark ? 'text-neutral-500' :
               isLightBrutal ? 'text-black font-mono border-l-4 border-cherry pl-4' :
                 isDarkBrutal ? 'text-white font-mono border-l-4 border-acid pl-4' :
                   'text-neutral-500'
               }`}>
-              A chronological timeline of academic foundations and professional milestones.
+              Not a conventional resume. A compact map of education, teaching, research obsession, and shipped founder-grade systems.
             </p>
           </div>
 
@@ -154,14 +154,14 @@ function App() {
           <div className="flex flex-col md:flex-row items-start md:items-end justify-between mb-16 gap-4">
             <h2 className={`font-display text-5xl md:text-6xl font-bold tracking-tighter ${isDark || isDarkBrutal ? 'text-white' : 'text-neutral-900'
               }`}>
-              Research & Analysis
+              Papers, PRDs & Systems Thinking
             </h2>
             <span className={`text-sm font-mono uppercase tracking-widest ${isDark ? 'text-neutral-500' :
               isLightBrutal ? 'text-white bg-black px-2 py-1 font-bold' :
                 isDarkBrutal ? 'text-black bg-acid px-2 py-1 font-bold' :
                   'text-neutral-500'
               }`}>
-              Academic Publications & Studies
+              Research notes, architecture docs, and technical theses
             </span>
           </div>
 
