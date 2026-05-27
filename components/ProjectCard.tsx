@@ -5,19 +5,16 @@ import { Project } from '../types';
 
 interface ProjectCardProps extends Project {
     index: number;
+    onClick: () => void;
 }
 
-export const ProjectCard: React.FC<ProjectCardProps> = ({ title, category, description, link, metric, index }) => {
-    const CardShell = link ? motion.a : motion.div;
-
+export const ProjectCard: React.FC<ProjectCardProps> = ({ title, category, description, metric, onClick, index }) => {
     // A simple mock for repo languages colors based on tags or category
     const langColor = category.includes("Rust") ? "bg-[#dea584]" : category.includes("React") ? "bg-[#61dafb]" : category.includes("Python") ? "bg-[#3572A5]" : "bg-blue-500";
 
     return (
-        <CardShell
-            href={link}
-            target={link ? "_blank" : undefined}
-            rel={link ? "noopener noreferrer" : undefined}
+        <motion.div
+            onClick={onClick}
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             whileHover={{ y: -4, boxShadow: '0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1)' }}
@@ -53,6 +50,6 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ title, category, descr
                     <span>{metric ? Math.floor(Math.random() * 20) + 2 : 0}</span>
                 </div>
             </div>
-        </CardShell>
+        </motion.div>
     );
 };

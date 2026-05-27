@@ -5,9 +5,12 @@ import { Hero } from './components/Hero';
 import { ProjectCard } from './components/ProjectCard';
 import { Trajectory } from './components/Trajectory';
 import { TechStack } from './components/TechStack';
+import { ProjectModal } from './components/ProjectModal';
+import { Project } from './types';
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
+  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
 
   const handleLoadingComplete = () => {
     setIsLoading(false);
@@ -19,7 +22,12 @@ function App() {
 
   return (
     <div className="min-h-screen bg-white text-zinc-900 font-sans">
-      <div className="container mx-auto max-w-4xl px-4 py-8">
+      <ProjectModal 
+        project={selectedProject} 
+        onClose={() => setSelectedProject(null)} 
+      />
+
+      <div className="container mx-auto max-w-4xl px-4 py-8 overflow-x-hidden">
         <Hero />
 
         <section className="mt-12">
@@ -44,7 +52,12 @@ function App() {
           <h2 className="text-2xl font-bold mb-6 lowercase tracking-tight">projects</h2>
           <div className="flex flex-col gap-8">
             {RESUME.projects.map((project, index) => (
-              <ProjectCard key={index} {...project} index={index} />
+              <ProjectCard 
+                key={index} 
+                {...project} 
+                index={index} 
+                onClick={() => setSelectedProject(project)}
+              />
             ))}
           </div>
         </section>

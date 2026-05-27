@@ -4,9 +4,9 @@ export const RESUME = {
     name: "GOVINDA CHAUHAN",
     email: "govindach.iitp@gmail.com",
     location: "Delhi, India",
-    role: "Founder-minded AI Systems Builder"
+    role: "Software Engineer & AI Researcher"
   },
-  summary: "From mobile apps to ai bots to agentic harness. After working on more than 100 complex projects and working with multiple languages.",
+  summary: "Full-stack software engineer and AI systems developer. Building tools, public repos, and measured behavior.",
   languages: [
     "Typescript",
     "Python",
@@ -32,10 +32,10 @@ export const RESUME = {
   },
   experience: [
     {
-      role: "Founder / Builder",
-      company: "Independent AI Systems Lab",
+      role: "Software Engineer",
+      company: "Independent",
       duration: "2022–2026",
-      description: "Designed, engineered, and shipped more than 100 complex projects across multiple languages.",
+      description: "Developed and maintained full-stack applications and AI systems.",
       points: [
         "Built Doorway, Kairo, CHIMERA, AETHER, VideoUnit, Flow Mobile, and CEO Hunt.",
         "Engineered production-grade environments handling full-stack pipelines, mobile control surfaces, and custom automations.",
@@ -43,7 +43,7 @@ export const RESUME = {
       ]
     },
     {
-      role: "Computer Science Educator",
+      role: "Educator / Author",
       company: "Delhi",
       duration: "2023–2024",
       description: "Taught computing fundamentals while experimenting with AI-assisted learning systems and practical student-facing software.",
@@ -51,7 +51,9 @@ export const RESUME = {
         "Designed AI-aware learning modules and technical exercises.",
         "Mentored students in logic, programming fundamentals, and product thinking.",
         "Built the early conviction that education software should adapt to the learner, not the other way around."
-      ]
+      ],
+      attachment: "/Applied-AI-Students.pdf",
+      attachmentLabel: "Download Applied AI Students Book"
     }
   ],
   projects: [
