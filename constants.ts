@@ -6,7 +6,7 @@ export const RESUME = {
     location: "Delhi, India",
     role: "Founder-minded AI Systems Builder"
   },
-  summary: "In the last 4 years, Govinda has built and shipped over 200 projects ranging from full-stack webapps and mobile applications to custom slack bots and private client systems. He is dedicated to building proof-heavy agent infrastructure, terminal cockpits, and secure evaluation layers that turn frontier AI ideas into production-ready software.",
+  summary: "Built on a foundation of engineering more than 100 complex projects and working across multiple programming languages—spanning high-performance web systems, native mobile applications, custom automation Slack bots, and private client works. Currently focused on building robust agent infrastructure, terminal cockpits, and secure evaluation layers.",
   skills: [
     "Agentic Systems",
     "Founder Engineering",

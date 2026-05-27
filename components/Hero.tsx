@@ -21,23 +21,25 @@ export const Hero: React.FC<HeroProps> = ({ theme }) => {
   const imageSrc = getImageSrc();
 
   return (
-    <section className="relative min-h-[95vh] flex flex-col justify-center px-6 md:px-12 pt-36 pb-12 overflow-hidden z-0">
+    <section className="relative min-h-[95vh] flex flex-col justify-center px-6 md:px-12 pt-40 pb-16 overflow-hidden z-0">
       {/* Premium Ambient Background Glows */}
       <div className="absolute inset-0 z-0 pointer-events-none">
-        <div className={`absolute top-[10%] right-[5%] w-[55vw] h-[55vw] rounded-full blur-[140px] opacity-25 transition-colors duration-1000 ${isDark ? 'bg-indigo-950/40' : 'bg-indigo-100/50'}`} />
-        <div className={`absolute bottom-[10%] left-[5%] w-[45vw] h-[45vw] rounded-full blur-[120px] opacity-25 transition-colors duration-1000 ${isDark ? 'bg-violet-950/40' : 'bg-purple-100/40'}`} />
+        <div className={`absolute top-[8%] right-[5%] w-[60vw] h-[60vw] rounded-full blur-[150px] opacity-30 transition-colors duration-1000 ${isDark ? 'bg-indigo-950/50' : 'bg-indigo-100/60'}`} />
+        <div className={`absolute bottom-[8%] left-[5%] w-[50vw] h-[50vw] rounded-full blur-[130px] opacity-30 transition-colors duration-1000 ${isDark ? 'bg-violet-950/40' : 'bg-purple-100/50'}`} />
       </div>
 
       <div className="container mx-auto max-w-[1600px] z-10 relative">
         <div className="mx-auto text-left">
-          <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-16 mb-16">
-            <div className="flex-1">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:items-center">
+            
+            {/* Left Content - Takes up 7 columns on desktop */}
+            <div className="lg:col-span-7 flex flex-col justify-center">
               {/* Premium Sub-Header */}
               <motion.div
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.6, ease: "easeOut" }}
-                className="flex items-center gap-4 mb-8"
+                className="flex items-center gap-4 mb-6"
               >
                 <div className={`h-[1px] w-12 ${isDark ? 'bg-indigo-500' : 'bg-indigo-600'}`} />
                 <span className={`text-xs font-mono font-bold tracking-[0.3em] uppercase ${isDark ? 'text-indigo-400' : 'text-indigo-600'}`}>
@@ -46,7 +48,7 @@ export const Hero: React.FC<HeroProps> = ({ theme }) => {
               </motion.div>
 
               {/* Massive Premium Name Typography */}
-              <h1 className={`font-display font-extrabold tracking-tighter mb-8 ${isDark ? 'text-white' : 'text-zinc-900'} text-6xl sm:text-7xl md:text-8xl lg:text-[7.5rem] leading-[0.9]`}>
+              <h1 className={`font-display font-extrabold tracking-tighter mb-8 ${isDark ? 'text-white' : 'text-zinc-900'} text-6xl sm:text-7xl md:text-8xl lg:text-[7.5rem] leading-[0.85]`}>
                 {words.map((word, i) => (
                   <span key={i} className="inline-block mr-4 sm:mr-6">
                     <motion.span
@@ -107,17 +109,18 @@ export const Hero: React.FC<HeroProps> = ({ theme }) => {
               </motion.div>
             </div>
 
-            {/* Glowing Interactive Neural Portrait */}
+            {/* Right Portrait Column - Takes up 5 columns on desktop, scaled up */}
             <motion.div
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 1, delay: 0.3 }}
-              className="w-full lg:w-[480px] xl:w-[560px] shrink-0"
+              className="lg:col-span-5 w-full flex justify-center lg:justify-end"
             >
-              <div className="relative p-2 rounded-[2.5rem] bg-gradient-to-tr from-indigo-500/10 via-purple-500/5 to-transparent">
+              <div className="relative w-full max-w-[480px] sm:max-w-[540px] p-2 rounded-[2.5rem] bg-gradient-to-tr from-indigo-500/10 via-purple-500/5 to-transparent">
                 <NeuralPortrait theme={theme} imageSrc={imageSrc} />
               </div>
             </motion.div>
+
           </div>
         </div>
       </div>

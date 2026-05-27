@@ -13,6 +13,7 @@ import { Reveal } from './components/Reveal';
 import { ChatBot } from './components/ChatBot';
 import { MissionStatement } from './components/MissionStatement';
 import { Vision } from './components/Vision';
+import { TechStack } from './components/TechStack';
 import { Theme } from './types';
 
 function App() {
@@ -49,36 +50,68 @@ function App() {
 
       <SkillTicker skills={RESUME.skills} theme={theme} />
 
-      {/* Stats Section */}
-      <section className="py-20 px-6 relative overflow-hidden z-10">
+      {/* Journey Timeline Section */}
+      <section className="py-24 px-6 relative overflow-hidden z-10 border-b border-zinc-200/40 dark:border-zinc-800/40">
         <div className="container mx-auto max-w-[1600px]">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="max-w-3xl mb-16 text-left">
+            <span className={`block text-xs font-mono uppercase tracking-[0.2em] mb-4 ${isDark ? 'text-indigo-400' : 'text-indigo-600'}`}>
+              Narrative Progression
+            </span>
+            <h2 className="text-4xl md:text-6xl font-display font-extrabold tracking-tighter mb-6 leading-none">
+              The Journey Arc.
+            </h2>
+            <p className="text-lg opacity-60 leading-relaxed font-sans">
+              Built after working on more than 100 complex projects and engineering systems in multiple programming languages. A linear transition from client interfaces to autonomous system orchestration.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 relative">
             {[
-              { value: "200+", label: "Projects Built & Shipped", desc: "Webapps, mobile apps, Slack bots, and custom systems in 4 years." },
-              { value: "Founder-Grade", label: "Product Vision", desc: "Bridging complex backend research with premium frontends." },
-              { value: "IIT Patna", label: "Academic Grounding", desc: "Deep knowledge in Computer Science & Data Analytics." },
-              { value: "Agent Infrastructure", label: "Obsession", desc: "Building observability, testability, and trust gates for frontier AI." }
-            ].map((stat, idx) => (
+              {
+                step: "01",
+                title: "Mobile Systems",
+                sub: "Flutter & React Native",
+                desc: "Engineering highly responsive client decks, local caching layers, and high-fidelity native layouts built for fluid user interaction."
+              },
+              {
+                step: "02",
+                title: "AI Bots & Integrations",
+                sub: "Slack Bots & Python Orchestrators",
+                desc: "Transitioning to automated business flows, multi-agent literature synthesizers (CHIMERA), and custom workspace Slack automation."
+              },
+              {
+                step: "03",
+                title: "Agentic Harness",
+                sub: "Terminal Cockpits & Guardrails",
+                desc: "Crafting pre-execution terminal risk gates (Kairo), local-first cockpit platforms (Doorway), and automated video evals (VideoUnit)."
+              }
+            ].map((journey, idx) => (
               <div 
                 key={idx}
-                className="glass-card rounded-[2rem] p-8 flex flex-col justify-between min-h-[220px]"
+                className="glass-card rounded-[2.5rem] p-8 flex flex-col justify-between min-h-[300px]"
               >
                 <div>
-                  <h3 className={`text-4xl md:text-5xl font-display font-extrabold tracking-tight mb-2 bg-gradient-to-r ${isDark ? 'from-violet-400 to-indigo-300' : 'from-indigo-600 to-violet-600'} bg-clip-text text-transparent`}>
-                    {stat.value}
+                  <span className={`block text-xs font-mono font-bold uppercase tracking-widest opacity-40 mb-4`}>
+                    PHASE {journey.step}
+                  </span>
+                  <h3 className="text-2xl font-display font-extrabold mb-1 tracking-tight">
+                    {journey.title}
                   </h3>
-                  <div className="text-sm font-mono uppercase tracking-widest font-bold mb-4 opacity-80">
-                    {stat.label}
+                  <div className={`text-xs font-mono mb-6 opacity-75 font-semibold ${isDark ? 'text-indigo-400' : 'text-indigo-600'}`}>
+                    {journey.sub}
                   </div>
                 </div>
-                <p className="text-xs opacity-60 leading-relaxed font-sans">
-                  {stat.desc}
+                <p className="text-sm opacity-60 leading-relaxed font-sans">
+                  {journey.desc}
                 </p>
               </div>
             ))}
           </div>
         </div>
       </section>
+
+      {/* Real SVG Technology Showcase Section */}
+      <TechStack theme={theme} />
 
       {/* Mission Statement */}
       <MissionStatement theme={theme} summary={RESUME.summary} />
