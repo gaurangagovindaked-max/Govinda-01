@@ -6,18 +6,22 @@ export const RESUME = {
     location: "Delhi, India",
     role: "Founder-minded AI Systems Builder"
   },
-  summary: "Built on a foundation of engineering more than 100 complex projects and working across multiple programming languages—spanning high-performance web systems, native mobile applications, custom automation Slack bots, and private client works. Currently focused on building robust agent infrastructure, terminal cockpits, and secure evaluation layers.",
-  skills: [
-    "Agentic Systems",
-    "Founder Engineering",
-    "Physics Intelligence",
-    "Video Evals",
-    "Developer Tools",
-    "Supply Chain Safety",
-    "Flutter Apps",
-    "Research Prototypes",
-    "Desktop Agents",
-    "Product Velocity"
+  summary: "From mobile apps to ai bots to agentic harness. After working on more than 100 complex projects and working with multiple languages.",
+  languages: [
+    "Typescript",
+    "Python",
+    "Rust",
+    "Golang",
+    "React",
+    "Vite",
+    "Flutter",
+    "React Native"
+  ],
+  tools: [
+    "pi",
+    "hermes agent",
+    "claude",
+    "codex"
   ],
   education: {
     institute: "Indian Institute of Technology Patna",
@@ -30,9 +34,9 @@ export const RESUME = {
       role: "Founder / Builder",
       company: "Independent AI Systems Lab",
       duration: "2022–2026",
-      description: "Designed, engineered, and shipped more than 200 client and public systems—from responsive web applications and cross-platform mobile apps to specialized Slack bots and private client integrations.",
+      description: "Designed, engineered, and shipped more than 100 complex projects across multiple languages.",
       points: [
-        "Shipped Doorway, Kairo, CHIMERA, AETHER, VideoUnit, Flow Mobile, and CEO Hunt as public proof-of-work.",
+        "Built Doorway, Kairo, CHIMERA, AETHER, VideoUnit, Flow Mobile, and CEO Hunt.",
         "Engineered production-grade environments handling full-stack pipelines, mobile control surfaces, and custom automations.",
         "Built local-first desktop infrastructure, research prototypes, and pre-execution supply chain security layers."
       ]
@@ -50,6 +54,16 @@ export const RESUME = {
     }
   ],
   projects: [
+    {
+      title: "Flow Pitch",
+      category: "Mobile",
+      description: "Product designed from idea to MVP to pitch.",
+      tags: ["React", "Vite"],
+      metric: "Pitch tool",
+      link: "https://flow-pitch.vercel.app/",
+      image: "",
+      proof: "Live site"
+    },
     {
       title: "Doorway",
       category: "Agent Cockpit",
@@ -101,24 +115,34 @@ export const RESUME = {
       proof: "Research automation"
     },
     {
-      title: "Flow Mobile",
-      category: "Mobile Control Surface",
-      description: "Flutter mobile interface for monitoring AI agent orchestration: fleet status, decisions, onboarding, and mobile-first operational views.",
-      tags: ["Flutter", "Agents", "Mobile"],
-      metric: "Agent ops in pocket",
-      link: "https://github.com/GC-WORK11/flow-mobile",
-      image: "https://opengraph.githubassets.com/govinda-flow/GC-WORK11/flow-mobile",
-      proof: "Public Flutter app"
+      title: "Flow DDSAS",
+      category: "Web Application",
+      description: "Product designed from idea to MVP to pitch.",
+      tags: ["React"],
+      metric: "Web Interface",
+      link: "https://flow-ddsas.vercel.app/",
+      image: "",
+      proof: "Live site"
     },
     {
       title: "CEO Hunt",
       category: "Startup Marketplace",
-      description: "Flutter platform for founders, investors, and operators with role-based onboarding, startup profiles, investor discovery, dashboards, posts, and Supabase schema.",
-      tags: ["Flutter", "Supabase", "Marketplace"],
+      description: "Product designed from idea to MVP to pitch. Platform for founders, investors, and operators.",
+      tags: ["React"],
       metric: "Founder/investor graph",
-      link: "https://github.com/GC-WORK11/ceo-hunt-app",
-      image: "https://opengraph.githubassets.com/govinda-ceohunt/GC-WORK11/ceo-hunt-app",
-      proof: "Mobile product"
+      link: "https://ceohunt.vercel.app/",
+      image: "",
+      proof: "Live site"
+    },
+    {
+      title: "Doorway IDE",
+      category: "Development Tool",
+      description: "Product designed from idea to MVP to pitch.",
+      tags: ["React"],
+      metric: "IDE Environment",
+      link: "https://doorway-ide.vercel.app/",
+      image: "",
+      proof: "Live site"
     }
   ],
   research: [
