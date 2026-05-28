@@ -1,5 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
+import { Download, FileText } from 'lucide-react';
+import { PdfModal } from './PdfModal';
 
 interface TrajectoryProps {
   education: {
@@ -20,8 +22,15 @@ interface TrajectoryProps {
 }
 
 export const Trajectory: React.FC<TrajectoryProps> = ({ education, experience }) => {
+  const [selectedPdf, setSelectedPdf] = useState<{url: string, label: string} | null>(null);
+
   return (
     <div className="flex flex-col gap-12">
+      <PdfModal 
+        url={selectedPdf?.url || null} 
+        title={selectedPdf?.label} 
+        onClose={() => setSelectedPdf(null)} 
+      />
       {/* Education Block */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
@@ -76,14 +85,29 @@ export const Trajectory: React.FC<TrajectoryProps> = ({ education, experience })
               ))}
             </ul>
             {exp.attachment && (
-              <a 
-                href={exp.attachment} 
-                target="_blank" 
-                rel="noopener noreferrer" 
-                className="mt-2 inline-block text-sm text-zinc-500 hover:text-zinc-800 transition-colors"
-              >
-                [ {exp.attachmentLabel || "Attachment"} ]
-              </a>
+              <div className="mt-3 flex items-center gap-3">
+                <button
+                  onClick={() => setSelectedPdf({ url: exp.attachment!, label: exp.attachmentLabel || "Document" })}
+                  className="flex items-center gap-1.5 text-sm font-medium text-[#0969da] hover:underline transition-all"
+                >
+                  <FileText size={16} />
+                  {exp.attachmentLabel || "View Attachment"}
+                </button>
+                
+                <span className="text-zinc-300">|</span>
+                
+                <a 
+                  href={exp.attachment} 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  download
+                  className="flex items-center gap-1.5 text-sm text-zinc-500 hover:text-zinc-900 transition-colors"
+                  title="Download File"
+                >
+                  <Download size={16} />
+                  Download
+                </a>
+              </div>
             )}
           </div>
         </motion.div>
