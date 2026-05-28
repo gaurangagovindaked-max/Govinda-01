@@ -116,7 +116,7 @@ export const RESUME = {
     {
       title: "Doorway IDE",
       category: "Development Tool",
-      description: "A fully functional web-based IDE built to streamline agentic workflows.",
+      description: "Multiple models in one thread through their native CLI",
       tags: ["React"],
       metric: "IDE Environment",
       link: "https://doorway-ide.vercel.app/",
@@ -136,7 +136,7 @@ export const RESUME = {
     {
       title: "Flow Pitch",
       category: "Mobile",
-      description: "A mobile application designed to help founders practice and refine their pitches.",
+      description: "Agents in your pockets",
       tags: ["React", "Vite"],
       metric: "Mobile UI",
       link: "https://flow-pitch.vercel.app/",
@@ -144,9 +144,9 @@ export const RESUME = {
       proof: "Live site"
     },
     {
-      title: "Govinda Flow",
+      title: "DDSAS Platform",
       category: "Data platform",
-      description: "A data visualization platform for exploring real-time analytics.",
+      description: "Make your codebase production ready while you sleep",
       tags: ["React", "Vite"],
       metric: "Data dashboard",
       link: "https://flow-ddsas.vercel.app/",
