@@ -1,5 +1,5 @@
 import * as THREE from "three";
-import { useRef, useState, createRef } from "react";
+import { useRef, useState, createRef, Suspense } from "react";
 import { Canvas, useFrame, useThree, extend as r3fExtend } from "@react-three/fiber";
 import { useTexture, Text, Environment, RoundedBox } from "@react-three/drei";
 import {
@@ -91,9 +91,11 @@ function RopeVisual({ refs }: { refs: React.RefObject<RapierRigidBody>[] }) {
     <mesh>
       <meshLineGeometry ref={lineGeoRef} />
       <meshLineMaterial
-        color="#1a1a1a"
-        lineWidth={0.1}
+        color="#111111"
+        lineWidth={0.3}
         resolution={new THREE.Vector2(window.innerWidth, window.innerHeight)}
+        transparent
+        opacity={0.9}
       />
     </mesh>
   );
@@ -300,20 +302,16 @@ export default function LanyardBadge() {
     <div
       style={{
         width: "100%",
-        height: "600px",
-        background: "linear-gradient(180deg, #e8e8e8 0%, #d4d4d4 100%)",
-        borderRadius: "16px",
-        overflow: "hidden",
+        height: "500px",
         cursor: "grab",
         position: "relative",
       }}
     >
       <Canvas
         camera={{ position: [0, 0, 8], fov: 30 }}
-        gl={{ antialias: true, alpha: false }}
+        gl={{ antialias: true, alpha: true }}
         dpr={[1, 2]}
       >
-        <color attach="background" args={["#e0e0e0"]} />
         <ambientLight intensity={1.2} />
         <directionalLight position={[5, 5, 5]} intensity={0.8} castShadow />
         <directionalLight position={[-3, 3, 2]} intensity={0.4} />
@@ -327,7 +325,9 @@ export default function LanyardBadge() {
         <Environment preset="studio" />
 
         <Physics gravity={[0, -9.81, 0]}>
-          <Scene />
+          <Suspense fallback={null}>
+            <Scene />
+          </Suspense>
         </Physics>
       </Canvas>
     </div>

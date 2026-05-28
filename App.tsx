@@ -1,7 +1,7 @@
 import React, { useState, Suspense, lazy } from 'react';
 import { LoadingScreen } from './components/LoadingScreen';
 import { RESUME } from './constants';
-import { Hero } from './components/Hero';
+import { RESUME } from './constants';
 import { ProjectCard } from './components/ProjectCard';
 import { Trajectory } from './components/Trajectory';
 import { TechStack } from './components/TechStack';
@@ -27,63 +27,67 @@ function App() {
         onClose={() => setSelectedProject(null)} 
       />
 
-      <div className="container mx-auto max-w-4xl px-4 py-8 overflow-x-hidden">
-        <Hero />
-
-        {/* 3D Interactive ID Badge */}
-        <section className="mt-8 mb-12">
-          <Suspense fallback={
-            <div className="w-full h-[600px] bg-zinc-100 rounded-2xl flex items-center justify-center text-zinc-400">
-              <span className="animate-pulse text-sm">Loading 3D Badge...</span>
-            </div>
-          }>
+      <div className="container mx-auto max-w-3xl px-4 py-8 overflow-x-hidden text-zinc-800">
+        {/* 3D Interactive ID Badge (Hanging Free) */}
+        <section className="mb-12 -mt-8">
+          <Suspense fallback={null}>
             <LanyardBadge />
           </Suspense>
         </section>
 
-        <section className="mt-12">
-          <p className="text-base text-zinc-600">
+        {/* Minimal Intro */}
+        <section className="mb-10 text-center">
+          <h1 className="text-3xl font-bold mb-2">{RESUME.header.name}</h1>
+          <p className="text-zinc-600 mb-4">{RESUME.vision.tagline}</p>
+          <div className="flex justify-center gap-4 text-sm">
+            <a href="https://github.com/GC-WORK11" target="_blank" rel="noopener noreferrer" className="text-[#0969da] hover:underline">GitHub</a>
+            <span className="text-zinc-300">|</span>
+            <a href="https://in.linkedin.com/in/govinda-flow" target="_blank" rel="noopener noreferrer" className="text-[#0969da] hover:underline">LinkedIn</a>
+            <span className="text-zinc-300">|</span>
+            <a href={`mailto:${RESUME.header.email}`} className="text-[#0969da] hover:underline">Email</a>
+          </div>
+        </section>
+
+        <section className="mb-16">
+          <p className="text-base text-zinc-700 leading-relaxed">
             {RESUME.summary}
           </p>
         </section>
 
         {/* Journey / Timeline Section */}
-        <section className="mt-16">
-          <h2 className="text-2xl font-bold mb-6 lowercase tracking-tight">journey</h2>
+        <section className="mb-16">
+          <h2 className="text-xl font-bold mb-4 border-b border-zinc-200 pb-2">Experience & Education</h2>
           <Trajectory education={RESUME.education} experience={RESUME.experience} />
         </section>
 
         {/* Published Work / Book */}
-        <section className="mt-16">
-          <h2 className="text-2xl font-bold mb-6 lowercase tracking-tight">published work</h2>
-          <div className="flex flex-col border border-zinc-200 bg-zinc-50 p-6 rounded-xl hover:shadow-md transition-shadow">
-            <h3 className="text-xl font-bold text-zinc-900 mb-2">Applied AI for Students</h3>
-            <p className="text-sm text-zinc-600 mb-6">
-              A comprehensive guide to understanding and leveraging AI in an educational and project-building context. Designed to help students go from zero to building agentic pipelines.
-            </p>
+        <section className="mb-16">
+          <h2 className="text-xl font-bold mb-4 border-b border-zinc-200 pb-2">Published Work</h2>
+          <div className="mb-4">
             <a 
               href="/Applied-AI-Students.pdf" 
               target="_blank" 
               rel="noopener noreferrer" 
-              className="w-fit flex items-center gap-2 px-5 py-2.5 text-sm font-semibold text-white bg-[#0969da] rounded-lg hover:bg-[#085ac0] shadow-sm transition-colors"
+              className="text-base font-semibold text-[#0969da] hover:underline inline-flex items-center gap-1"
             >
-              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
-              </svg>
-              Download Book (PDF)
+              Applied AI for Students (PDF)
             </a>
+            <p className="text-sm text-zinc-700 mt-1">
+              A comprehensive guide to understanding and leveraging AI in an educational and project-building context. Designed to help students go from zero to building agentic pipelines.
+            </p>
           </div>
         </section>
 
         {/* Real SVG Technology Showcase Section */}
-        <section className="mt-16">
+        <section className="mb-16">
+          <h2 className="text-xl font-bold mb-4 border-b border-zinc-200 pb-2">Skills & Tools</h2>
           <TechStack />
         </section>
 
         {/* From Idea to MVP to Pitch */}
-        <section id="mvp-projects" className="mt-16">
-          <h2 className="text-2xl font-bold mb-6 lowercase tracking-tight">from idea to mvp to pitch</h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+        <section id="mvp-projects" className="mb-16">
+          <h2 className="text-xl font-bold mb-4 border-b border-zinc-200 pb-2">Idea to MVP</h2>
+          <div className="flex flex-col gap-4">
             {RESUME.mvpProjects.map((project, index) => (
               <ProjectCard 
                 key={index} 
@@ -96,9 +100,9 @@ function App() {
         </section>
 
         {/* Engineered Reality (Projects) */}
-        <section id="projects" className="mt-16">
-          <h2 className="text-2xl font-bold mb-6 lowercase tracking-tight">research engineering</h2>
-          <div className="flex flex-col gap-8">
+        <section id="projects" className="mb-16">
+          <h2 className="text-xl font-bold mb-4 border-b border-zinc-200 pb-2">Research Engineering</h2>
+          <div className="flex flex-col gap-4">
             {RESUME.projects.map((project, index) => (
               <ProjectCard 
                 key={index} 
@@ -111,8 +115,8 @@ function App() {
         </section>
 
         {/* Research */}
-        <section id="research" className="mt-16">
-          <h2 className="text-2xl font-bold mb-6 lowercase tracking-tight">research / papers</h2>
+        <section id="research" className="mb-16">
+          <h2 className="text-xl font-bold mb-4 border-b border-zinc-200 pb-2">Research / Papers</h2>
           <div className="flex flex-col gap-6">
             {RESUME.research.map((item, idx) => (
               <div key={idx} className="flex flex-col mb-2">
