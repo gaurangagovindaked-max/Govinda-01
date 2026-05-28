@@ -77,7 +77,7 @@ function App() {
 
         {/* Engineered Reality (Projects) */}
         <section id="projects" className="mb-16">
-          <h2 className="text-xl font-bold mb-4 border-b border-zinc-200 pb-2">Research Engineering</h2>
+          <h2 className="text-xl font-bold mb-4 border-b border-zinc-200 pb-2">Agentic Architecture & Tooling</h2>
           <div className="flex flex-col gap-4">
             {RESUME.projects.map((project, index) => (
               <ProjectCard 
@@ -92,7 +92,7 @@ function App() {
 
         {/* Research */}
         <section id="research" className="mb-16">
-          <h2 className="text-xl font-bold mb-4 border-b border-zinc-200 pb-2">Research / Papers</h2>
+          <h2 className="text-xl font-bold mb-4 border-b border-zinc-200 pb-2">Technical Artifacts</h2>
           <div className="flex flex-col gap-6">
             {RESUME.research.map((item, idx) => (
               <div key={idx} className="relative pl-4 border-l-2 border-zinc-200 hover:border-[#0969da] transition-colors group">

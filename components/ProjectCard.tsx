@@ -41,14 +41,6 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ title, category, descr
                     <span className={`w-3 h-3 rounded-full ${langColor}`} />
                     <span>{category}</span>
                 </div>
-                <div className="flex items-center gap-1 hover:text-[#0969da] transition-colors">
-                    <Star size={14} />
-                    <span>{metric ? Math.floor(Math.random() * 100) + 10 : 0}</span>
-                </div>
-                <div className="flex items-center gap-1 hover:text-[#0969da] transition-colors">
-                    <GitFork size={14} />
-                    <span>{metric ? Math.floor(Math.random() * 20) + 2 : 0}</span>
-                </div>
             </div>
         </motion.div>
     );

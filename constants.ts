@@ -4,9 +4,9 @@ export const RESUME = {
     name: "GOVINDA CHAUHAN",
     email: "govindach.iitp@gmail.com",
     location: "Delhi, India",
-    role: "Software Engineer & AI Researcher"
+    role: "Software Engineer & AI Systems Developer"
   },
-  summary: "Software Engineer and AI Researcher building scalable tools, open-source projects, and agentic infrastructure. Passionate about shipping products that compound.",
+  summary: "Software Engineer and Agentic Systems Developer building scalable tools, open-source projects, and autonomous infrastructure. Passionate about shipping products that compound.",
   languages: [
     "Typescript",
     "Python",
@@ -155,37 +155,10 @@ export const RESUME = {
       title: "AETHER Architecture",
       subtitle: "Physics from Video",
       points: [
-        "Research program for extracting exact physical parameters from mechanism videos.",
+        "Architecture for extracting exact physical parameters from mechanism videos.",
         "Combines segmentation, tracking, kinematic discovery, differentiable simulation, and benchmark design."
       ],
       link: "https://github.com/GC-WORK11/aether/blob/main/ARCHITECTURE.md"
-    },
-    {
-      title: "VideoUnit PRD",
-      subtitle: "Testing AI Video",
-      points: [
-        "Defines temporal contracts for AI-generated video behavior rather than relying on subjective visual judgment.",
-        "Frames video evaluation as executable assertions, failure localization, scoring, and reproducible evidence."
-      ],
-      link: "https://github.com/GC-WORK11/video-unit/blob/main/VIDEOUNIT_PRD.md"
-    },
-    {
-      title: "Kairo Risk Layer",
-      subtitle: "Agent Supply Chain Safety",
-      points: [
-        "Designs a pre-execution risk gate for AI coding agents touching packages, shell commands, and CI workflows.",
-        "Connects live risk sources such as advisories and package metadata to developer tooling."
-      ],
-      link: "https://github.com/GC-WORK11/kairo"
-    },
-    {
-      title: "CHIMERA Workflow",
-      subtitle: "Multi-Agent Research",
-      points: [
-        "Models research as a coordinated pipeline of scout, reader, experimenter, synthesizer, critic, and formatter agents.",
-        "Built to produce cited reports, runnable experiments, and adversarial review loops."
-      ],
-      link: "https://github.com/GC-WORK11/chimera"
     }
   ],
   vision: {
