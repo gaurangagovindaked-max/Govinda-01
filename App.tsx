@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, Suspense, lazy } from 'react';
 import { LoadingScreen } from './components/LoadingScreen';
 import { RESUME } from './constants';
 import { Hero } from './components/Hero';
@@ -7,6 +7,8 @@ import { Trajectory } from './components/Trajectory';
 import { TechStack } from './components/TechStack';
 import { ProjectModal } from './components/ProjectModal';
 import { Project } from './types';
+
+const LanyardBadge = lazy(() => import('./components/LanyardBadge'));
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
@@ -27,6 +29,17 @@ function App() {
 
       <div className="container mx-auto max-w-4xl px-4 py-8 overflow-x-hidden">
         <Hero />
+
+        {/* 3D Interactive ID Badge */}
+        <section className="mt-8 mb-12">
+          <Suspense fallback={
+            <div className="w-full h-[600px] bg-zinc-100 rounded-2xl flex items-center justify-center text-zinc-400">
+              <span className="animate-pulse text-sm">Loading 3D Badge...</span>
+            </div>
+          }>
+            <LanyardBadge />
+          </Suspense>
+        </section>
 
         <section className="mt-12">
           <p className="text-base text-zinc-600">
