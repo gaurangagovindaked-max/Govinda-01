@@ -6,7 +6,7 @@ export const RESUME = {
     location: "Delhi, India",
     role: "Software Engineer & AI Researcher"
   },
-  summary: "Full-stack software engineer and AI systems developer. Building tools, public repos, and measured behavior.",
+  summary: "Software Engineer and AI Researcher building scalable tools, open-source projects, and agentic infrastructure. Passionate about shipping products that compound.",
   languages: [
     "Typescript",
     "Python",

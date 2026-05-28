@@ -80,12 +80,9 @@ export const Trajectory: React.FC<TrajectoryProps> = ({ education, experience })
                 href={exp.attachment} 
                 target="_blank" 
                 rel="noopener noreferrer" 
-                className="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-[#0969da] hover:underline"
+                className="mt-2 inline-block text-sm text-zinc-500 hover:text-zinc-800 transition-colors"
               >
-                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
-                </svg>
-                {exp.attachmentLabel || "Download Attachment"}
+                [ {exp.attachmentLabel || "Attachment"} ]
               </a>
             )}
           </div>

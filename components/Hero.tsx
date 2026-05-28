@@ -9,7 +9,7 @@ export const Hero: React.FC = () => {
         alt={RESUME.header.name}
         loading="eager"
         fetchPriority="high"
-        className="w-32 h-32 md:w-40 md:h-40 rounded-full object-cover shadow-sm border border-zinc-200"
+        className="w-32 h-32 md:w-40 md:h-40 rounded-full object-cover shadow-sm border border-zinc-200 shrink-0"
       />
       <div>
         <h1 className="text-3xl md:text-4xl font-bold tracking-tight text-zinc-900">

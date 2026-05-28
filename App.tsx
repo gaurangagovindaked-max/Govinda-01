@@ -1,6 +1,7 @@
 import React, { useState, Suspense, lazy } from 'react';
 import { LoadingScreen } from './components/LoadingScreen';
 import { RESUME } from './constants';
+import { Hero } from './components/Hero';
 import { ProjectCard } from './components/ProjectCard';
 import { Trajectory } from './components/Trajectory';
 import { TechStack } from './components/TechStack';
@@ -27,43 +28,13 @@ function App() {
       />
 
       <div className="container mx-auto max-w-3xl px-4 py-8 overflow-x-hidden text-zinc-800">
-        {/* 3D Interactive ID Badge (Hanging Free) */}
-        <section className="mb-12 -mt-8">
-          <Suspense fallback={null}>
-            <LanyardBadge />
-          </Suspense>
-        </section>
+        <Hero />
 
-        {/* Minimal Intro */}
-        <section className="mb-10 text-center">
-          <h1 className="text-3xl font-bold mb-2">{RESUME.header.name}</h1>
-          <p className="text-zinc-600 mb-4">{RESUME.vision.tagline}</p>
-          <div className="flex justify-center gap-4 text-sm">
-            <a href="https://github.com/GC-WORK11" target="_blank" rel="noopener noreferrer" className="text-[#0969da] hover:underline">GitHub</a>
-            <span className="text-zinc-300">|</span>
-            <a href="https://in.linkedin.com/in/govinda-flow" target="_blank" rel="noopener noreferrer" className="text-[#0969da] hover:underline">LinkedIn</a>
-            <span className="text-zinc-300">|</span>
-            <a href={`mailto:${RESUME.header.email}`} className="text-[#0969da] hover:underline">Email</a>
-          </div>
-        </section>
 
-        <section className="mb-16">
+        <section className="mt-12 mb-16">
           <p className="text-base text-zinc-700 leading-relaxed">
             {RESUME.summary}
           </p>
-          <div className="mt-4">
-            <a 
-              href="/Applied-AI-Students.pdf" 
-              target="_blank" 
-              rel="noopener noreferrer" 
-              className="text-sm font-semibold text-[#0969da] hover:underline inline-flex items-center gap-1"
-            >
-              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
-              </svg>
-              Read my book: Applied AI for Students (PDF)
-            </a>
-          </div>
         </section>
 
         {/* Journey / Timeline Section */}
