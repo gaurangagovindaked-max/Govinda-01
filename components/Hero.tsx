@@ -1,37 +1,29 @@
 import React from 'react';
+import LanyardBadge from './LanyardBadge';
 import { RESUME } from '../constants';
 
 export const Hero: React.FC = () => {
   return (
-    <div className="flex flex-col md:flex-row items-start md:items-center gap-8 mt-12 mb-12">
-      <img 
-        src="/assets/Gemini_Generated_Image_.png" 
-        alt={RESUME.header.name}
-        loading="eager"
-        fetchPriority="high"
-        className="w-32 h-32 md:w-40 md:h-40 rounded-full object-cover shadow-sm border border-zinc-200 shrink-0"
-      />
-      <div>
-        <h1 className="text-3xl md:text-4xl font-bold tracking-tight text-zinc-900">
-          {RESUME.header.name}
-        </h1>
-        <p className="mt-2 text-base md:text-lg text-zinc-700">
-          {RESUME.vision.tagline}
+    <section className="-mx-4 mt-0 mb-12 overflow-visible md:-mx-8">
+      <LanyardBadge />
+      <div className="mx-auto mt-4 max-w-2xl px-4 text-center md:mt-2">
+        <p className="text-base font-medium leading-relaxed text-zinc-900 md:text-lg">
+          From apps to orchestration, I build agentic software systems, product infrastructure, and autonomous tools that turn ambitious ideas into shipped products.
         </p>
-        <div className="mt-4 flex gap-3 text-sm">
-          <a href="https://github.com/GC-WORK11" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">
+        <div className="mt-4 flex flex-wrap items-center justify-center gap-x-3 gap-y-2 text-sm font-medium">
+          <a href="https://github.com/GC-WORK11" target="_blank" rel="noopener noreferrer" className="text-[#0969da] hover:underline">
             GitHub
           </a>
-          <span className="text-zinc-400">•</span>
-          <a href="https://in.linkedin.com/in/govinda-flow" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">
+          <span className="text-zinc-300">/</span>
+          <a href="https://in.linkedin.com/in/govinda-flow" target="_blank" rel="noopener noreferrer" className="text-[#0969da] hover:underline">
             LinkedIn
           </a>
-          <span className="text-zinc-400">•</span>
-          <a href={`mailto:${RESUME.header.email}`} className="text-blue-600 hover:underline">
-            Email
+          <span className="text-zinc-300">/</span>
+          <a href={`mailto:${RESUME.header.email}`} className="text-[#0969da] hover:underline">
+            {RESUME.header.email}
           </a>
         </div>
       </div>
-    </div>
+    </section>
   );
 };

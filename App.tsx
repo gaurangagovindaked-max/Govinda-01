@@ -1,4 +1,4 @@
-import React, { useState, Suspense, lazy } from 'react';
+import React, { useState } from 'react';
 import { LoadingScreen } from './components/LoadingScreen';
 import { RESUME } from './constants';
 import { Hero } from './components/Hero';
@@ -7,8 +7,6 @@ import { Trajectory } from './components/Trajectory';
 import { TechStack } from './components/TechStack';
 import { ProjectModal } from './components/ProjectModal';
 import { Project } from './types';
-
-import LanyardBadge from './components/LanyardBadge';
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
@@ -19,7 +17,7 @@ function App() {
   };
 
   return (
-    <div className="min-h-screen bg-white text-zinc-900 font-sans">
+    <div className="min-h-screen bg-white text-zinc-900 font-sans overflow-x-hidden">
       {isLoading && <LoadingScreen onComplete={handleLoadingComplete} />}
 
       <ProjectModal 
@@ -27,15 +25,9 @@ function App() {
         onClose={() => setSelectedProject(null)} 
       />
 
-      <div className="container mx-auto max-w-3xl px-4 py-8 overflow-x-hidden text-zinc-800">
+      <div className="container mx-auto max-w-3xl px-4 py-8 text-zinc-800">
         <Hero />
 
-
-        <section className="mt-12 mb-16">
-          <p className="text-base text-zinc-700 leading-relaxed">
-            {RESUME.summary}
-          </p>
-        </section>
 
         {/* Journey / Timeline Section */}
         <section className="mb-16">

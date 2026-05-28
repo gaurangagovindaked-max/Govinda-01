@@ -22,8 +22,8 @@ export const Signature: React.FC<SignatureProps> = ({ theme }) => {
       pathLength: 1,
       opacity: 1,
       transition: {
-        pathLength: { delay: i * 0.9, type: "tween", ease: "easeInOut", duration: 2.5 }, // Slow, deliberate speed
-        opacity: { delay: i * 0.9, duration: 0.01 }
+        pathLength: { delay: i * 0.45, type: "tween", ease: "easeInOut", duration: 1.3 }, // Snappy, energetic velocity
+        opacity: { delay: i * 0.45, duration: 0.01 }
       }
     })
   };
