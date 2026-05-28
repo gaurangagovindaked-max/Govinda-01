@@ -19,8 +19,8 @@ export const TechStack: React.FC = () => {
 
   const getToolIcon = (tool: string) => {
     const map: Record<string, string> = {
-      'pi': '', 
-      'hermes agent': '',
+      'pi': 'pi-coding-agent.png', 
+      'hermes agent': 'hermesagent.webp',
       'claude': 'claude-code (1).svg',
       'codex': 'codex.svg'
     };

@@ -112,7 +112,7 @@ export const RESUME = {
     {
       title: "Doorway IDE",
       category: "Development Tool",
-      description: "Product designed from idea to MVP to pitch.",
+      description: "A fully functional web-based IDE built to streamline agentic workflows.",
       tags: ["React"],
       metric: "IDE Environment",
       link: "https://doorway-ide.vercel.app/",
@@ -122,7 +122,7 @@ export const RESUME = {
     {
       title: "CEO Hunt",
       category: "Startup Marketplace",
-      description: "Product designed from idea to MVP to pitch. Platform for founders, investors, and operators.",
+      description: "A marketplace platform connecting founders, investors, and operators.",
       tags: ["React"],
       metric: "Founder/investor graph",
       link: "https://ceohunt.vercel.app/",
@@ -132,19 +132,19 @@ export const RESUME = {
     {
       title: "Flow Pitch",
       category: "Mobile",
-      description: "Product designed from idea to MVP to pitch.",
+      description: "A mobile application designed to help founders practice and refine their pitches.",
       tags: ["React", "Vite"],
-      metric: "Pitch tool",
+      metric: "Mobile UI",
       link: "https://flow-pitch.vercel.app/",
       image: "",
       proof: "Live site"
     },
     {
-      title: "Flow DDSAS",
-      category: "Web Application",
-      description: "Product designed from idea to MVP to pitch.",
-      tags: ["React"],
-      metric: "Web Interface",
+      title: "Govinda Flow",
+      category: "Data platform",
+      description: "A data visualization platform for exploring real-time analytics.",
+      tags: ["React", "Vite"],
+      metric: "Data dashboard",
       link: "https://flow-ddsas.vercel.app/",
       image: "",
       proof: "Live site"
@@ -159,6 +159,15 @@ export const RESUME = {
         "Combines segmentation, tracking, kinematic discovery, differentiable simulation, and benchmark design."
       ],
       link: "https://github.com/GC-WORK11/aether/blob/main/ARCHITECTURE.md"
+    },
+    {
+      title: "Connect: AI Agent Interaction",
+      subtitle: "Research Paper",
+      points: [
+        "A study on the interactions, capabilities, and networking of AI coding agents.",
+        "Proposes mechanisms for reliable multi-agent communication and task orchestration."
+      ],
+      link: "/Connect.pdf"
     }
   ],
   vision: {
