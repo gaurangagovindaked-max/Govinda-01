@@ -15,7 +15,7 @@ export const LoadingScreen: React.FC<LoadingScreenProps> = ({ onComplete }) => {
       setTimeout(() => {
         if (onComplete) onComplete();
       }, 500); 
-    }, 2700); // 2.7 second loading duration
+    }, 3200); // 3.2 second loading duration
 
     return () => clearTimeout(timer);
   }, [onComplete]);

@@ -58,17 +58,7 @@ export const RESUME = {
   ],
   projects: [
     {
-      title: "Flow Pitch",
-      category: "Mobile",
-      description: "Product designed from idea to MVP to pitch.",
-      tags: ["React", "Vite"],
-      metric: "Pitch tool",
-      link: "https://flow-pitch.vercel.app/",
-      image: "",
-      proof: "Live site"
-    },
-    {
-      title: "Doorway",
+      title: "Doorway (Agent OS)",
       category: "Agent Cockpit",
       description: "Local-first desktop cockpit for terminal agents, git worktrees, review/merge flows, plugins, and visible automation. Built for the next generation of agentic development.",
       tags: ["Electron", "Agents", "Worktrees"],
@@ -116,14 +106,16 @@ export const RESUME = {
       link: "https://github.com/GC-WORK11/chimera",
       image: "https://opengraph.githubassets.com/govinda-chimera/GC-WORK11/chimera",
       proof: "Research automation"
-    },
+    }
+  ],
+  mvpProjects: [
     {
-      title: "Flow DDSAS",
-      category: "Web Application",
+      title: "Doorway IDE",
+      category: "Development Tool",
       description: "Product designed from idea to MVP to pitch.",
       tags: ["React"],
-      metric: "Web Interface",
-      link: "https://flow-ddsas.vercel.app/",
+      metric: "IDE Environment",
+      link: "https://doorway-ide.vercel.app/",
       image: "",
       proof: "Live site"
     },
@@ -138,12 +130,22 @@ export const RESUME = {
       proof: "Live site"
     },
     {
-      title: "Doorway IDE",
-      category: "Development Tool",
+      title: "Flow Pitch",
+      category: "Mobile",
+      description: "Product designed from idea to MVP to pitch.",
+      tags: ["React", "Vite"],
+      metric: "Pitch tool",
+      link: "https://flow-pitch.vercel.app/",
+      image: "",
+      proof: "Live site"
+    },
+    {
+      title: "Flow DDSAS",
+      category: "Web Application",
       description: "Product designed from idea to MVP to pitch.",
       tags: ["React"],
-      metric: "IDE Environment",
-      link: "https://doorway-ide.vercel.app/",
+      metric: "Web Interface",
+      link: "https://flow-ddsas.vercel.app/",
       image: "",
       proof: "Live site"
     }

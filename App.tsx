@@ -16,12 +16,10 @@ function App() {
     setIsLoading(false);
   };
 
-  if (isLoading) {
-    return <LoadingScreen onComplete={handleLoadingComplete} />;
-  }
-
   return (
     <div className="min-h-screen bg-white text-zinc-900 font-sans">
+      {isLoading && <LoadingScreen onComplete={handleLoadingComplete} />}
+
       <ProjectModal 
         project={selectedProject} 
         onClose={() => setSelectedProject(null)} 
@@ -42,14 +40,51 @@ function App() {
           <Trajectory education={RESUME.education} experience={RESUME.experience} />
         </section>
 
+        {/* Published Work / Book */}
+        <section className="mt-16">
+          <h2 className="text-2xl font-bold mb-6 lowercase tracking-tight">published work</h2>
+          <div className="flex flex-col border border-zinc-200 bg-zinc-50 p-6 rounded-xl hover:shadow-md transition-shadow">
+            <h3 className="text-xl font-bold text-zinc-900 mb-2">Applied AI for Students</h3>
+            <p className="text-sm text-zinc-600 mb-6">
+              A comprehensive guide to understanding and leveraging AI in an educational and project-building context. Designed to help students go from zero to building agentic pipelines.
+            </p>
+            <a 
+              href="/Applied-AI-Students.pdf" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="w-fit flex items-center gap-2 px-5 py-2.5 text-sm font-semibold text-white bg-[#0969da] rounded-lg hover:bg-[#085ac0] shadow-sm transition-colors"
+            >
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+              </svg>
+              Download Book (PDF)
+            </a>
+          </div>
+        </section>
+
         {/* Real SVG Technology Showcase Section */}
         <section className="mt-16">
           <TechStack />
         </section>
 
+        {/* From Idea to MVP to Pitch */}
+        <section id="mvp-projects" className="mt-16">
+          <h2 className="text-2xl font-bold mb-6 lowercase tracking-tight">from idea to mvp to pitch</h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            {RESUME.mvpProjects.map((project, index) => (
+              <ProjectCard 
+                key={index} 
+                {...project} 
+                index={index} 
+                onClick={() => setSelectedProject(project)}
+              />
+            ))}
+          </div>
+        </section>
+
         {/* Engineered Reality (Projects) */}
         <section id="projects" className="mt-16">
-          <h2 className="text-2xl font-bold mb-6 lowercase tracking-tight">projects</h2>
+          <h2 className="text-2xl font-bold mb-6 lowercase tracking-tight">research engineering</h2>
           <div className="flex flex-col gap-8">
             {RESUME.projects.map((project, index) => (
               <ProjectCard 

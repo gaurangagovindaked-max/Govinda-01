@@ -75,30 +75,53 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) 
                 />
               </div>
             ) : (
-              <div className="flex flex-col items-center text-center max-w-lg">
-                {project.image ? (
-                  <img
-                    src={project.image}
-                    alt={project.title}
-                    className="w-full rounded-xl shadow-sm border border-zinc-200 mb-6"
-                  />
-                ) : (
-                  <div className="w-24 h-24 mb-6 rounded-full bg-zinc-200 flex items-center justify-center text-zinc-400">
-                    {isGitHub ? <Github size={40} /> : <ExternalLink size={40} />}
+              <div className="flex flex-col items-center text-center max-w-lg w-full">
+                {isGitHub ? (
+                  <div className="w-full flex flex-col items-center p-8 bg-zinc-900 text-white rounded-2xl mb-8 shadow-xl">
+                    <Github size={48} className="mb-4" />
+                    <h3 className="text-3xl font-bold mb-3">{project.title}</h3>
+                    <p className="text-zinc-400 mb-6 text-sm">{project.description}</p>
+                    <div className="flex gap-2 mb-8 flex-wrap justify-center">
+                      {project.tags.map(t => (
+                        <span key={t} className="px-2 py-1 bg-zinc-800 rounded text-xs text-zinc-300 font-mono">{t}</span>
+                      ))}
+                    </div>
+                    {project.link && (
+                      <a
+                        href={project.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center gap-2 px-6 py-3 text-sm font-semibold text-zinc-900 bg-white rounded-xl hover:bg-zinc-200 transition-colors w-full justify-center"
+                      >
+                        <Github size={18} />
+                        Open Repository in GitHub
+                      </a>
+                    )}
                   </div>
-                )}
-                <h3 className="text-2xl font-bold text-zinc-900 mb-2">{project.title}</h3>
-                <p className="text-zinc-600 mb-8">{project.description}</p>
-                {project.link && (
-                  <a
-                    href={project.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-2 px-6 py-3 text-sm font-semibold text-white bg-[#0969da] rounded-xl hover:bg-[#085ac0] shadow-sm transition-colors"
-                  >
-                    {isGitHub ? <Github size={18} /> : <ExternalLink size={18} />}
-                    Open {isGitHub ? 'Repository' : 'Project'} in New Tab
-                  </a>
+                ) : (
+                  <>
+                    {project.image && (
+                      <img
+                        src={project.image}
+                        alt={project.title}
+                        className="w-full rounded-xl shadow-sm border border-zinc-200 mb-6"
+                        onError={(e) => (e.currentTarget.style.display = 'none')}
+                      />
+                    )}
+                    <h3 className="text-2xl font-bold text-zinc-900 mb-2">{project.title}</h3>
+                    <p className="text-zinc-600 mb-8">{project.description}</p>
+                    {project.link && (
+                      <a
+                        href={project.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center gap-2 px-6 py-3 text-sm font-semibold text-white bg-[#0969da] rounded-xl hover:bg-[#085ac0] shadow-sm transition-colors"
+                      >
+                        <ExternalLink size={18} />
+                        Open Project in New Tab
+                      </a>
+                    )}
+                  </>
                 )}
               </div>
             )}
