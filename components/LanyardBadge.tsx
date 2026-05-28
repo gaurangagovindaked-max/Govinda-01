@@ -1,5 +1,5 @@
 import * as THREE from 'three'
-import { useEffect, useRef, useState, useMemo } from 'react'
+import { useEffect, useRef, useState, useMemo, Suspense } from 'react'
 import { Canvas, extend, useThree, useFrame } from '@react-three/fiber'
 import { useGLTF, useTexture, Environment, Lightformer, Text } from '@react-three/drei'
 import { BallCollider, CuboidCollider, Physics, RigidBody, useRopeJoint, useSphericalJoint } from '@react-three/rapier'
@@ -8,8 +8,8 @@ import { MeshLineGeometry, MeshLineMaterial } from 'meshline'
 extend({ MeshLineGeometry, MeshLineMaterial })
 
 // Preload assets
-useGLTF.preload('https://assets.vercel.com/image/upload/contentful/image/e5382hct74si/5huRVDzcoDwnbgrKUo1Lzs/53b6dd7d6b4ffcdbd338fa60265949e1/tag.glb')
-useTexture.preload('https://assets.vercel.com/image/upload/contentful/image/e5382hct74si/SOT1hmCesOHxEYxL7vkoZ/c57b29c85912047c414311723320c16b/band.jpg')
+useGLTF.preload('/assets/tag.glb')
+useTexture.preload('/assets/band.jpg')
 
 export default function LanyardBadge() {
   return (
@@ -23,9 +23,11 @@ export default function LanyardBadge() {
     >
       <Canvas camera={{ position: [0, 0, 13], fov: 25 }} gl={{ antialias: true, alpha: true }}>
         <ambientLight intensity={Math.PI} />
-        <Physics interpolate gravity={[0, -40, 0]} timeStep={1 / 60}>
-          <Band />
-        </Physics>
+        <Suspense fallback={null}>
+          <Physics interpolate gravity={[0, -40, 0]} timeStep={1 / 60}>
+            <Band />
+          </Physics>
+        </Suspense>
         <Environment preset="studio" blur={0.75}>
           <Lightformer intensity={2} color="white" position={[0, -1, 5]} rotation={[0, 0, Math.PI / 3]} scale={[100, 0.1, 1]} />
           <Lightformer intensity={3} color="white" position={[-1, -1, 1]} rotation={[0, 0, Math.PI / 3]} scale={[100, 0.1, 1]} />
@@ -52,8 +54,8 @@ function Band({ maxSpeed = 50, minSpeed = 10 }) {
   
   const segmentProps: any = { type: 'dynamic', canSleep: true, colliders: false, angularDamping: 2, linearDamping: 2 }
   
-  const { nodes, materials } = useGLTF('https://assets.vercel.com/image/upload/contentful/image/e5382hct74si/5huRVDzcoDwnbgrKUo1Lzs/53b6dd7d6b4ffcdbd338fa60265949e1/tag.glb') as any
-  const texture = useTexture('https://assets.vercel.com/image/upload/contentful/image/e5382hct74si/SOT1hmCesOHxEYxL7vkoZ/c57b29c85912047c414311723320c16b/band.jpg')
+  const { nodes, materials } = useGLTF('/assets/tag.glb') as any
+  const texture = useTexture('/assets/band.jpg')
   const photoTexture = useTexture('/assets/Gemini_Generated_Image_.png')
   
   const { width, height } = useThree((state) => state.size)

@@ -7,7 +7,7 @@ import { TechStack } from './components/TechStack';
 import { ProjectModal } from './components/ProjectModal';
 import { Project } from './types';
 
-const LanyardBadge = lazy(() => import('./components/LanyardBadge'));
+import LanyardBadge from './components/LanyardBadge';
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
@@ -51,30 +51,25 @@ function App() {
           <p className="text-base text-zinc-700 leading-relaxed">
             {RESUME.summary}
           </p>
+          <div className="mt-4">
+            <a 
+              href="/Applied-AI-Students.pdf" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="text-sm font-semibold text-[#0969da] hover:underline inline-flex items-center gap-1"
+            >
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+              </svg>
+              Read my book: Applied AI for Students (PDF)
+            </a>
+          </div>
         </section>
 
         {/* Journey / Timeline Section */}
         <section className="mb-16">
           <h2 className="text-xl font-bold mb-4 border-b border-zinc-200 pb-2">Experience & Education</h2>
           <Trajectory education={RESUME.education} experience={RESUME.experience} />
-        </section>
-
-        {/* Published Work / Book */}
-        <section className="mb-16">
-          <h2 className="text-xl font-bold mb-4 border-b border-zinc-200 pb-2">Published Work</h2>
-          <div className="mb-4">
-            <a 
-              href="/Applied-AI-Students.pdf" 
-              target="_blank" 
-              rel="noopener noreferrer" 
-              className="text-base font-semibold text-[#0969da] hover:underline inline-flex items-center gap-1"
-            >
-              Applied AI for Students (PDF)
-            </a>
-            <p className="text-sm text-zinc-700 mt-1">
-              A comprehensive guide to understanding and leveraging AI in an educational and project-building context. Designed to help students go from zero to building agentic pipelines.
-            </p>
-          </div>
         </section>
 
         {/* Real SVG Technology Showcase Section */}
@@ -88,12 +83,25 @@ function App() {
           <h2 className="text-xl font-bold mb-4 border-b border-zinc-200 pb-2">Idea to MVP</h2>
           <div className="flex flex-col gap-4">
             {RESUME.mvpProjects.map((project, index) => (
-              <ProjectCard 
+              <a 
                 key={index} 
-                {...project} 
-                index={index} 
-                onClick={() => setSelectedProject(project)}
-              />
+                href={project.githubUrl || project.liveUrl || "#"} 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="group"
+              >
+                <div className="flex flex-col mb-2">
+                  <div className="flex items-baseline gap-2">
+                    <h3 className="text-base font-semibold text-[#0969da] group-hover:underline">
+                        {project.title}
+                    </h3>
+                    <span className="text-xs text-zinc-500 font-mono tracking-tight">{project.category}</span>
+                  </div>
+                  <p className="text-sm text-zinc-700 mt-1">
+                      {project.description}
+                  </p>
+                </div>
+              </a>
             ))}
           </div>
         </section>
@@ -118,16 +126,23 @@ function App() {
           <h2 className="text-xl font-bold mb-4 border-b border-zinc-200 pb-2">Research / Papers</h2>
           <div className="flex flex-col gap-6">
             {RESUME.research.map((item, idx) => (
-              <div key={idx} className="flex flex-col mb-2">
-                <a href={item.link} className="font-semibold text-[#0969da] hover:underline" target="_blank" rel="noopener noreferrer">
-                  {item.title}
+              <div key={idx} className="relative pl-4 border-l-2 border-zinc-200 hover:border-[#0969da] transition-colors group">
+                <a href={item.link} target="_blank" rel="noopener noreferrer" className="block">
+                  <h3 className="text-base font-bold text-zinc-900 group-hover:text-[#0969da] transition-colors mb-1">
+                    {item.title}
+                  </h3>
+                  <div className="text-xs text-zinc-500 font-mono mb-2">
+                    {item.subtitle}
+                  </div>
+                  <ul className="text-sm text-zinc-600 space-y-1">
+                    {item.points.map((point, pIdx) => (
+                      <li key={pIdx} className="flex items-start">
+                        <span className="mr-2 mt-1.5 w-1 h-1 rounded-full bg-zinc-400 block flex-shrink-0" />
+                        <span className="leading-snug">{point}</span>
+                      </li>
+                    ))}
+                  </ul>
                 </a>
-                <span className="text-sm text-zinc-500">{item.subtitle}</span>
-                <ul className="list-disc list-inside mt-2 text-sm text-zinc-700">
-                  {item.points.map((pt, i) => (
-                    <li key={i}>{pt}</li>
-                  ))}
-                </ul>
               </div>
             ))}
           </div>
