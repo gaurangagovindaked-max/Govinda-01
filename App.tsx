@@ -1,7 +1,6 @@
 import React, { useState, Suspense, lazy } from 'react';
 import { LoadingScreen } from './components/LoadingScreen';
 import { RESUME } from './constants';
-import { RESUME } from './constants';
 import { ProjectCard } from './components/ProjectCard';
 import { Trajectory } from './components/Trajectory';
 import { TechStack } from './components/TechStack';

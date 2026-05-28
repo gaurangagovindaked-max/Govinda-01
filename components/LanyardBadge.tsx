@@ -1,302 +1,16 @@
-import * as THREE from "three";
-import { useRef, useState, createRef, Suspense } from "react";
-import { Canvas, useFrame, useThree, extend as r3fExtend } from "@react-three/fiber";
-import { useTexture, Text, Environment, RoundedBox } from "@react-three/drei";
-import {
-  Physics,
-  RigidBody,
-  useSphericalJoint,
-  CuboidCollider,
-  BallCollider,
-  RapierRigidBody,
-} from "@react-three/rapier";
-import { MeshLineGeometry, MeshLineMaterial } from "meshline";
+import * as THREE from 'three'
+import { useEffect, useRef, useState, useMemo } from 'react'
+import { Canvas, extend, useThree, useFrame } from '@react-three/fiber'
+import { useGLTF, useTexture, Environment, Lightformer, Text } from '@react-three/drei'
+import { BallCollider, CuboidCollider, Physics, RigidBody, useRopeJoint, useSphericalJoint } from '@react-three/rapier'
+import { MeshLineGeometry, MeshLineMaterial } from 'meshline'
 
-// Register meshline with R3F
-r3fExtend({ MeshLineGeometry, MeshLineMaterial });
+extend({ MeshLineGeometry, MeshLineMaterial })
 
-// Declare JSX intrinsic elements
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      meshLineGeometry: any;
-      meshLineMaterial: any;
-    }
-  }
-}
+// Preload assets
+useGLTF.preload('https://assets.vercel.com/image/upload/contentful/image/e5382hct74si/5huRVDzcoDwnbgrKUo1Lzs/53b6dd7d6b4ffcdbd338fa60265949e1/tag.glb')
+useTexture.preload('https://assets.vercel.com/image/upload/contentful/image/e5382hct74si/SOT1hmCesOHxEYxL7vkoZ/c57b29c85912047c414311723320c16b/band.jpg')
 
-const SEGMENT_LENGTH = 0.13;
-const SEGMENTS = 14;
-const CARD_W = 2.0;
-const CARD_H = 2.8;
-const CARD_D = 0.05;
-
-// ─── Chain Segment with Joint ─────────────────────────────────
-function ChainLink({
-  parentRef,
-  selfRef,
-  pos,
-}: {
-  parentRef: React.RefObject<RapierRigidBody>;
-  selfRef: React.RefObject<RapierRigidBody>;
-  pos: [number, number, number];
-}) {
-  useSphericalJoint(parentRef, selfRef, [
-    [0, -SEGMENT_LENGTH / 2, 0],
-    [0, SEGMENT_LENGTH / 2, 0],
-  ]);
-
-  return (
-    <RigidBody
-      ref={selfRef}
-      position={pos}
-      angularDamping={10}
-      linearDamping={6}
-      type="dynamic"
-      canSleep={false}
-    >
-      <BallCollider args={[0.035]} />
-    </RigidBody>
-  );
-}
-
-// ─── Rope Visual ──────────────────────────────────────────────
-function RopeVisual({ refs }: { refs: React.RefObject<RapierRigidBody>[] }) {
-  const lineGeoRef = useRef<any>(null);
-
-  useFrame(() => {
-    if (!lineGeoRef.current) return;
-    const pts: number[] = [];
-    for (const r of refs) {
-      if (r.current) {
-        const t = r.current.translation();
-        pts.push(t.x, t.y, t.z);
-      }
-    }
-    if (pts.length >= 6) {
-      // Build smooth curve
-      const vecs: THREE.Vector3[] = [];
-      for (let i = 0; i < pts.length; i += 3) {
-        vecs.push(new THREE.Vector3(pts[i], pts[i + 1], pts[i + 2]));
-      }
-      const curve = new THREE.CatmullRomCurve3(vecs);
-      const smooth = curve.getPoints(60);
-      lineGeoRef.current.setPoints(
-        smooth.flatMap((p: THREE.Vector3) => [p.x, p.y, p.z])
-      );
-    }
-  });
-
-  return (
-    <mesh>
-      <meshLineGeometry ref={lineGeoRef} />
-      <meshLineMaterial
-        color="#111111"
-        lineWidth={0.3}
-        resolution={new THREE.Vector2(window.innerWidth, window.innerHeight)}
-        transparent
-        opacity={0.9}
-      />
-    </mesh>
-  );
-}
-
-// ─── The Badge Card ───────────────────────────────────────────
-function Badge({
-  parentRef,
-}: {
-  parentRef: React.RefObject<RapierRigidBody>;
-}) {
-  const ref = useRef<RapierRigidBody>(null!);
-  const [dragging, setDragging] = useState(false);
-  const { viewport, pointer } = useThree();
-
-  const photoTex = useTexture("/assets/Gemini_Generated_Image_.png");
-
-  useSphericalJoint(parentRef, ref, [
-    [0, -SEGMENT_LENGTH / 2, 0],
-    [0, CARD_H / 2 + 0.12, 0],
-  ]);
-
-  useFrame(() => {
-    if (dragging && ref.current) {
-      ref.current.setNextKinematicTranslation({
-        x: pointer.x * viewport.width * 0.5,
-        y: pointer.y * viewport.height * 0.5,
-        z: 0,
-      });
-    }
-  });
-
-  return (
-    <RigidBody
-      ref={ref}
-      type={dragging ? "kinematicPosition" : "dynamic"}
-      angularDamping={14}
-      linearDamping={10}
-      canSleep={false}
-      colliders={false}
-      position={[0, 2.5 - SEGMENTS * SEGMENT_LENGTH - CARD_H / 2 - 0.2, 0]}
-    >
-      <CuboidCollider args={[CARD_W / 2, CARD_H / 2, CARD_D / 2]} />
-      <group
-        onPointerDown={(e) => {
-          e.stopPropagation();
-          (e.target as any).setPointerCapture?.(e.pointerId);
-          setDragging(true);
-        }}
-        onPointerUp={() => setDragging(false)}
-      >
-        {/* Card body */}
-        <RoundedBox
-          args={[CARD_W, CARD_H, CARD_D]}
-          radius={0.12}
-          smoothness={4}
-          castShadow
-          receiveShadow
-        >
-          <meshPhysicalMaterial
-            color="#ffffff"
-            roughness={0.3}
-            metalness={0.0}
-            clearcoat={0.5}
-            clearcoatRoughness={0.2}
-          />
-        </RoundedBox>
-
-        {/* Photo */}
-        <mesh position={[0, 0.3, CARD_D / 2 + 0.002]}>
-          <planeGeometry args={[CARD_W - 0.28, CARD_H * 0.55]} />
-          <meshStandardMaterial map={photoTex} toneMapped={false} />
-        </mesh>
-
-        {/* Name: Govinda */}
-        <Text
-          position={[
-            -CARD_W / 2 + 0.2,
-            -CARD_H / 2 + 0.65,
-            CARD_D / 2 + 0.004,
-          ]}
-          fontSize={0.2}
-          fontWeight={700}
-          color="#111111"
-          anchorX="left"
-          anchorY="middle"
-        >
-          Govinda
-        </Text>
-        {/* Name: Chauhan */}
-        <Text
-          position={[
-            -CARD_W / 2 + 0.2,
-            -CARD_H / 2 + 0.4,
-            CARD_D / 2 + 0.004,
-          ]}
-          fontSize={0.2}
-          fontWeight={700}
-          color="#111111"
-          anchorX="left"
-          anchorY="middle"
-        >
-          Chauhan
-        </Text>
-
-        {/* Role */}
-        <Text
-          position={[
-            -CARD_W / 2 + 0.2,
-            -CARD_H / 2 + 0.15,
-            CARD_D / 2 + 0.004,
-          ]}
-          fontSize={0.1}
-          color="#888888"
-          anchorX="left"
-          anchorY="middle"
-        >
-          Software Engineer
-        </Text>
-
-        {/* ID */}
-        <Text
-          position={[
-            CARD_W / 2 - 0.15,
-            -CARD_H / 2 + 0.15,
-            CARD_D / 2 + 0.004,
-          ]}
-          fontSize={0.08}
-          color="#aaaaaa"
-          anchorX="right"
-          anchorY="middle"
-        >
-          ID: GC2026
-        </Text>
-
-        {/* Metallic clip at top of card */}
-        <mesh position={[0, CARD_H / 2 + 0.06, 0]}>
-          <cylinderGeometry args={[0.05, 0.05, 0.08, 16]} />
-          <meshStandardMaterial
-            color="#c0c0c0"
-            metalness={0.95}
-            roughness={0.1}
-          />
-        </mesh>
-        <mesh position={[0, CARD_H / 2 + 0.04, 0]} rotation={[Math.PI / 2, 0, 0]}>
-          <torusGeometry args={[0.07, 0.015, 8, 20, Math.PI]} />
-          <meshStandardMaterial
-            color="#c0c0c0"
-            metalness={0.95}
-            roughness={0.1}
-          />
-        </mesh>
-      </group>
-    </RigidBody>
-  );
-}
-
-// ─── Scene ────────────────────────────────────────────────────
-function Scene() {
-  const anchorRef = useRef<RapierRigidBody>(null!);
-
-  // Create stable refs for segments
-  const segRefs = useRef<React.RefObject<RapierRigidBody>[]>(
-    Array.from({ length: SEGMENTS }, () => createRef<RapierRigidBody>())
-  );
-
-  // All refs for rope rendering
-  const allRefs = [anchorRef, ...segRefs.current];
-
-  return (
-    <>
-      {/* Fixed anchor */}
-      <RigidBody ref={anchorRef} type="fixed" position={[0, 2.5, 0]}>
-        <BallCollider args={[0.04]} />
-        {/* Leather strap at very top */}
-        <mesh position={[0, 0.3, 0]}>
-          <boxGeometry args={[0.25, 0.7, 0.06]} />
-          <meshStandardMaterial color="#1a1a1a" roughness={0.85} />
-        </mesh>
-      </RigidBody>
-
-      {/* Chain links */}
-      {segRefs.current.map((selfRef, i) => (
-        <ChainLink
-          key={i}
-          parentRef={i === 0 ? anchorRef : segRefs.current[i - 1]}
-          selfRef={selfRef}
-          pos={[0, 2.5 - (i + 1) * SEGMENT_LENGTH, 0]}
-        />
-      ))}
-
-      {/* Rope rendering */}
-      <RopeVisual refs={allRefs} />
-
-      {/* Badge card */}
-      <Badge parentRef={segRefs.current[SEGMENTS - 1]} />
-    </>
-  );
-}
-
-// ─── Main Export ──────────────────────────────────────────────
 export default function LanyardBadge() {
   return (
     <div
@@ -307,29 +21,171 @@ export default function LanyardBadge() {
         position: "relative",
       }}
     >
-      <Canvas
-        camera={{ position: [0, 0, 8], fov: 30 }}
-        gl={{ antialias: true, alpha: true }}
-        dpr={[1, 2]}
-      >
-        <ambientLight intensity={1.2} />
-        <directionalLight position={[5, 5, 5]} intensity={0.8} castShadow />
-        <directionalLight position={[-3, 3, 2]} intensity={0.4} />
-        <spotLight
-          position={[0, 5, 3]}
-          angle={0.5}
-          penumbra={1}
-          intensity={1}
-          castShadow
-        />
-        <Environment preset="studio" />
-
-        <Physics gravity={[0, -9.81, 0]}>
-          <Suspense fallback={null}>
-            <Scene />
-          </Suspense>
+      <Canvas camera={{ position: [0, 0, 13], fov: 25 }} gl={{ antialias: true, alpha: true }}>
+        <ambientLight intensity={Math.PI} />
+        <Physics interpolate gravity={[0, -40, 0]} timeStep={1 / 60}>
+          <Band />
         </Physics>
+        <Environment preset="studio" blur={0.75}>
+          <Lightformer intensity={2} color="white" position={[0, -1, 5]} rotation={[0, 0, Math.PI / 3]} scale={[100, 0.1, 1]} />
+          <Lightformer intensity={3} color="white" position={[-1, -1, 1]} rotation={[0, 0, Math.PI / 3]} scale={[100, 0.1, 1]} />
+          <Lightformer intensity={3} color="white" position={[1, 1, 1]} rotation={[0, 0, Math.PI / 3]} scale={[100, 0.1, 1]} />
+          <Lightformer intensity={10} color="white" position={[-10, 0, 14]} rotation={[0, Math.PI / 2, Math.PI / 3]} scale={[100, 10, 1]} />
+        </Environment>
       </Canvas>
     </div>
-  );
+  )
+}
+
+function Band({ maxSpeed = 50, minSpeed = 10 }) {
+  const band = useRef<any>(null)
+  const fixed = useRef<any>(null)
+  const j1 = useRef<any>(null)
+  const j2 = useRef<any>(null)
+  const j3 = useRef<any>(null)
+  const card = useRef<any>(null)
+  
+  const vec = new THREE.Vector3()
+  const ang = new THREE.Vector3()
+  const rot = new THREE.Vector3()
+  const dir = new THREE.Vector3()
+  
+  const segmentProps: any = { type: 'dynamic', canSleep: true, colliders: false, angularDamping: 2, linearDamping: 2 }
+  
+  const { nodes, materials } = useGLTF('https://assets.vercel.com/image/upload/contentful/image/e5382hct74si/5huRVDzcoDwnbgrKUo1Lzs/53b6dd7d6b4ffcdbd338fa60265949e1/tag.glb') as any
+  const texture = useTexture('https://assets.vercel.com/image/upload/contentful/image/e5382hct74si/SOT1hmCesOHxEYxL7vkoZ/c57b29c85912047c414311723320c16b/band.jpg')
+  const photoTexture = useTexture('/assets/Gemini_Generated_Image_.png')
+  
+  const { width, height } = useThree((state) => state.size)
+  const [curve] = useState(() => new THREE.CatmullRomCurve3([new THREE.Vector3(), new THREE.Vector3(), new THREE.Vector3(), new THREE.Vector3()]))
+  const [dragged, drag] = useState<THREE.Vector3 | false>(false)
+  const [hovered, hover] = useState(false)
+
+  // Use realistic card color instead of debug colors
+  const cardColor = useMemo(() => new THREE.Color('#ffffff'), [])
+
+  useRopeJoint(fixed, j1, [[0, 0, 0], [0, 0, 0], 1])
+  useRopeJoint(j1, j2, [[0, 0, 0], [0, 0, 0], 1])
+  useRopeJoint(j2, j3, [[0, 0, 0], [0, 0, 0], 1])
+  useSphericalJoint(j3, card, [[0, 0, 0], [0, 1.45, 0]])
+
+  useEffect(() => {
+    if (hovered) {
+      document.body.style.cursor = dragged ? 'grabbing' : 'grab'
+      return () => void (document.body.style.cursor = 'auto')
+    }
+  }, [hovered, dragged])
+
+  useFrame((state, delta) => {
+    if (dragged && typeof dragged !== "boolean") {
+      vec.set(state.pointer.x, state.pointer.y, 0.5).unproject(state.camera)
+      dir.copy(vec).sub(state.camera.position).normalize()
+      vec.add(dir.multiplyScalar(state.camera.position.length()))
+      ;[card, j1, j2, j3, fixed].forEach((ref) => ref.current?.wakeUp())
+      card.current?.setNextKinematicTranslation({ x: vec.x - dragged.x, y: vec.y - dragged.y, z: vec.z - dragged.z })
+    }
+    if (fixed.current) {
+      ;[j1, j2].forEach((ref) => {
+        if (!ref.current.lerped) ref.current.lerped = new THREE.Vector3().copy(ref.current.translation())
+        const clampedDistance = Math.max(0.1, Math.min(1, ref.current.lerped.distanceTo(ref.current.translation())))
+        ref.current.lerped.lerp(ref.current.translation(), delta * (minSpeed + clampedDistance * (maxSpeed - minSpeed)))
+      })
+      curve.points[0].copy(j3.current.translation())
+      curve.points[1].copy(j2.current.lerped)
+      curve.points[2].copy(j1.current.lerped)
+      curve.points[3].copy(fixed.current.translation())
+      band.current.geometry.setPoints(curve.getPoints(32))
+      ang.copy(card.current.angvel())
+      rot.copy(card.current.rotation())
+      card.current.setAngvel({ x: ang.x, y: ang.y - rot.y * 0.25, z: ang.z })
+    }
+
+    // Add some wobble to the card when not dragged
+    if (card.current && !dragged) {
+      const time = state.clock.getElapsedTime()
+      card.current.setNextKinematicRotation({
+        x: Math.sin(time * 2) * 0.05,
+        y: Math.cos(time * 1.5) * 0.05,
+        z: Math.sin(time) * 0.05
+      })
+    }
+  })
+
+  curve.curveType = 'chordal'
+  texture.wrapS = texture.wrapT = THREE.RepeatWrapping
+
+  return (
+    <>
+      <group position={[0, 4, 0]}>
+        <RigidBody ref={fixed} {...segmentProps} type="fixed" />
+        <RigidBody position={[0.5, 0, 0]} ref={j1} {...segmentProps}>
+          <BallCollider args={[0.1]} />
+        </RigidBody>
+        <RigidBody position={[1, 0, 0]} ref={j2} {...segmentProps}>
+          <BallCollider args={[0.1]} />
+        </RigidBody>
+        <RigidBody position={[1.5, 0, 0]} ref={j3} {...segmentProps}>
+          <BallCollider args={[0.1]} />
+        </RigidBody>
+        <RigidBody position={[2, 0, 0]} ref={card} {...segmentProps} type={dragged ? 'kinematicPosition' : 'dynamic'}>
+          <CuboidCollider args={[0.8, 1.125, 0.01]} />
+          <group
+            scale={2.25}
+            position={[0, -1.2, -0.05]}
+            onPointerOver={() => hover(true)}
+            onPointerOut={() => hover(false)}
+            onPointerUp={(e) => {
+              (e.target as any).releasePointerCapture(e.pointerId);
+              drag(false);
+            }}
+            onPointerDown={(e) => {
+              (e.target as any).setPointerCapture(e.pointerId);
+              drag(new THREE.Vector3().copy(e.point).sub(vec.copy(card.current.translation())));
+            }}
+          >
+            <mesh geometry={nodes.card.geometry}>
+              <meshPhysicalMaterial map={materials.base.map} map-anisotropy={16} clearcoat={1} clearcoatRoughness={0.15} roughness={0.3} metalness={0.5} color={cardColor} />
+            </mesh>
+            
+            {/* Custom Content on the card */}
+            <group position={[0, 0.1, 0.015]}>
+              {/* Photo */}
+              <mesh position={[0, 0.1, 0]}>
+                <planeGeometry args={[0.45, 0.45]} />
+                <meshStandardMaterial map={photoTexture} toneMapped={false} />
+              </mesh>
+              
+              {/* Text */}
+              <Text
+                position={[0, -0.22, 0]}
+                fontSize={0.06}
+                fontWeight={700}
+                color="#111111"
+                anchorX="center"
+                anchorY="middle"
+              >
+                GOVINDA CHAUHAN
+              </Text>
+              <Text
+                position={[0, -0.3, 0]}
+                fontSize={0.03}
+                color="#666666"
+                anchorX="center"
+                anchorY="middle"
+              >
+                Software Engineer
+              </Text>
+            </group>
+
+            <mesh geometry={nodes.clip.geometry} material={materials.metal} material-roughness={0.3} />
+            <mesh geometry={nodes.clamp.geometry} material={materials.metal} />
+          </group>
+        </RigidBody>
+      </group>
+      <mesh ref={band}>
+        <meshLineGeometry />
+        <meshLineMaterial color="#feca57" depthTest={false} resolution={new THREE.Vector2(width, height)} useMap map={texture} repeat={[-3, 1]} lineWidth={1.5} transparent opacity={0.75} />
+      </mesh>
+    </>
+  )
 }
