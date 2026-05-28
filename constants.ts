@@ -166,11 +166,11 @@ export const RESUME = {
       link: "https://github.com/GC-WORK11/aether/blob/main/ARCHITECTURE.md"
     },
     {
-      title: "Connect: AI Agent Interaction",
-      subtitle: "Research Paper",
+      title: "fConnect",
+      subtitle: "E-Commerce Market Analysis",
       points: [
-        "A study on the interactions, capabilities, and networking of AI coding agents.",
-        "Proposes mechanisms for reliable multi-agent communication and task orchestration."
+        "A deeper look into the quick e-commerce market disruption of India.",
+        "Analysis of rapid delivery models and market dynamics."
       ],
       link: "/Connect.pdf"
     }
