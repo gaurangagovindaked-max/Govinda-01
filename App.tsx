@@ -54,12 +54,10 @@ function App() {
           <h2 className="text-xl font-bold mb-4 border-b border-zinc-200 pb-2">Idea to MVP</h2>
           <div className="flex flex-col gap-4">
             {RESUME.mvpProjects.map((project, index) => (
-              <a 
+              <div 
                 key={index} 
-                href={project.githubUrl || project.liveUrl || "#"} 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="group"
+                onClick={() => setSelectedProject(project as any)}
+                className="group cursor-pointer"
               >
                 <div className="flex flex-col mb-2">
                   <div className="flex items-baseline gap-2">
@@ -72,7 +70,7 @@ function App() {
                       {project.description}
                   </p>
                 </div>
-              </a>
+              </div>
             ))}
           </div>
         </section>
