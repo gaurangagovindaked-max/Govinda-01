@@ -17,16 +17,15 @@ export const RESUME = {
     "React",
     "Vite",
     "Flutter",
-    "React Native"
+    "React Native",
+    "Electron"
   ],
   tools: [
     "pi",
     "hermes agent",
     "claude",
     "codex",
-    "AWS",
     "Cloudflare",
-    "Electron",
     "Ubuntu"
   ],
   education: {

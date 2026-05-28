@@ -14,7 +14,8 @@ export const TechStack: React.FC = () => {
       'React': 'reactnative.svg',
       'Vite': 'vite.svg',
       'Flutter': 'flutter.svg',
-      'React Native': 'reactnative.svg'
+      'React Native': 'reactnative.svg',
+      'Electron': 'electron.svg'
     };
     return map[lang];
   };
@@ -26,7 +27,6 @@ export const TechStack: React.FC = () => {
       'claude': 'claude-code (1).svg',
       'codex': 'codex.svg',
       'aws': 'aws.svg',
-      'electron': 'electron.svg',
       'ubuntu': 'ubuntu.svg'
     };
     return map[tool.toLowerCase()];
