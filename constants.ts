@@ -12,6 +12,8 @@ export const RESUME = {
     "Python",
     "Rust",
     "Golang",
+    "Node.js",
+    "Next.js",
     "React",
     "Vite",
     "Flutter",
@@ -22,6 +24,7 @@ export const RESUME = {
     "hermes agent",
     "claude",
     "codex",
+    "AWS",
     "Cloudflare"
   ],
   education: {
