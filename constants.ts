@@ -2,7 +2,7 @@
 export const RESUME = {
   header: {
     name: "GOVINDA CHAUHAN",
-    email: "govindach.iitp@gmail.com",
+    email: "govindasince2004@gmail.com",
     location: "Delhi, India",
     role: "Software Engineer & AI Systems Developer"
   },
