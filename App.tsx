@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Analytics } from '@vercel/analytics/react';
 import { LoadingScreen } from './components/LoadingScreen';
 import { RESUME } from './constants';
 import { Hero } from './components/Hero';
@@ -18,6 +19,7 @@ function App() {
 
   return (
     <div className="min-h-screen bg-white text-zinc-900 font-sans overflow-x-hidden">
+      <Analytics />
       {isLoading && <LoadingScreen onComplete={handleLoadingComplete} />}
 
       <ProjectModal 
