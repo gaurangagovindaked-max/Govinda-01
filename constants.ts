@@ -146,6 +146,16 @@ export const RESUME = {
       proof: "Live site"
     },
     {
+      title: "Remote-os",
+      category: "Browser Linux Desktop",
+      description: "A webOS-style product for opening a remote Linux desktop from the browser, with a clean desktop shell, dock, file windows, terminal, and student-friendly access flow.",
+      tags: ["React", "Vite", "Linux"],
+      metric: "Phone/browser -> Linux desktop",
+      link: "https://virtual-os-iota.vercel.app",
+      image: "",
+      proof: "Live site"
+    },
+    {
       title: "Doorway IDE",
       category: "Development Tool",
       description: "Multiple models in one thread through their native CLI",
@@ -181,7 +191,7 @@ export const RESUME = {
       title: "Paper Resume",
       subtitle: "ATS-Friendly PDF",
       points: [
-        "One-page software engineering resume with project links, Delegators, Doorway, Flow, CEO Hunt, and Workbench references.",
+        "One-page software engineering resume with project links, Delegators, Remote-os, Doorway, Flow, CEO Hunt, and Workbench references.",
         "Designed for HR screening while keeping the claims grounded in shipped and prototype work."
       ],
       link: "/Govinda_Chauhan_Paper_Resume.pdf"
