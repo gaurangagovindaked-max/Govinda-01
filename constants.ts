@@ -188,6 +188,15 @@ export const RESUME = {
   ],
   research: [
     {
+      title: "Paper Resume",
+      subtitle: "ATS-Friendly PDF",
+      points: [
+        "One-page software engineering resume with project links, Delegators, Doorway, Flow, CEO Hunt, and Workbench references.",
+        "Designed for HR screening while keeping the claims grounded in shipped and prototype work."
+      ],
+      link: "/Govinda_Chauhan_Paper_Resume.pdf"
+    },
+    {
       title: "AETHER Architecture",
       subtitle: "Physics from Video",
       points: [
