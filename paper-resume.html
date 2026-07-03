@@ -24,8 +24,12 @@
       }
 
       a {
-        color: #111111;
+        color: #0b4ea2;
         text-decoration: none;
+      }
+
+      a:hover {
+        text-decoration: underline;
       }
 
       .page {
@@ -125,6 +129,60 @@
         font-size: 9.3pt;
       }
 
+      .link-blue {
+        color: #0645ad;
+        border-bottom: 1px solid #9ec5ff;
+        font-weight: 700;
+      }
+
+      .link-pink {
+        color: #b0005a;
+        border-bottom: 1px solid #f4a7cf;
+        font-weight: 700;
+      }
+
+      .link-gold {
+        color: #7a4d00;
+        background: #fff2b8;
+        border-radius: 3px;
+        padding: 0 3px;
+        font-weight: 700;
+      }
+
+      .products {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 4px 6px;
+        margin-top: 2px;
+      }
+
+      .product-pill {
+        display: inline-block;
+        border: 1px solid #d7d7d7;
+        border-radius: 999px;
+        padding: 1px 7px;
+        font-size: 8.8pt;
+        font-weight: 700;
+      }
+
+      .product-primary {
+        color: #0645ad;
+        background: #eef5ff;
+        border-color: #b8d6ff;
+      }
+
+      .product-creative {
+        color: #b0005a;
+        background: #fff0f7;
+        border-color: #f4b8d8;
+      }
+
+      .product-mobile {
+        color: #7a4d00;
+        background: #fff3bf;
+        border-color: #efd36b;
+      }
+
       @media screen {
         body {
           background: #f3f4f6;
@@ -146,10 +204,10 @@
         <p class="headline">Software Engineer | AI Systems, Automation Agents, and Full-Stack Development</p>
         <p class="links">
           Delhi, India |
-          <a href="mailto:govindasince2004@gmail.com">govindasince2004@gmail.com</a> |
-          <a href="https://govinda-01.vercel.app">govinda-01.vercel.app</a> |
-          <a href="https://github.com/GC-WORK11">github.com/GC-WORK11</a> |
-          <a href="https://linkedin.com/in/govinda-flow">linkedin.com/in/govinda-flow</a>
+          <a class="link-blue" href="mailto:govindasince2004@gmail.com">govindasince2004@gmail.com</a> |
+          <a class="link-pink" href="https://govinda-01.vercel.app">govinda-01.vercel.app</a> |
+          <a class="link-gold" href="https://github.com/GC-WORK11">github.com/GC-WORK11</a> |
+          <a class="link-blue" href="https://linkedin.com/in/govinda-flow">linkedin.com/in/govinda-flow</a>
         </p>
       </header>
 
@@ -201,18 +259,18 @@
         <h2>Selected Projects</h2>
         <div class="item">
           <div class="row">
-            <h3><a href="https://delegators-client-site.vercel.app">Delegators SWE Agentic API</a></h3>
+            <h3><a class="link-blue" href="https://delegators-client-site.vercel.app">Delegators SWE Agentic API</a></h3>
             <span class="meta">Go, TypeScript, PostgreSQL, Redis, Docker</span>
           </div>
           <ul>
             <li>Built a pay-per-session coding-agent platform around an OpenAI-compatible API that can plug into common AI coding tools such as Claude Code, Codex-style clients, Cursor-like IDE flows, Cline, Continue, and Roo.</li>
-            <li>Worked across gateway logic, admin controls, client site, <a href="https://delegators-workbench.vercel.app">Workbench</a> artifact flow, payment lifecycle, and pre-deployment verification scripts.</li>
+            <li>Worked across gateway logic, admin controls, client site, <a class="link-pink" href="https://delegators-workbench.vercel.app">Workbench</a> artifact flow, payment lifecycle, and pre-deployment verification scripts.</li>
           </ul>
         </div>
 
         <div class="item">
           <div class="row">
-            <h3><a href="https://doorway-ide.vercel.app/">Doorway</a></h3>
+            <h3><a class="link-gold" href="https://doorway-ide.vercel.app/">Doorway</a></h3>
             <span class="meta">Electron, React, TypeScript</span>
           </div>
           <ul>
@@ -222,7 +280,7 @@
 
         <div class="item">
           <div class="row">
-            <h3><a href="https://github.com/GC-WORK11/video-unit">VideoUnit</a></h3>
+            <h3><a class="link-blue" href="https://github.com/GC-WORK11/video-unit">VideoUnit</a></h3>
             <span class="meta">Python, evaluation systems</span>
           </div>
           <ul>
@@ -232,7 +290,7 @@
 
         <div class="item">
           <div class="row">
-            <h3><a href="https://github.com/GC-WORK11/aether">AETHER</a></h3>
+            <h3><a class="link-pink" href="https://github.com/GC-WORK11/aether">AETHER</a></h3>
             <span class="meta">Computer vision, simulation research</span>
           </div>
           <ul>
@@ -242,7 +300,7 @@
 
         <div class="item">
           <div class="row">
-            <h3><a href="https://github.com/GC-WORK11/kairo">Kairo</a></h3>
+            <h3><a class="link-gold" href="https://github.com/GC-WORK11/kairo">Kairo</a></h3>
             <span class="meta">Rust, MCP, security tooling</span>
           </div>
           <ul>
@@ -255,7 +313,18 @@
         <h2>Additional Work</h2>
         <div class="item">
           <ul>
-            <li>Product links: <a href="https://delegators-client-site.vercel.app">Delegators</a>, <a href="https://delegators-workbench.vercel.app">Workbench</a>, <a href="https://doorway-ide.vercel.app/">Doorway</a>, <a href="https://ceohunt.vercel.app/">CEO Hunt</a>, <a href="https://flow-pitch.vercel.app/">Flow Pitch</a>, <a href="https://flow-ddsas.vercel.app/">DDSAS</a>, <a href="https://govinda-01.vercel.app">Portfolio</a></li>
+            <li>
+              Live products:
+              <span class="products">
+                <a class="product-pill product-primary" href="https://delegators-client-site.vercel.app">Delegators</a>
+                <a class="product-pill product-creative" href="https://delegators-workbench.vercel.app">Workbench</a>
+                <a class="product-pill product-mobile" href="https://doorway-ide.vercel.app/">Doorway</a>
+                <a class="product-pill product-creative" href="https://ceohunt.vercel.app/">CEO Hunt</a>
+                <a class="product-pill product-mobile" href="https://flow-pitch.vercel.app/">Flow Pitch</a>
+                <a class="product-pill product-primary" href="https://flow-ddsas.vercel.app/">DDSAS</a>
+                <a class="product-pill product-creative" href="https://govinda-01.vercel.app">Portfolio</a>
+              </span>
+            </li>
             <li>Authored student-facing applied AI learning material and programming exercises.</li>
             <li>Built multiple MVPs and prototypes across mobile apps, dashboards, automation tools, and founder/operator workflows.</li>
             <li>Eager to work with strong engineering teams, learn fast, take ownership, and contribute to product-quality systems.</li>
