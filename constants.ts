@@ -4,9 +4,9 @@ export const RESUME = {
     name: "GOVINDA CHAUHAN",
     email: "govindasince2004@gmail.com",
     location: "Delhi, India",
-    role: "Software Engineer & AI Systems Developer"
+    role: "Software Engineer, AI Systems & Automation Agents"
   },
-  summary: "Software Engineer and Agentic Systems Developer building scalable tools, open-source projects, and autonomous infrastructure. Passionate about shipping products that compound.",
+  summary: "IIT Patna BS student and software engineer building AI-assisted developer tools, automation agents, full-stack web systems, and practical product infrastructure. I like systems that work with real tools: Claude Code, Codex-style clients, Cursor-like IDE flows, Cline, Continue, Roo, and the messy workflows developers actually use.",
   languages: [
     "Typescript",
     "Python",
@@ -25,6 +25,7 @@ export const RESUME = {
     "hermes agent",
     "claude",
     "codex",
+    "cursor",
     "Cloudflare",
     "Ubuntu"
   ],
@@ -41,7 +42,8 @@ export const RESUME = {
       duration: "2022–2026",
       description: "Developed and maintained full-stack applications and AI systems.",
       points: [
-        "Built Doorway, Kairo, CHIMERA, AETHER, VideoUnit, Flow Mobile, and CEO Hunt.",
+        "Built Delegators, Doorway, Kairo, CHIMERA, AETHER, VideoUnit, Flow Mobile, and CEO Hunt.",
+        "Created AI agents for personal automation, coding workflows, PR review support, research assistance, and repetitive operational tasks.",
         "Engineered production-grade environments handling full-stack pipelines, mobile control surfaces, and custom automations.",
         "Built local-first desktop infrastructure, research prototypes, and pre-execution supply chain security layers."
       ]
@@ -61,6 +63,16 @@ export const RESUME = {
     }
   ],
   projects: [
+    {
+      title: "Delegators",
+      category: "AI Coding Platform",
+      description: "Pay-per-session coding-agent platform with OpenAI-compatible endpoints, short-lived session keys, quota controls, provider routing, admin surfaces, Workbench artifacts, and compatibility with tools like Claude Code, Codex-style clients, Cursor-like IDE flows, Cline, Continue, and Roo.",
+      tags: ["Go", "TypeScript", "Agents"],
+      metric: "Coding tools → governed sessions",
+      link: "https://delegators-client-site.vercel.app",
+      image: "",
+      proof: "Live client site + Workbench"
+    },
     {
       title: "Doorway (Agent OS)",
       category: "Agent Cockpit",
@@ -114,6 +126,26 @@ export const RESUME = {
   ],
   mvpProjects: [
     {
+      title: "Delegators Client Site",
+      category: "AI Coding Platform",
+      description: "Public product, pricing, docs, account, and purchase portal for Delegators.",
+      tags: ["React", "Vite"],
+      metric: "Live product site",
+      link: "https://delegators-client-site.vercel.app",
+      image: "",
+      proof: "Live site"
+    },
+    {
+      title: "Delegators Workbench",
+      category: "Artifact Agent",
+      description: "Workbench for resumes, reports, decks, sheets, PDFs, and document workflows.",
+      tags: ["React", "Node"],
+      metric: "Artifact workspace",
+      link: "https://delegators-workbench.vercel.app",
+      image: "",
+      proof: "Live site"
+    },
+    {
       title: "Doorway IDE",
       category: "Development Tool",
       description: "Multiple models in one thread through their native CLI",
@@ -136,7 +168,7 @@ export const RESUME = {
     {
       title: "Flow Pitch",
       category: "Mobile",
-      description: "Agents in your pockets",
+      description: "Mobile-first agent interface concept for carrying AI workflows in your pocket.",
       tags: ["React", "Vite"],
       metric: "Mobile UI",
       link: "https://flow-pitch.vercel.app/",
@@ -175,8 +207,8 @@ export const RESUME = {
     }
   ],
   vision: {
-    startup: "Doorway",
-    tagline: "From apps to orchestration, and now all-in on building the future of agentic harness.",
-    description: "The long-term arc: make AI systems observable, testable, and useful enough to become infrastructure. Not demos. Not pitch-deck vapor. Working tools, public repos, measured behavior, and products that compound."
+    startup: "Delegators",
+    tagline: "From apps to orchestration, now focused on practical AI coding infrastructure.",
+    description: "The long-term arc: make AI systems observable, testable, and useful enough to become infrastructure. The work is moving from demos toward tools that fit real developer workflows, team review loops, and product-quality automation."
   }
 };

@@ -3,11 +3,11 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Govinda Chauhan - Paper Resume</title>
+    <title>Govinda Chauhan - Resume</title>
     <style>
       @page {
         size: A4;
-        margin: 9mm 12mm;
+        margin: 12mm;
       }
 
       * {
@@ -16,197 +16,125 @@
 
       body {
         margin: 0;
-        background: #fff;
-        color: #111;
+        background: #ffffff;
+        color: #111111;
         font-family: Arial, Helvetica, sans-serif;
-        font-size: 9.35pt;
-        line-height: 1.14;
+        font-size: 9.4pt;
+        line-height: 1.25;
       }
 
       a {
-        color: inherit;
+        color: #111111;
         text-decoration: none;
       }
 
       .page {
-        width: 100%;
         max-width: 780px;
         margin: 0 auto;
       }
 
-      .name {
+      header {
+        border-bottom: 1.5px solid #111111;
+        padding-bottom: 6px;
+      }
+
+      h1 {
         margin: 0;
-        color: #8b8b8b;
-        font-size: 26pt;
-        line-height: 0.95;
-        font-weight: 300;
+        font-size: 25pt;
+        line-height: 1;
         letter-spacing: 0;
         text-transform: uppercase;
       }
 
-      .name strong {
-        color: #111;
-        font-weight: 800;
-      }
-
       .headline {
         margin: 3px 0 0;
-        color: #111;
-        font-size: 15.5pt;
-        line-height: 1.05;
-        font-weight: 800;
+        font-size: 11.2pt;
+        font-weight: 700;
       }
 
       .links {
-        margin-top: 3px;
-        color: #777;
-        font-size: 9.8pt;
-        line-height: 1.1;
-      }
-
-      .summary {
-        margin: 8px 0 0;
-        color: #222;
-        font-size: 9pt;
-        max-width: 96%;
+        margin: 4px 0 0;
+        color: #222222;
+        font-size: 8.6pt;
       }
 
       section {
-        margin-top: 9px;
+        margin-top: 8px;
       }
 
-      .section-title {
+      h2 {
         margin: 0 0 4px;
-        padding-bottom: 2px;
-        border-bottom: 1.7px solid #555;
-        color: #8b8b8b;
-        font-size: 17.2pt;
-        line-height: 1;
-        font-weight: 800;
-      }
-
-      .row {
-        display: grid;
-        grid-template-columns: 1fr auto;
-        column-gap: 18px;
-        align-items: baseline;
-      }
-
-      .item {
-        margin-top: 4px;
-      }
-
-      .item:first-of-type {
-        margin-top: 0;
-      }
-
-      .org {
-        margin: 0;
-        color: #111;
-        font-size: 12.2pt;
-        line-height: 1.04;
-        font-weight: 800;
-      }
-
-      .role {
-        margin: 1px 0 0;
-        color: #111;
-        font-size: 10pt;
-        font-weight: 400;
-      }
-
-      .date,
-      .place {
-        color: #8b8b8b;
-        font-size: 9.8pt;
-        white-space: nowrap;
-        text-align: right;
-      }
-
-      .skill-grid {
-        display: grid;
-        grid-template-columns: 82px 1fr;
-        column-gap: 16px;
-        row-gap: 3px;
-        font-size: 10pt;
-      }
-
-      .skill-label {
-        color: #222;
-      }
-
-      .skill-text {
-        color: #111;
-      }
-
-      ul {
-        margin: 1px 0 0 0;
-        padding-left: 13px;
-      }
-
-      li {
-        margin: 0;
-        padding-left: 1px;
-      }
-
-      .projects {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        column-gap: 14px;
-        row-gap: 3px;
-      }
-
-      .project {
-        break-inside: avoid;
-      }
-
-      .project-title {
-        margin: 0;
-        font-size: 9.7pt;
-        line-height: 1.05;
-        font-weight: 800;
-      }
-
-      .project-meta {
-        color: #777;
-        font-size: 7pt;
-        font-family: "Courier New", Courier, monospace;
-        font-weight: 700;
+        border-bottom: 1px solid #999999;
+        color: #111111;
+        font-size: 10.8pt;
+        line-height: 1.15;
         text-transform: uppercase;
       }
 
-      .project p {
+      h3 {
         margin: 0;
-        font-size: 8.45pt;
+        font-size: 9.8pt;
+        line-height: 1.2;
       }
 
-      .compact .item {
-        margin-top: 3px;
-      }
-
-      .artifact-title {
+      p {
         margin: 0;
-        font-size: 9.6pt;
-        font-weight: 800;
       }
 
-      .artifact-subtitle {
-        color: #777;
-        font-family: "Courier New", Courier, monospace;
-        font-size: 7pt;
+      ul {
+        margin: 2px 0 0;
+        padding-left: 14px;
+      }
+
+      li {
+        margin: 1px 0;
+      }
+
+      .row {
+        display: flex;
+        justify-content: space-between;
+        gap: 16px;
+        align-items: baseline;
+      }
+
+      .meta {
+        color: #333333;
+        font-size: 8.7pt;
+        white-space: nowrap;
+      }
+
+      .sub {
+        color: #222222;
+        font-size: 9pt;
+      }
+
+      .item {
+        margin-top: 5px;
+        break-inside: avoid;
+      }
+
+      .item:first-child {
+        margin-top: 0;
+      }
+
+      .label {
         font-weight: 700;
+      }
+
+      .summary {
+        font-size: 9.3pt;
       }
 
       @media screen {
         body {
-          background: #f2f2f2;
+          background: #f3f4f6;
         }
 
         .page {
           min-height: 297mm;
-          padding: 9mm 12mm;
-          background: #fff;
-          box-shadow: 0 12px 32px rgba(0, 0, 0, 0.12);
+          padding: 12mm;
+          background: #ffffff;
+          box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
         }
       }
     </style>
@@ -214,145 +142,123 @@
   <body>
     <main class="page">
       <header>
-        <h1 class="name">GOVINDA <strong>CHAUHAN</strong></h1>
-        <p class="headline">Software Engineer, Agentic Systems Developer</p>
+        <h1>Govinda Chauhan</h1>
+        <p class="headline">Software Engineer | AI Systems, Automation Agents, and Full-Stack Development</p>
         <p class="links">
-          <a href="https://govinda-01.vercel.app">Portfolio: govinda-01.vercel.app</a> |
-          <a href="https://github.com/GC-WORK11">GitHub: github.com/GC-WORK11</a> |
-          <a href="https://linkedin.com/in/govinda-flow">LinkedIn: linkedin.com/in/govinda-flow</a> |
-          <a href="mailto:govindasince2004@gmail.com">Email: govindasince2004@gmail.com</a> |
-          Delhi, India
-        </p>
-        <p class="summary">
-          Software Engineer and Agentic Systems Developer building scalable tools, open-source projects, and autonomous infrastructure. Passionate about shipping products that compound.
+          Delhi, India |
+          <a href="mailto:govindasince2004@gmail.com">govindasince2004@gmail.com</a> |
+          <a href="https://govinda-01.vercel.app">govinda-01.vercel.app</a> |
+          <a href="https://github.com/GC-WORK11">github.com/GC-WORK11</a> |
+          <a href="https://linkedin.com/in/govinda-flow">linkedin.com/in/govinda-flow</a>
         </p>
       </header>
 
       <section>
-        <h2 class="section-title">Education</h2>
+        <h2>Summary</h2>
+        <p class="summary">
+          IIT Patna BS student and software engineer focused on AI-assisted developer tools, full-stack web systems, and practical automation. Built independent projects across coding agents, PR-review automation, personal workflow agents, video evaluation, and payment-metered coding infrastructure. Strongest in TypeScript/React, Node.js, Python, and shipping useful systems with teams.
+        </p>
+      </section>
+
+      <section>
+        <h2>Education</h2>
         <div class="item">
           <div class="row">
-            <h3 class="org">Indian Institute of Technology Patna</h3>
-            <div class="date">2026</div>
+            <h3>Indian Institute of Technology Patna</h3>
+            <span class="meta">Expected 2026</span>
           </div>
-          <p class="role">BS in Computer Science &amp; Data Analytics</p>
+          <p class="sub">BS in Computer Science and Data Analytics</p>
+        </div>
+      </section>
+
+      <section>
+        <h2>Skills</h2>
+        <p><span class="label">Languages:</span> TypeScript, JavaScript, Python, Go, Rust, SQL, HTML, CSS</p>
+        <p><span class="label">Frontend:</span> React, Next.js, Vite, Tailwind CSS, React Native, Flutter, Electron</p>
+        <p><span class="label">Backend:</span> Node.js, Go services, REST APIs, PostgreSQL, Redis, Docker, payment/webhook flows</p>
+        <p><span class="label">AI Systems:</span> LLM tooling, Claude Code/Codex/Cursor-compatible workflows, evaluation harnesses, automation agents</p>
+      </section>
+
+      <section>
+        <h2>Engineering Experience</h2>
+        <div class="item">
+          <div class="row">
+            <h3>Independent Software Engineer</h3>
+            <span class="meta">2022 - Present</span>
+          </div>
+          <p class="sub">Full-stack, AI tooling, automation agents, and developer workflows</p>
           <ul>
-            <li>Computer Science and Data Analytics foundation with independent work across AI agents, evaluation systems, simulation, computer vision, and high-velocity product engineering.</li>
+            <li>Built and iterated production-shaped web applications, internal tools, and AI-assisted workflows across React, TypeScript, Node.js, Go, Python, and Electron.</li>
+            <li>Created AI agents for personal automation, coding workflows, PR review support, research assistance, and repetitive operational tasks.</li>
+            <li>Designed coding-agent infrastructure experiments covering session auth, quota control, provider routing, streaming APIs, admin dashboards, and usage metering.</li>
+            <li>Created research-oriented prototypes for video evaluation, physics extraction from motion, and multi-agent literature/report workflows.</li>
+            <li>Worked on education-facing technical content and practical programming exercises while teaching computing fundamentals.</li>
           </ul>
         </div>
       </section>
 
       <section>
-        <h2 class="section-title">Skills</h2>
-        <div class="skill-grid">
-          <div class="skill-label">Languages:</div>
-          <div class="skill-text">Typescript, Python, Rust, Golang, Node.js, Next.js, React, Vite, Flutter, React Native, Electron</div>
-          <div class="skill-label">Tools:</div>
-          <div class="skill-text">Pi, Hermes Agent, Claude, Codex, Cloudflare, Ubuntu</div>
-          <div class="skill-label">Focus:</div>
-          <div class="skill-text">AI agents, evaluation systems, full-stack pipelines, mobile control surfaces, automation, computer vision, simulation</div>
+        <h2>Selected Projects</h2>
+        <div class="item">
+          <div class="row">
+            <h3><a href="https://delegators-client-site.vercel.app">Delegators SWE Agentic API</a></h3>
+            <span class="meta">Go, TypeScript, PostgreSQL, Redis, Docker</span>
+          </div>
+          <ul>
+            <li>Built a pay-per-session coding-agent platform around an OpenAI-compatible API that can plug into common AI coding tools such as Claude Code, Codex-style clients, Cursor-like IDE flows, Cline, Continue, and Roo.</li>
+            <li>Worked across gateway logic, admin controls, client site, <a href="https://delegators-workbench.vercel.app">Workbench</a> artifact flow, payment lifecycle, and pre-deployment verification scripts.</li>
+          </ul>
+        </div>
+
+        <div class="item">
+          <div class="row">
+            <h3><a href="https://doorway-ide.vercel.app/">Doorway</a></h3>
+            <span class="meta">Electron, React, TypeScript</span>
+          </div>
+          <ul>
+            <li>Built a local-first desktop cockpit for terminal agents, worktrees, PR/review flows, plugin surfaces, and visible automation.</li>
+          </ul>
+        </div>
+
+        <div class="item">
+          <div class="row">
+            <h3><a href="https://github.com/GC-WORK11/video-unit">VideoUnit</a></h3>
+            <span class="meta">Python, evaluation systems</span>
+          </div>
+          <ul>
+            <li>Designed an AI-video evaluation concept that converts prompts into temporal assertions and reproducible frame-level reports.</li>
+          </ul>
+        </div>
+
+        <div class="item">
+          <div class="row">
+            <h3><a href="https://github.com/GC-WORK11/aether">AETHER</a></h3>
+            <span class="meta">Computer vision, simulation research</span>
+          </div>
+          <ul>
+            <li>Worked on an architecture for marker-free physics extraction from video, covering tracking, kinematic discovery, and simulation-ready model generation.</li>
+          </ul>
+        </div>
+
+        <div class="item">
+          <div class="row">
+            <h3><a href="https://github.com/GC-WORK11/kairo">Kairo</a></h3>
+            <span class="meta">Rust, MCP, security tooling</span>
+          </div>
+          <ul>
+            <li>Built an agent-safety concept for checking package installs, terminal commands, and CI/CD changes against software risk signals before execution.</li>
+          </ul>
         </div>
       </section>
 
       <section>
-        <h2 class="section-title">Professional Experience</h2>
+        <h2>Additional Work</h2>
         <div class="item">
-          <div class="row">
-            <h3 class="org">Independent</h3>
-            <div class="place">Delhi, India</div>
-          </div>
-          <div class="row">
-            <p class="role">Software Engineer</p>
-            <div class="date">2022 - 2026</div>
-          </div>
           <ul>
-            <li>Developed and maintained full-stack applications and AI systems.</li>
-            <li>Built Doorway, Kairo, CHIMERA, AETHER, VideoUnit, Flow Mobile, and CEO Hunt.</li>
-            <li>Engineered production-grade environments handling full-stack pipelines, mobile control surfaces, and custom automations.</li>
-            <li>Built local-first desktop infrastructure, research prototypes, and pre-execution supply chain security layers.</li>
-          </ul>
-        </div>
-
-        <div class="item">
-          <div class="row">
-            <h3 class="org">Educator / Author</h3>
-            <div class="place">Delhi, India</div>
-          </div>
-          <div class="row">
-            <p class="role">Computing Fundamentals and AI-Assisted Learning</p>
-            <div class="date">2023 - 2024</div>
-          </div>
-          <ul>
-            <li>Taught computing fundamentals while experimenting with AI-assisted learning systems and practical student-facing software.</li>
-            <li>Designed AI-aware learning modules and technical exercises.</li>
-            <li>Mentored students in logic, programming fundamentals, and product thinking.</li>
-            <li>Authored Applied AI Students Book as a student-facing learning artifact.</li>
-          </ul>
-        </div>
-      </section>
-
-      <section class="compact">
-        <h2 class="section-title">Agentic Architecture &amp; Tooling</h2>
-        <div class="projects">
-          <div class="project">
-            <h3 class="project-title">Doorway (Agent OS) <span class="project-meta">Agent Cockpit</span></h3>
-            <p>Local-first desktop cockpit for terminal agents, git worktrees, review/merge flows, plugins, and visible automation.</p>
-          </div>
-          <div class="project">
-            <h3 class="project-title">AETHER <span class="project-meta">Physics Intelligence</span></h3>
-            <p>Marker-free physics extraction from video to discover kinematic structure, estimate parameters, and produce simulation-ready models.</p>
-          </div>
-          <div class="project">
-            <h3 class="project-title">VideoUnit <span class="project-meta">AI Video Evals</span></h3>
-            <p>Executable testing framework for AI-generated videos that converts prompts into temporal assertions and reproducible reports.</p>
-          </div>
-          <div class="project">
-            <h3 class="project-title">Kairo <span class="project-meta">Agent Safety</span></h3>
-            <p>Real-time cloud intelligence layer that checks package installs, terminal commands, and CI/CD changes against software risk data.</p>
-          </div>
-          <div class="project">
-            <h3 class="project-title">CHIMERA <span class="project-meta">Research Engine</span></h3>
-            <p>Autonomous multi-agent research workflow for scouting literature, reading PDFs, running experiments, synthesizing reports, and critique.</p>
-          </div>
-        </div>
-      </section>
-
-      <section class="compact">
-        <h2 class="section-title">Idea to MVP</h2>
-        <div class="projects">
-          <div class="project">
-            <h3 class="project-title">Doorway IDE <span class="project-meta">Development Tool</span></h3>
-            <p>Multiple models in one thread through their native CLI.</p>
-          </div>
-          <div class="project">
-            <h3 class="project-title">CEO Hunt <span class="project-meta">Startup Marketplace</span></h3>
-            <p>Marketplace platform connecting founders, investors, and operators.</p>
-          </div>
-          <div class="project">
-            <h3 class="project-title">Flow Pitch <span class="project-meta">Mobile</span></h3>
-            <p>Agents in your pockets.</p>
-          </div>
-          <div class="project">
-            <h3 class="project-title">DDSAS Platform <span class="project-meta">Data Platform</span></h3>
-            <p>Make your codebase production ready while you sleep.</p>
-          </div>
-        </div>
-      </section>
-
-      <section class="compact">
-        <h2 class="section-title">Technical Artifacts</h2>
-        <div class="item">
-          <p class="artifact-title">AETHER Architecture <span class="artifact-subtitle">Physics from Video</span></p>
-          <ul>
-            <li>Architecture for extracting exact physical parameters from mechanism videos.</li>
-            <li>Combines segmentation, tracking, kinematic discovery, differentiable simulation, and benchmark design.</li>
-          </ul>
-        </div>
-        <div class="item">
-          <p class="artifact-title">fConnect <span class="artifact-subtitle">E-Commerce Market Analysis</span></p>
-          <ul>
-            <li>A deeper look into the quick e-commerce market disruption of India.</li>
-            <li>Analysis of rapid delivery models and market dynamics.</li>
+            <li>Product links: <a href="https://delegators-client-site.vercel.app">Delegators</a>, <a href="https://delegators-workbench.vercel.app">Workbench</a>, <a href="https://doorway-ide.vercel.app/">Doorway</a>, <a href="https://ceohunt.vercel.app/">CEO Hunt</a>, <a href="https://flow-pitch.vercel.app/">Flow Pitch</a>, <a href="https://flow-ddsas.vercel.app/">DDSAS</a>, <a href="https://govinda-01.vercel.app">Portfolio</a></li>
+            <li>Authored student-facing applied AI learning material and programming exercises.</li>
+            <li>Built multiple MVPs and prototypes across mobile apps, dashboards, automation tools, and founder/operator workflows.</li>
+            <li>Eager to work with strong engineering teams, learn fast, take ownership, and contribute to product-quality systems.</li>
           </ul>
         </div>
       </section>
