@@ -66,7 +66,7 @@ export const RESUME = {
     {
       title: "Delegators",
       category: "AI Coding Platform",
-      description: "Pay-per-session coding-agent platform with OpenAI-compatible endpoints, short-lived session keys, quota controls, provider routing, admin surfaces, Workbench artifacts, and compatibility with tools like Claude Code, Codex-style clients, Cursor-like IDE flows, Cline, Continue, and Roo.",
+      description: "Pay-per-session platform for running AI coding tools with governed sessions. It issues short-lived keys for OpenAI-compatible clients, routes model providers, tracks quota/cost, and connects a public pricing site with a Workbench for generated artifacts.",
       tags: ["Go", "TypeScript", "Agents"],
       metric: "Coding tools → governed sessions",
       link: "https://delegators-client-site.vercel.app",
@@ -128,7 +128,7 @@ export const RESUME = {
     {
       title: "Delegators Client Site",
       category: "AI Coding Platform",
-      description: "Public product, pricing, docs, account, and purchase portal for Delegators.",
+      description: "Public product, pricing, docs, account, and purchase portal for Delegators coding-agent sessions.",
       tags: ["React", "Vite"],
       metric: "Live product site",
       link: "https://delegators-client-site.vercel.app",
@@ -138,7 +138,7 @@ export const RESUME = {
     {
       title: "Delegators Workbench",
       category: "Artifact Agent",
-      description: "Workbench for resumes, reports, decks, sheets, PDFs, and document workflows.",
+      description: "Artifact workspace connected to Delegators plans for resumes, reports, decks, sheets, PDFs, and document workflows.",
       tags: ["React", "Node"],
       metric: "Artifact workspace",
       link: "https://delegators-workbench.vercel.app",
@@ -172,16 +172,6 @@ export const RESUME = {
       tags: ["React", "Vite"],
       metric: "Mobile UI",
       link: "https://flow-pitch.vercel.app/",
-      image: "",
-      proof: "Live site"
-    },
-    {
-      title: "DDSAS Platform",
-      category: "Data platform",
-      description: "Make your codebase production ready while you sleep",
-      tags: ["React", "Vite"],
-      metric: "Data dashboard",
-      link: "https://flow-ddsas.vercel.app/",
       image: "",
       proof: "Live site"
     }

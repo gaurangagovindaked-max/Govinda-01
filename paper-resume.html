@@ -143,44 +143,33 @@
 
       .link-gold {
         color: #7a4d00;
-        background: #fff2b8;
-        border-radius: 3px;
-        padding: 0 3px;
+        background: linear-gradient(to top, #fff1a8 44%, transparent 44%);
+        border-bottom: 1px solid #d7b74c;
         font-weight: 700;
       }
 
       .products {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 4px 6px;
-        margin-top: 2px;
+        display: inline;
       }
 
-      .product-pill {
-        display: inline-block;
-        border: 1px solid #d7d7d7;
-        border-radius: 999px;
-        padding: 1px 7px;
-        font-size: 8.8pt;
+      .product-link {
+        display: inline;
+        padding: 0 2px;
+        border-bottom: 1px solid currentColor;
         font-weight: 700;
       }
 
-      .product-primary {
+      .tone-blue {
         color: #0645ad;
-        background: #eef5ff;
-        border-color: #b8d6ff;
       }
 
-      .product-creative {
+      .tone-pink {
         color: #b0005a;
-        background: #fff0f7;
-        border-color: #f4b8d8;
       }
 
-      .product-mobile {
+      .tone-gold {
         color: #7a4d00;
-        background: #fff3bf;
-        border-color: #efd36b;
+        background: linear-gradient(to top, #fff1a8 46%, transparent 46%);
       }
 
       @media screen {
@@ -214,7 +203,7 @@
       <section>
         <h2>Summary</h2>
         <p class="summary">
-          IIT Patna BS student and software engineer focused on AI-assisted developer tools, full-stack web systems, and practical automation. Built independent projects across coding agents, PR-review automation, personal workflow agents, video evaluation, and payment-metered coding infrastructure. Strongest in TypeScript/React, Node.js, Python, and shipping useful systems with teams.
+          IIT Patna BS student and product-minded software engineer focused on AI developer tools, automation agents, and full-stack systems. I build fast, keep scope honest, and ship usable products across coding-agent infrastructure, PR-review workflows, personal automation, video evaluation, and payment-metered AI tooling.
         </p>
       </section>
 
@@ -247,8 +236,8 @@
           <p class="sub">Full-stack, AI tooling, automation agents, and developer workflows</p>
           <ul>
             <li>Built and iterated production-shaped web applications, internal tools, and AI-assisted workflows across React, TypeScript, Node.js, Go, Python, and Electron.</li>
-            <li>Created AI agents for personal automation, coding workflows, PR review support, research assistance, and repetitive operational tasks.</li>
-            <li>Designed coding-agent infrastructure experiments covering session auth, quota control, provider routing, streaming APIs, admin dashboards, and usage metering.</li>
+            <li>Created AI agents for personal automation, coding workflows, PR-review support, research assistance, and repetitive operational tasks.</li>
+            <li>Designed coding-agent infrastructure covering session auth, quota control, provider routing, streaming APIs, admin dashboards, and usage metering.</li>
             <li>Created research-oriented prototypes for video evaluation, physics extraction from motion, and multi-agent literature/report workflows.</li>
             <li>Worked on education-facing technical content and practical programming exercises while teaching computing fundamentals.</li>
           </ul>
@@ -263,7 +252,7 @@
             <span class="meta">Go, TypeScript, PostgreSQL, Redis, Docker</span>
           </div>
           <ul>
-            <li>Built a pay-per-session coding-agent platform around an OpenAI-compatible API that can plug into common AI coding tools such as Claude Code, Codex-style clients, Cursor-like IDE flows, Cline, Continue, and Roo.</li>
+            <li>Built a pay-per-session coding-agent platform around an OpenAI-compatible API that can plug into Claude Code, Codex-style clients, Cursor-like IDE flows, Cline, Continue, and Roo.</li>
             <li>Worked across gateway logic, admin controls, client site, <a class="link-pink" href="https://delegators-workbench.vercel.app">Workbench</a> artifact flow, payment lifecycle, and pre-deployment verification scripts.</li>
           </ul>
         </div>
@@ -316,13 +305,13 @@
             <li>
               Live products:
               <span class="products">
-                <a class="product-pill product-primary" href="https://delegators-client-site.vercel.app">Delegators</a>
-                <a class="product-pill product-creative" href="https://delegators-workbench.vercel.app">Workbench</a>
-                <a class="product-pill product-mobile" href="https://doorway-ide.vercel.app/">Doorway</a>
-                <a class="product-pill product-creative" href="https://ceohunt.vercel.app/">CEO Hunt</a>
-                <a class="product-pill product-mobile" href="https://flow-pitch.vercel.app/">Flow Pitch</a>
-                <a class="product-pill product-primary" href="https://flow-ddsas.vercel.app/">DDSAS</a>
-                <a class="product-pill product-creative" href="https://govinda-01.vercel.app">Portfolio</a>
+                <a class="product-link tone-blue" href="https://delegators-client-site.vercel.app">Delegators</a> /
+                <a class="product-link tone-pink" href="https://delegators-client-site.vercel.app/workbench#plans">Plans</a> /
+                <a class="product-link tone-blue" href="https://delegators-workbench.vercel.app">Workbench</a> /
+                <a class="product-link tone-gold" href="https://doorway-ide.vercel.app/">Doorway</a> /
+                <a class="product-link tone-pink" href="https://ceohunt.vercel.app/">CEO Hunt</a> /
+                <a class="product-link tone-gold" href="https://flow-pitch.vercel.app/">Flow Pitch</a> /
+                <a class="product-link tone-pink" href="https://govinda-01.vercel.app">Portfolio</a>
               </span>
             </li>
             <li>Authored student-facing applied AI learning material and programming exercises.</li>
