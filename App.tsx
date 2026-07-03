@@ -53,11 +53,7 @@ function App() {
               >
                 <div className="flex flex-col mb-2">
                   <div className="flex items-baseline gap-2">
-                    <h3 className={`text-base font-semibold group-hover:underline ${
-                      project.title === 'Remote-os'
-                        ? 'text-[#147a3d] bg-[#dcfce7] px-1.5 py-0.5 rounded'
-                        : 'text-[#0969da]'
-                    }`}>
+                    <h3 className="text-base font-semibold text-[#0969da] group-hover:underline">
                         {project.title}
                     </h3>
                     <span className="text-xs text-zinc-500 font-mono tracking-tight">{project.category}</span>

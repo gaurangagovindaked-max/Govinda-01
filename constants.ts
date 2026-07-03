@@ -147,10 +147,10 @@ export const RESUME = {
     },
     {
       title: "Remote-os",
-      category: "Browser Linux Desktop",
-      description: "A webOS-style product for opening a remote Linux desktop from the browser, with a clean desktop shell, dock, file windows, terminal, and student-friendly access flow.",
-      tags: ["React", "Vite", "Linux"],
-      metric: "Phone/browser -> Linux desktop",
+      category: "WebOS Product Prototype",
+      description: "A Virtual OS product page built like a working desktop: wallpaper, dock, app windows, files, terminal, control center, and a clear message for student-friendly computer access.",
+      tags: ["React", "Vite", "UX"],
+      metric: "WebOS-style product demo",
       link: "https://virtual-os-iota.vercel.app",
       image: "",
       proof: "Live site"

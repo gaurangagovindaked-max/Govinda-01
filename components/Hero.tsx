@@ -19,6 +19,10 @@ export const Hero: React.FC = () => {
             LinkedIn
           </a>
           <span className="text-zinc-300">/</span>
+          <a href="/Govinda_Chauhan_Paper_Resume.pdf" target="_blank" rel="noopener noreferrer" className="text-[#0969da] hover:underline">
+            Resume
+          </a>
+          <span className="text-zinc-300">/</span>
           <a href={`mailto:${RESUME.header.email}`} className="text-[#0969da] hover:underline">
             {RESUME.header.email}
           </a>
