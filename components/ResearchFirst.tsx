@@ -94,15 +94,15 @@ export const ResearchFirst: React.FC = () => {
           </div>
         </aside>
 
-        <div className="min-w-0 w-full flex-1 px-3 py-10 sm:px-5 sm:py-12 md:px-10 md:py-16 lg:pr-12">
-          {/* Mobile nav */}
-          <div className="mb-8 flex flex-wrap gap-1.5 border-b border-stone-200 pb-4 md:hidden">
+        <div className="min-w-0 w-full flex-1 px-4 py-10 sm:px-5 sm:py-12 md:px-10 md:py-16 lg:pr-12">
+          {/* Mobile nav — full-width chips, easy taps */}
+          <div className="mb-8 -mx-1 flex gap-1.5 overflow-x-auto border-b border-stone-200 px-1 pb-4 scrollbar-none md:hidden">
             {NAV.map((n) => (
               <button
                 key={n.id}
                 type="button"
                 onClick={() => scrollTo(n.id)}
-                className={`rounded-full px-2.5 py-1 text-[11px] sm:px-3 sm:text-[12px] ${
+                className={`flex-shrink-0 rounded-full px-3 py-2 text-[12px] ${
                   active === n.id
                     ? 'bg-stone-900 text-stone-50'
                     : 'bg-stone-200/60 text-stone-600'

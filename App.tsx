@@ -52,17 +52,19 @@ function App() {
 
       <ProjectModal project={selectedProject} onClose={() => setSelectedProject(null)} />
 
-      {/* overflow-visible so the lanyard card is not clipped / no touch scrollbar */}
-      <div className="container mx-auto max-w-3xl overflow-visible px-4 pt-8 md:px-6">
+      {/* overflow-visible: do not clip the lanyard card */}
+      <div className="mx-auto w-full max-w-3xl overflow-visible px-3 pt-4 sm:px-4 sm:pt-6 md:px-6 md:pt-8">
         <Hero />
-        <motion.p
+        <motion.blockquote
           initial={{ opacity: 0, y: 8 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.1 }}
-          className="relative z-10 mx-auto mb-8 max-w-lg text-center text-[15px] font-semibold leading-relaxed text-stone-800"
+          className="relative z-0 mx-auto mb-10 max-w-md border-0 px-2 text-center sm:mb-12 sm:max-w-lg sm:px-4"
         >
-          {RESUME.worksLead}
-        </motion.p>
+          <p className="text-[14px] font-bold leading-[1.65] text-stone-900 sm:text-[15px] sm:leading-relaxed">
+            &ldquo;{RESUME.worksLead}&rdquo;
+          </p>
+        </motion.blockquote>
       </div>
 
       <ResearchFirst />
@@ -70,14 +72,16 @@ function App() {
       <GitHubSection repos={githubRepos} />
       <PapersEnd papers={RESUME.research} />
 
-      <footer className="bg-[#F5F2EC] px-4 py-8 text-center text-[13px] text-stone-500 sm:px-5 sm:py-10 sm:text-sm">
+      <footer className="flex flex-col items-center gap-1 bg-[#F5F2EC] px-4 py-8 text-center text-[13px] text-stone-500 sm:flex-row sm:justify-center sm:gap-2 sm:px-5 sm:py-10 sm:text-sm">
         <a
           href={`mailto:${RESUME.header.email}`}
           className="break-all text-stone-600 no-underline hover:text-stone-900"
         >
           {RESUME.header.email}
         </a>
-        <span className="mx-2 text-stone-300">·</span>
+        <span className="hidden text-stone-300 sm:inline" aria-hidden>
+          ·
+        </span>
         <span>{RESUME.header.location}</span>
       </footer>
     </div>
