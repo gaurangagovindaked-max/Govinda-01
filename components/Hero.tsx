@@ -3,27 +3,37 @@ import LanyardBadge from './LanyardBadge';
 import { RESUME } from '../constants';
 
 /**
- * LanyardBadge is not modified.
- * Mobile: tall reserved block so the hanging card cannot cover blue links.
+ * Do NOT edit LanyardBadge.
+ *
+ * The badge stage is shorter than the hanging card on mobile (scale 0.65–0.8),
+ * so links must start BELOW the computed card bottom (~500–610px), not the stage box.
  */
 export const Hero: React.FC = () => {
   return (
     <section className="relative mb-6 w-full overflow-visible sm:mb-8 md:mb-10">
       {/*
-        Lanyard stage heights: 440 / 540 / 650 / 700.
-        Reserve MORE than the stage so swinging card never overlaps links on phone.
+        Reserved height ≥ hanging card bottom (physics) + gap.
+        Phone (~0.65 scale): card bottom ≈ 500px
+        Large phone (~0.8 scale): card bottom ≈ 610px
+        Desktop (1.0 scale): card bottom ≈ 730px
       */}
       <div
         className="relative isolate w-full overflow-visible
-          min-h-[640px] sm:min-h-[680px] md:min-h-[760px] lg:min-h-[820px]"
+          min-h-[560px]
+          sm:min-h-[700px]
+          md:min-h-[780px]
+          lg:min-h-[800px]"
       >
         <LanyardBadge />
       </div>
 
-      {/* Hard separation — links always below reserved card zone */}
+      {/* Extra gap so blue links sit clearly under the card, never on it */}
       <div
-        className="relative z-0 mx-auto w-full max-w-2xl px-4 pt-4 text-center sm:pt-6"
-        style={{ marginTop: 0 }}
+        className="relative z-0 mx-auto w-full max-w-2xl px-4
+          mt-8 pt-2
+          sm:mt-10 sm:pt-4
+          md:mt-6
+          text-center"
       >
         <nav
           className="flex flex-wrap items-center justify-center gap-x-2.5 gap-y-2.5 text-[13px] font-medium sm:gap-x-3 sm:text-sm"
