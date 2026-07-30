@@ -32,6 +32,17 @@ export const Hero: React.FC = () => {
             /
           </span>
           <a
+            href="https://x.com/Doorway_harness"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-[#0969da] hover:underline"
+          >
+            X
+          </a>
+          <span className="select-none text-zinc-300" aria-hidden>
+            /
+          </span>
+          <a
             href="https://in.linkedin.com/in/govinda-flow"
             target="_blank"
             rel="noopener noreferrer"
