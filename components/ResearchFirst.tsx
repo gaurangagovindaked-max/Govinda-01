@@ -162,7 +162,18 @@ export const ResearchFirst: React.FC = () => {
                 rel="noopener noreferrer"
                 className="text-[#0969da] no-underline hover:underline"
               >
-                active-parameter-runtime
+                Site
+              </a>
+              <span className="text-stone-300" aria-hidden>
+                ·
+              </span>
+              <a
+                href="https://active-parameter-runtime.govindach-iitp.chatgpt.site/working-set-routing-paper.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-[#0969da] no-underline hover:underline"
+              >
+                Paper PDF
               </a>
               <span className="text-stone-300" aria-hidden>
                 ·

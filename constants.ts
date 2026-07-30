@@ -312,13 +312,22 @@ export const RESUME = {
 
   research: [
     {
-      title: 'Working-Set Routing',
-      subtitle: 'MoE lab · working paper',
+      title: 'Working-Set Routing — paper site',
+      subtitle: 'MoE lab · hosted paper',
       points: [
         'Memory-constrained MoE on free dual-T4 with sealed VRAM, throughput, and quality.',
+        'Open the long-hosted research site for the full write-up and notes.',
+      ],
+      link: 'https://active-parameter-runtime.govindach-iitp.chatgpt.site/',
+    },
+    {
+      title: 'Working-Set Routing — PDF',
+      subtitle: 'Working paper · PDF',
+      points: [
+        'PDF of Working-Set Routing for Memory-Constrained MoE Inference.',
         '53.7% VRAM cut, 1.08× suite TPS, ~80.7% quality on the best static run—honest misses included.',
       ],
-      link: 'https://github.com/GC-WORK11',
+      link: 'https://active-parameter-runtime.govindach-iitp.chatgpt.site/working-set-routing-paper.pdf',
     },
     {
       title: 'Applied AI Students Book',
@@ -409,8 +418,8 @@ export const RESUME = {
         'Exact page',
         'Seal q / V / t',
       ],
-      link: 'https://github.com/GC-WORK11',
-      linkLabel: 'Research notes',
+      link: 'https://active-parameter-runtime.govindach-iitp.chatgpt.site/',
+      linkLabel: 'Paper site',
     },
   ] as EditorialNote[],
 
