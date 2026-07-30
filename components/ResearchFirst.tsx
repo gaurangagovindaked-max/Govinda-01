@@ -154,37 +154,15 @@ export const ResearchFirst: React.FC = () => {
                 rel="noopener noreferrer"
                 className="inline-flex items-center rounded-full bg-stone-900 px-3.5 py-1.5 text-[13px] font-medium text-[#FAF8F5] no-underline transition hover:bg-stone-700"
               >
-                Paper site
-              </a>
-              <a
-                href="https://active-parameter-runtime.govindach-iitp.chatgpt.site/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-[#0969da] no-underline hover:underline"
-              >
                 Site
               </a>
-              <span className="text-stone-300" aria-hidden>
-                ·
-              </span>
               <a
                 href="https://active-parameter-runtime.govindach-iitp.chatgpt.site/working-set-routing-paper.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-[#0969da] no-underline hover:underline"
+                className="inline-flex items-center rounded-full bg-stone-900 px-3.5 py-1.5 text-[13px] font-medium text-[#FAF8F5] no-underline transition hover:bg-stone-700"
               >
-                Paper PDF
-              </a>
-              <span className="text-stone-300" aria-hidden>
-                ·
-              </span>
-              <a
-                href="/Govinda_Chauhan_ML_Systems_Resume.pdf"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-[#0969da] no-underline hover:underline"
-              >
-                Resume PDF
+                PDF
               </a>
             </p>
 
