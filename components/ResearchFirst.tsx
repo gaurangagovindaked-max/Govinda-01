@@ -107,11 +107,10 @@ export const ResearchFirst: React.FC = () => {
           >
             <p className="font-mono text-[11px] text-stone-400">01</p>
             <h2 className="mt-3 font-display text-[1.75rem] font-medium tracking-tight text-stone-900 sm:text-3xl md:text-4xl">
-              Research
+              Playing around compute
             </h2>
             <p className="mt-3 max-w-md text-[14px] leading-relaxed text-stone-600 sm:mt-4 sm:text-[15px]">
-              What I am learning through research — free dual-T4 labs and architecture I
-              can still explain.
+              Paper notes from free dual-T4 labs and architecture I can still explain.
             </p>
           </motion.header>
 
