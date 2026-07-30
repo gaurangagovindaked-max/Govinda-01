@@ -16,7 +16,7 @@ export const RESUME = {
 
   /** Short lead under the card — simple student story, not a sales pitch. */
   worksLead:
-    'Just a computer science student. It all started with the terminal, networks, and Linux, then languages. After that I found agents, and it is astonishing to me how machines think. I am leaning towards machine and inference learning.',
+    'A computer science student. It all started with the terminal, networks, and Linux, then languages. After that I found agents, and it is astonishing to me how machines think. Now I am all in towards machine and inference learning.',
 
   languages: [
     'Python',
