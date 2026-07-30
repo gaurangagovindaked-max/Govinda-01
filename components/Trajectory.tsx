@@ -40,18 +40,18 @@ export const Trajectory: React.FC<TrajectoryProps> = ({ education, experience })
         className="flex flex-col md:flex-row gap-4 md:gap-8 items-start"
       >
         <div className="md:w-32 flex-shrink-0">
-          <span className="text-sm font-semibold text-zinc-500 uppercase tracking-wider">
+          <span className="text-sm font-semibold text-stone-500 uppercase tracking-wider">
             {education.batch}
           </span>
         </div>
         <div className="flex flex-col">
-          <h3 className="text-xl font-bold text-zinc-900">
+          <h3 className="text-xl font-bold text-stone-900">
             {education.institute}
           </h3>
-          <p className="text-base text-zinc-700 mb-2">
+          <p className="text-base text-stone-700 mb-2">
             {education.degree}
           </p>
-          <p className="text-sm text-zinc-600">
+          <p className="text-sm text-stone-600">
             {education.details}
           </p>
         </div>
@@ -68,18 +68,18 @@ export const Trajectory: React.FC<TrajectoryProps> = ({ education, experience })
           className="flex flex-col md:flex-row gap-4 md:gap-8 items-start"
         >
           <div className="md:w-32 flex-shrink-0">
-            <span className="text-sm font-semibold text-zinc-500 uppercase tracking-wider">
+            <span className="text-sm font-semibold text-stone-500 uppercase tracking-wider">
               {exp.duration}
             </span>
           </div>
           <div className="flex flex-col">
-            <h3 className="text-xl font-bold text-zinc-900">
-              {exp.role} <span className="font-normal text-zinc-500">@ {exp.company}</span>
+            <h3 className="text-xl font-bold text-stone-900">
+              {exp.role} <span className="font-normal text-stone-500">@ {exp.company}</span>
             </h3>
-            <p className="text-base text-zinc-700 mt-2 mb-4">
+            <p className="text-base text-stone-700 mt-2 mb-4">
               {exp.description}
             </p>
-            <ul className="list-disc list-inside text-sm text-zinc-600 space-y-1">
+            <ul className="list-disc list-inside text-sm text-stone-600 space-y-1">
               {exp.points.map((pt, i) => (
                 <li key={i}>{pt}</li>
               ))}
@@ -94,14 +94,14 @@ export const Trajectory: React.FC<TrajectoryProps> = ({ education, experience })
                   {exp.attachmentLabel || "View Attachment"}
                 </button>
                 
-                <span className="text-zinc-300">|</span>
+                <span className="text-stone-300">|</span>
                 
                 <a 
                   href={exp.attachment} 
                   target="_blank" 
                   rel="noopener noreferrer" 
                   download
-                  className="flex items-center gap-1.5 text-sm text-zinc-500 hover:text-zinc-900 transition-colors"
+                  className="flex items-center gap-1.5 text-sm text-stone-500 hover:text-stone-900 transition-colors"
                   title="Download File"
                 >
                   <Download size={16} />

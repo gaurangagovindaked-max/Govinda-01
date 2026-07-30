@@ -1,0 +1,22 @@
+/* 21st.dev — my gradient / Ribbon Field (verbatim snippet) */
+.ribbon-field-gradient {
+  /* CSS approximation: the curved stripe field, the bitmap grain texture require canvas. Export an image for the exact result. */
+  background-color: #1D62D7;
+  background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='120' height='120'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)' opacity='0.500'/></svg>"),
+    radial-gradient(circle at 50% 50%, rgba(0, 0, 0, 0) 52%, rgba(0, 0, 0, 0.32000000000000006) 100%),
+    linear-gradient(
+      135deg,
+      #1D62D7 0.91%,
+      #1D62D7 42.59%,
+      #C3CFEA 43.89%,
+      #C3CFEA 48.11%,
+      #3CC1F6 48.89%,
+      #3CC1F6 56.11%,
+      #1839A7 58.19%,
+      #1839A7 79.81%,
+      #1E788A 81.5%,
+      #1E788A 100%
+    );
+  background-size: 120px 120px, auto, auto;
+  background-blend-mode: overlay, normal, normal;
+}

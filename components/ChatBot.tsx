@@ -50,7 +50,7 @@ export const ChatBot: React.FC<ChatBotProps> = ({ theme }) => {
       const buffer = 300;
 
       if (scrollY > contactSection - buffer) {
-        setThoughtBubble("Hire him! He's amazing! 🚀");
+        setThoughtBubble("Solid systems work.");
       } else if (scrollY > researchSection - buffer) {
         setThoughtBubble("He reads a lot of papers. 📚");
       } else if (scrollY > experienceSection - buffer) {

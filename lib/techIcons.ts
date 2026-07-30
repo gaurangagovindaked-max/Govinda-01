@@ -1,0 +1,55 @@
+/** Map stack labels → official SVG/PNG under /assets/ */
+
+const ICON: Record<string, string> = {
+  typescript: 'typescript.svg',
+  react: 'reactnative.svg',
+  'react native': 'reactnative.svg',
+  vite: 'vite.svg',
+  'node.js': 'nodedotjs.svg',
+  nodejs: 'nodedotjs.svg',
+  node: 'nodedotjs.svg',
+  backend: 'nodedotjs.svg',
+  api: 'nodedotjs.svg',
+  'next.js': 'nextdotjs.svg',
+  next: 'nextdotjs.svg',
+  python: 'python.svg',
+  rust: 'rust.svg',
+  go: 'go.svg',
+  golang: 'go.svg',
+  electron: 'electron.svg',
+  flutter: 'flutter.svg',
+  docker: 'docker.svg',
+  supabase: 'supabase.svg',
+  postgresql: 'postgresql.svg',
+  postgres: 'postgresql.svg',
+  cloudflare: 'cloudflare.svg',
+  ubuntu: 'ubuntu.svg',
+  bun: 'bun.svg',
+  pnpm: 'pnpm.svg',
+  convex: 'convex.svg',
+  claude: 'claude-code (1).svg',
+  codex: 'codex.svg',
+  cursor: 'codex.svg',
+  pi: 'pi-coding-agent.png',
+  'hermes agent': 'hermesagent.webp',
+  hermes: 'hermesagent.webp',
+  sessions: 'typescript.svg',
+  ux: 'reactnative.svg',
+  agents: 'claude-code (1).svg',
+  git: 'codex.svg',
+  evals: 'python.svg',
+  video: 'python.svg',
+  cli: 'ubuntu.svg',
+  mcp: 'rust.svg',
+  security: 'rust.svg',
+  research: 'python.svg',
+  vision: 'python.svg',
+  simulation: 'python.svg',
+  artifacts: 'reactnative.svg',
+};
+
+export function techIconSrc(label: string): string | undefined {
+  const key = label.trim().toLowerCase();
+  const file = ICON[key];
+  return file ? `/assets/${file}` : undefined;
+}
