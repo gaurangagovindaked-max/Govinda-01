@@ -95,23 +95,7 @@ export const ResearchFirst: React.FC = () => {
         </aside>
 
         <div className="min-w-0 w-full flex-1 px-4 py-10 sm:px-5 sm:py-12 md:px-10 md:py-16 lg:pr-12">
-          {/* Mobile nav — full-width chips, easy taps */}
-          <div className="mb-8 -mx-1 flex gap-1.5 overflow-x-auto border-b border-stone-200 px-1 pb-4 scrollbar-none md:hidden">
-            {NAV.map((n) => (
-              <button
-                key={n.id}
-                type="button"
-                onClick={() => scrollTo(n.id)}
-                className={`flex-shrink-0 rounded-full px-3 py-2 text-[12px] ${
-                  active === n.id
-                    ? 'bg-stone-900 text-stone-50'
-                    : 'bg-stone-200/60 text-stone-600'
-                }`}
-              >
-                {n.label}
-              </button>
-            ))}
-          </div>
+          {/* Mobile: no Overview / Working-Set / Figures / AETHER chips — desktop sidebar only */}
 
           <motion.header
             id="research-overview"
