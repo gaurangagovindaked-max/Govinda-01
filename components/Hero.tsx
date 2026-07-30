@@ -3,26 +3,28 @@ import LanyardBadge from './LanyardBadge';
 import { RESUME } from '../constants';
 
 /**
- * LanyardBadge file is not edited.
- * Mobile: reserve height under the stage so GitHub / X / LinkedIn / Resume
- * never sit on top of the hanging card.
+ * LanyardBadge is not modified.
+ * Mobile: tall reserved block so the hanging card cannot cover blue links.
  */
 export const Hero: React.FC = () => {
   return (
-    <section className="relative mb-4 w-full overflow-visible sm:mb-8 md:mb-10">
+    <section className="relative mb-6 w-full overflow-visible sm:mb-8 md:mb-10">
       {/*
-        Stage heights inside LanyardBadge: 440 / 540 / 650 / 700.
-        Extra reserved space = room for hang + links gap (not overlapping).
+        Lanyard stage heights: 440 / 540 / 650 / 700.
+        Reserve MORE than the stage so swinging card never overlaps links on phone.
       */}
       <div
-        className="relative w-full overflow-visible
-          min-h-[520px] sm:min-h-[600px] md:min-h-[700px] lg:min-h-[760px]"
+        className="relative isolate w-full overflow-visible
+          min-h-[640px] sm:min-h-[680px] md:min-h-[760px] lg:min-h-[820px]"
       >
         <LanyardBadge />
       </div>
 
-      {/* Explicit gap so blue links always start below the card area */}
-      <div className="relative z-0 mx-auto mt-2 max-w-2xl px-4 pt-2 text-center sm:mt-4 sm:pt-4">
+      {/* Hard separation — links always below reserved card zone */}
+      <div
+        className="relative z-0 mx-auto w-full max-w-2xl px-4 pt-4 text-center sm:pt-6"
+        style={{ marginTop: 0 }}
+      >
         <nav
           className="flex flex-wrap items-center justify-center gap-x-2.5 gap-y-2.5 text-[13px] font-medium sm:gap-x-3 sm:text-sm"
           aria-label="Profile links"
