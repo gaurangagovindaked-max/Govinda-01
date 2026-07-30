@@ -278,7 +278,7 @@ export const RESUME = {
       venue: 'Working paper · 2× Tesla T4 · measured 6.78B OLMoE parent',
       summary:
         'Expert retention, 64-to-32 fusion, router recovery, and exact paging. Strongest static run: 53.7% less allocated VRAM, 1.08× suite throughput, 80.7% of an exploratory within-run quality score. Static removal hurt behavior; exact paging stayed exact but transfer-bound—now guiding a confidence-aware ActiveSet design.',
-      link: 'https://github.com/GC-WORK11',
+      link: 'https://active-parameter-runtime.govindach-iitp.chatgpt.site/',
       kind: 'lab-notes',
     },
     {

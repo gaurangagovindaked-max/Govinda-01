@@ -147,16 +147,26 @@ export const ResearchFirst: React.FC = () => {
               </p>
             </div>
 
-            <p className="mt-6 flex flex-wrap gap-x-4 gap-y-2 text-[13px]">
+            <p className="mt-6 flex flex-wrap items-center gap-x-3 gap-y-2 text-[13px]">
               <a
-                href="https://github.com/GC-WORK11"
+                href="https://active-parameter-runtime.govindach-iitp.chatgpt.site/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center rounded-full bg-stone-900 px-3.5 py-1.5 text-[13px] font-medium text-[#FAF8F5] no-underline transition hover:bg-stone-700"
+              >
+                Paper site
+              </a>
+              <a
+                href="https://active-parameter-runtime.govindach-iitp.chatgpt.site/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-[#0969da] no-underline hover:underline"
               >
-                Research note
+                active-parameter-runtime
               </a>
-              <span className="text-stone-300">·</span>
+              <span className="text-stone-300" aria-hidden>
+                ·
+              </span>
               <a
                 href="/Govinda_Chauhan_ML_Systems_Resume.pdf"
                 target="_blank"
