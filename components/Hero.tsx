@@ -73,7 +73,7 @@ export const Hero: React.FC = () => {
             /
           </span>
           <a
-            href="/Govinda_Chauhan_Paper_Resume.pdf"
+            href="/Govinda_Chauhan_ML_Systems_Resume.pdf"
             target="_blank"
             rel="noopener noreferrer"
             className="text-[#0969da] hover:underline"

@@ -17,7 +17,7 @@ const assert = (c, m) => {
   } else console.log('OK:', m);
 };
 
-assert(hash('components/Hero.tsx') === '9564bea1c22eb3d561c59e88801e1ddd', 'Hero frozen');
+assert(hash('components/Hero.tsx') === '8eb30331d555704860f4c0459fd1840f', 'Hero frozen');
 assert(hash('components/LanyardBadge.tsx') === '7339748fd63b44f766745a976d2655dd', 'Lanyard frozen');
 
 const app = readFileSync(join(ROOT, 'App.tsx'), 'utf8');

@@ -67,7 +67,6 @@ export const RESUME = {
         'I teach fundamentals through projects and write long-form curricula when the notes have to stand alone.',
       points: [
         'Student-facing applied-computing material and programming exercises.',
-        'The OG Roadmap · The Complete Book: six-part inference-engineering curriculum with a 157-item implementation gauntlet.',
         'Applied AI materials for students learning logic, programming, and judgment.',
       ],
       attachment: '/Applied-AI-Students.pdf',
@@ -153,17 +152,6 @@ export const RESUME = {
       link: 'https://github.com/GC-WORK11/kairo',
       image: 'https://opengraph.githubassets.com/govinda-kairo/GC-WORK11/kairo',
       proof: 'Core + MCP',
-    },
-    {
-      title: 'The OG Roadmap',
-      category: 'Inference curriculum',
-      description:
-        'Six-part self-directed inference-engineering curriculum with a 157-item implementation gauntlet: mathematics, PyTorch, serving, C++ systems, CUDA/Triton, evaluation, and contribution.',
-      tags: ['Education', 'CUDA', 'Serving'],
-      metric: '157-item gauntlet',
-      link: 'https://github.com/GC-WORK11',
-      image: '',
-      proof: 'Curriculum',
     },
   ] as Project[],
 
