@@ -59,7 +59,7 @@ const LayerSplit: React.FC = () => {
   const barW = w - 8;
   const hostShare = 0.36;
   return (
-    <figure className="rounded-2xl bg-white/80 p-6 shadow-sm ring-1 ring-stone-200/60">
+    <figure className="rounded-2xl bg-white/80 p-4 shadow-sm ring-1 ring-stone-200/60 sm:p-6">
       <figcaption className="mb-4 text-xs font-medium uppercase tracking-[0.14em] text-stone-400">
         Fig. 1 — One model, two machines
       </figcaption>
@@ -133,7 +133,7 @@ const TokenTimeline: React.FC = () => {
   const area = `${line} L${x(n - 1).toFixed(1)},${y(0)} L${x(0).toFixed(1)},${y(0)} Z`;
 
   return (
-    <figure className="rounded-2xl bg-white/80 p-6 shadow-sm ring-1 ring-stone-200/60">
+    <figure className="rounded-2xl bg-white/80 p-4 shadow-sm ring-1 ring-stone-200/60 sm:p-6">
       <figcaption className="mb-4 text-xs font-medium uppercase tracking-[0.14em] text-stone-400">
         Fig. 2 — Per-token decode time across the WAN leg
       </figcaption>
@@ -158,6 +158,9 @@ const TokenTimeline: React.FC = () => {
         />
         <text x={pl + 4} y={y(STEADY_MEAN_MS) - 4} fill="#1839A7" fontSize={9.5} opacity={0.8}>
           steady mean 54 ms
+        </text>
+        <text x={w - pr - 2} y={pt + 10} textAnchor="end" fill="#a8a29e" fontSize={8.5}>
+          cold start
         </text>
         <motion.path
           d={area}
@@ -209,7 +212,7 @@ const RamBudget: React.FC = () => {
   const ownerKeep = total - donatable;
 
   return (
-    <figure className="rounded-2xl bg-white/80 p-6 shadow-sm ring-1 ring-stone-200/60">
+    <figure className="rounded-2xl bg-white/80 p-4 shadow-sm ring-1 ring-stone-200/60 sm:p-6">
       <figcaption className="mb-4 text-xs font-medium uppercase tracking-[0.14em] text-stone-400">
         Fig. 3 — Who owns the volunteer’s RAM
       </figcaption>
@@ -282,7 +285,7 @@ const OverlapBars: React.FC = () => {
   const barH = 92;
 
   return (
-    <figure className="rounded-2xl bg-white/80 p-6 shadow-sm ring-1 ring-stone-200/60">
+    <figure className="rounded-2xl bg-white/80 p-4 shadow-sm ring-1 ring-stone-200/60 sm:p-6">
       <figcaption className="mb-4 text-xs font-medium uppercase tracking-[0.14em] text-stone-400">
         Fig. 4 — Overlapping transfer with compute, on real network emulation
       </figcaption>
@@ -407,97 +410,13 @@ const PriorArtMatrix: React.FC = () => {
 /* Section                                                             */
 /* ------------------------------------------------------------------ */
 
-const NAV = [
-  { id: 'ent-overview', label: 'Ent' },
-  { id: 'ent-gold', label: 'The next gold' },
-  { id: 'ent-problem', label: 'The problem' },
-  { id: 'ent-trial', label: 'The trial' },
-  { id: 'ent-figures', label: 'Figures' },
-  { id: 'ent-claim', label: 'What’s new' },
-  { id: 'ent-limits', label: 'Limits' },
-  { id: 'research-overview', label: 'Papers' },
-  { id: 'research-moe', label: 'Working-Set' },
-  { id: 'research-charts', label: 'T4 figures' },
-  { id: 'research-aether', label: 'AETHER' },
-];
 
 export const EntSection: React.FC = () => {
   const E = RESUME.ent;
-  const [active, setActive] = useState(NAV[0].id);
-
-  useEffect(() => {
-    const ids = NAV.map((n) => n.id);
-    const onScroll = () => {
-      const marker = 140;
-      let current = ids[0];
-      for (const id of ids) {
-        const el = document.getElementById(id);
-        if (!el) continue;
-        if (el.getBoundingClientRect().top - marker <= 0) current = id;
-      }
-      setActive(current);
-    };
-    onScroll();
-    window.addEventListener('scroll', onScroll, { passive: true });
-    window.addEventListener('resize', onScroll);
-    return () => {
-      window.removeEventListener('scroll', onScroll);
-      window.removeEventListener('resize', onScroll);
-    };
-  }, []);
-
-  const scrollTo = (id: string) => {
-    setActive(id);
-    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-  };
 
   return (
-    <section
-      id="ent"
-      aria-label="Ent — pooled inference over untrusted laptops"
-      className="relative border-y border-stone-200/70 bg-[#FAF8F5]"
-    >
-      <div className="mx-auto flex w-full max-w-5xl items-start">
-        {/* Shared sidebar — desktop only, spans Ent + the papers below */}
-        <aside className="hidden w-40 flex-shrink-0 self-stretch md:block lg:w-44">
-          <div className="sticky top-16 max-h-[calc(100vh-5rem)] overflow-y-auto py-14 pl-4 pr-2 lg:pl-5">
-            <p className="mb-5 text-[10px] font-medium uppercase tracking-[0.2em] text-stone-400">
-              Research
-            </p>
-            <nav className="relative flex flex-col border-l border-stone-300/90">
-              {NAV.map((n) => {
-                const on = active === n.id;
-                return (
-                  <button
-                    key={n.id}
-                    type="button"
-                    onClick={() => scrollTo(n.id)}
-                    className="relative py-2.5 pl-4 text-left text-[13px] transition-colors duration-200"
-                  >
-                    <span
-                      className={`absolute left-[-1px] top-2 bottom-2 w-[2px] rounded-full transition-colors duration-200 ${
-                        on ? 'bg-stone-900' : 'bg-transparent'
-                      }`}
-                      aria-hidden
-                    />
-                    <span
-                      className={
-                        on
-                          ? 'font-medium text-stone-900'
-                          : 'text-stone-500 hover:text-stone-800'
-                      }
-                    >
-                      {n.label}
-                    </span>
-                  </button>
-                );
-              })}
-            </nav>
-          </div>
-        </aside>
-
-        <div className="min-w-0 w-full flex-1 px-4 py-10 sm:px-5 sm:py-12 md:px-10 md:py-16 lg:pr-12">
-          {/* header */}
+    <div className="px-4 py-10 sm:px-5 sm:py-12 md:px-10 md:py-16 lg:pr-12">
+{/* header */}
           <motion.header
             id="ent-overview"
             initial={{ opacity: 0, y: 12 }}
@@ -626,7 +545,7 @@ export const EntSection: React.FC = () => {
 
             {/* stat strip */}
             <div className="mt-8 rounded-2xl bg-white/80 p-6 shadow-sm ring-1 ring-stone-200/60 sm:p-8">
-              <div className="grid grid-cols-2 gap-x-6 gap-y-5 sm:grid-cols-3">
+              <div className="grid grid-cols-2 gap-x-4 gap-y-4 min-[420px]:gap-x-6 sm:grid-cols-3 sm:gap-y-5">
                 {E.stats.map((s) => (
                   <div key={s.k}>
                     <p className="font-mono text-xl font-medium text-stone-900 sm:text-2xl">{s.v}</p>
@@ -745,8 +664,6 @@ export const EntSection: React.FC = () => {
             </ul>
             <p className="mt-6 font-mono text-[11px] leading-relaxed text-stone-400">{E.footer}</p>
           </motion.article>
-        </div>
-      </div>
-    </section>
+    </div>
   );
 };

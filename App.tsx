@@ -5,6 +5,7 @@ import { LoadingScreen } from './components/LoadingScreen';
 import { RESUME } from './constants';
 import { Hero } from './components/Hero';
 import { EntSection } from './components/EntSection';
+import { ResearchSurface } from './components/ResearchSurface';
 import { ProjectModal } from './components/ProjectModal';
 import { ResearchFirst } from './components/ResearchFirst';
 import { ProductShowcase } from './components/ProductShowcase';
@@ -68,8 +69,10 @@ function App() {
         </motion.blockquote>
       </div>
 
-      <EntSection />
-      <ResearchFirst />
+      <ResearchSurface>
+        <EntSection />
+        <ResearchFirst />
+      </ResearchSurface>
       <ProductShowcase products={products} onExpand={setSelectedProject} />
       <GitHubSection repos={githubRepos} />
       <PapersEnd papers={RESUME.research} />

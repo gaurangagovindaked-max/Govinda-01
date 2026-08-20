@@ -430,7 +430,7 @@ export const RESUME = {
     kicker: '00 · flagship system · private build',
     headline: 'Why is everybody talking about inference?',
     subhead:
-      'Strip away the hype and AI software is one thing: turning electricity and silicon into tokens. Tokens are the unit every product pays in. This is the story of why that makes compute the next gold — and what happens when you make a machine that mints it out of laptops people already own.',
+      'Strip away the hype and AI software is one thing: turning electricity and silicon into tokens. Every product, every agent, every search pays in them. This is the story of why that makes compute the next gold — and of the machine I built that mints it out of laptops people already own.',
 
     gold: {
       title: 'Compute is the next gold',
