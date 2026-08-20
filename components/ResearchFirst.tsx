@@ -1,101 +1,30 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
 import { PipelineDiagram } from './PipelineDiagram';
 import { ResearchCharts } from './ResearchCharts';
 import { RESUME } from '../constants';
 
-const NAV = [
-  { id: 'research-overview', label: 'Overview' },
-  { id: 'research-moe', label: 'Working-Set' },
-  { id: 'research-charts', label: 'Figures' },
-  { id: 'research-aether', label: 'AETHER' },
-];
-
 /**
- * Research section with a sticky-in-section sidebar that tracks scroll.
- * Sidebar stays visible while you move through research; active item updates.
+ * Research section — papers after Ent.
+ *
+ * The shared sticky sidebar lives in EntSection and tracks BOTH the Ent
+ * anchors and the research anchors below (research-overview … aether), so
+ * this component renders the content column only, matching the layout the
+ * sidebar reserves (max-w-5xl, same paddings).
  */
 export const ResearchFirst: React.FC = () => {
   const aether = RESUME.editorialNotes.find((n) => n.id === 'aether-pipeline');
-  const [active, setActive] = useState(NAV[0].id);
-  const sectionRef = useRef<HTMLElement>(null);
-
-  useEffect(() => {
-    const ids = NAV.map((n) => n.id);
-
-    const onScroll = () => {
-      const marker = 140; // px from top of viewport
-      let current = ids[0];
-      for (const id of ids) {
-        const el = document.getElementById(id);
-        if (!el) continue;
-        const top = el.getBoundingClientRect().top;
-        if (top - marker <= 0) current = id;
-      }
-      setActive(current);
-    };
-
-    onScroll();
-    window.addEventListener('scroll', onScroll, { passive: true });
-    window.addEventListener('resize', onScroll, { passive: true });
-    return () => {
-      window.removeEventListener('scroll', onScroll);
-      window.removeEventListener('resize', onScroll);
-    };
-  }, []);
-
-  const scrollTo = (id: string) => {
-    setActive(id);
-    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-  };
 
   return (
     <section
-      ref={sectionRef}
       id="research"
       className="relative border-y border-stone-200/70 bg-[#FAF8F5]"
     >
-      <div className="mx-auto flex w-full max-w-5xl items-start">
-        {/* Sidebar: desktop only — sticky while research is on screen */}
-        <aside className="hidden w-40 flex-shrink-0 self-stretch md:block lg:w-44">
-          <div className="sticky top-16 max-h-[calc(100vh-5rem)] overflow-y-auto py-14 pl-4 pr-2 lg:pl-5">
-            <p className="mb-5 text-[10px] font-medium uppercase tracking-[0.2em] text-stone-400">
-              Research
-            </p>
-            <nav className="relative flex flex-col border-l border-stone-300/90">
-              {NAV.map((n) => {
-                const on = active === n.id;
-                return (
-                  <button
-                    key={n.id}
-                    type="button"
-                    onClick={() => scrollTo(n.id)}
-                    className="relative py-2.5 pl-4 text-left text-[13px] transition-colors duration-200"
-                  >
-                    <span
-                      className={`absolute left-[-1px] top-2 bottom-2 w-[2px] rounded-full transition-colors duration-200 ${
-                        on ? 'bg-stone-900' : 'bg-transparent'
-                      }`}
-                      aria-hidden
-                    />
-                    <span
-                      className={
-                        on
-                          ? 'font-medium text-stone-900'
-                          : 'text-stone-500 hover:text-stone-800'
-                      }
-                    >
-                      {n.label}
-                    </span>
-                  </button>
-                );
-              })}
-            </nav>
-          </div>
-        </aside>
-
-        <div className="min-w-0 w-full flex-1 px-4 py-10 sm:px-5 sm:py-12 md:px-10 md:py-16 lg:pr-12">
-          {/* Mobile: no Overview / Working-Set / Figures / AETHER chips — desktop sidebar only */}
+      <div className="mx-auto w-full max-w-5xl">
+        <div className="min-w-0 w-full flex-1 px-4 py-10 sm:px-5 sm:py-12 md:px-10 md:py-16 lg:pr-12 md:pl-[11.5rem] lg:pl-[12.5rem]">
+          {/* spacer keeps the column aligned with the Ent column when the
+              sidebar is hidden on mobile — the padding mirrors the sidebar
+              width on md+ only */}
 
           <motion.header
             id="research-overview"
@@ -105,7 +34,7 @@ export const ResearchFirst: React.FC = () => {
             transition={{ duration: 0.45 }}
             className="mb-10 scroll-mt-20 border-b border-stone-300/70 pb-8 sm:mb-14 sm:scroll-mt-24 sm:pb-10"
           >
-            <p className="font-mono text-[11px] text-stone-400">01</p>
+            <p className="font-mono text-[11px] text-stone-400">02</p>
             <h2 className="mt-3 font-display text-[1.75rem] font-medium tracking-tight text-stone-900 sm:text-3xl md:text-4xl">
               Playing around compute
             </h2>

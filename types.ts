@@ -53,3 +53,23 @@ export interface StripCard {
   link?: string;
   project?: Project;
 }
+
+/** The Ent flagship — narrative copy and measured numbers live in constants.ts. */
+export interface EntStat {
+  v: string;
+  k: string;
+}
+
+export interface EntCeremonyStep {
+  step: string;
+  line: string;
+}
+
+export interface EntReceipt {
+  name: string;
+  body: string;
+}
+
+export interface EntLimit {
+  text: string;
+}

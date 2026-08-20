@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import { LoadingScreen } from './components/LoadingScreen';
 import { RESUME } from './constants';
 import { Hero } from './components/Hero';
+import { EntSection } from './components/EntSection';
 import { ProjectModal } from './components/ProjectModal';
 import { ResearchFirst } from './components/ResearchFirst';
 import { ProductShowcase } from './components/ProductShowcase';
@@ -67,6 +68,7 @@ function App() {
         </motion.blockquote>
       </div>
 
+      <EntSection />
       <ResearchFirst />
       <ProductShowcase products={products} onExpand={setSelectedProject} />
       <GitHubSection repos={githubRepos} />

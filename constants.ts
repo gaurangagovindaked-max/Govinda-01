@@ -1,5 +1,8 @@
 import type {
   EditorialNote,
+  EntCeremonyStep,
+  EntReceipt,
+  EntStat,
   Project,
   Publication,
   ResearchItem,
@@ -416,6 +419,123 @@ export const RESUME = {
     tagline: 'Student · learning in public.',
     description:
       'Networks and Linux first, then code and small tools, then agents—and now machine learning and inference. Still a student; still learning.',
+  },
+
+  /**
+   * ENT — the flagship system. Every sentence and number here is measured
+   * and traceable to the trial logs (Rules.prd R10: no invented numbers).
+   * Copy lives in this file so the component stays pure presentation.
+   */
+  ent: {
+    kicker: '00 · flagship system · private build',
+    headline: 'Why is everybody talking about inference?',
+    subhead:
+      'Strip away the hype and AI software is one thing: turning electricity and silicon into tokens. Tokens are the unit every product pays in. This is the story of why that makes compute the next gold — and what happens when you make a machine that mints it out of laptops people already own.',
+
+    gold: {
+      title: 'Compute is the next gold',
+      beats: [
+        'Every AI product — every chat, every agent, every search — pays for its existence in tokens. Tokens are made in exactly one way: GPUs and servers running the model. When a whole economy pays in one commodity, the commodity becomes a currency. That is what inference is now: the currency of AI.',
+        'Currencies concentrate. The weights of the best open models are free to download — frontier-scale, improving every month — but running them takes datacenter hardware that a handful of companies own. Open weights, closed compute. You can own the recipe and still not be allowed to cook.',
+        'Like every gold, there is a reserve nobody is counting. The largest pool of computing power on the planet is not in a datacenter — it is laptops. Millions of them, idle most of the day, already paid for, plugged into wall power and home Wi-Fi. They are scattered, they are small, and above all: they do not trust each other.',
+        'This is the page where the story of that reserve begins. Ent is my attempt to unlock it — a runtime that turns untrusted laptops into one temporary, encrypted computer, big enough to run an open model no single laptop can hold.',
+      ] as string[],
+    },
+
+    problem: {
+      title: 'The problem',
+      paras: [
+        'The models are open now — anyone can download frontier-scale weights. But a laptop holds 8–16 GB, and the models that matter are 60–200 GB. So the only way to actually run them is rented datacenter hardware, metered by the hour.',
+        'Meanwhile the largest pool of computing power on the planet sits idle in laptops people already own. Those machines could hold the model together. They can’t team up today for one reason: trust. Nobody’s laptop should run a stranger’s code, and no stranger should be able to poison the computation.',
+      ],
+    },
+
+    catch: {
+      title: 'The catch',
+      paras: [
+        'Solving bandwidth alone is a solved problem. The hard part is that the machines volunteering their hardware are strangers to each other — a volunteer can crash, lie about its hardware, or quietly return wrong numbers, and a hostile host could try to read the volunteer’s machine.',
+        'Every prior system dodged this by trusting its participants. Petals pools machines but is explicit that it cannot run untrusted code. llama.cpp ships the RPC plumbing with no trust layer at all. Nobody shipped the whole stack — because each layer is its own engineering project.',
+      ],
+    },
+
+    idea: {
+      title: 'The idea',
+      paras: [
+        'Ent treats trust as the product. A ten-law constitution (R1–R10) governs every session: the volunteer’s compute lives in a sandbox that touches nothing on disk; nothing persists after the session ends — the scratch space is a tmpfs that dies with the process, so the wipe is true by construction, not by cleanup.',
+        'Consent and ownership are enforced, not promised: never more than 60% of a volunteer’s RAM is donated, a local thermal governor can throttle or walk away even against the host’s wishes, and one button ends everything. Every join generates a fresh cryptographic identity, and the volunteer’s hardware report is signed — lying about your machine is detectable.',
+        'On top of that trust floor, pooled inference runs the way pipelines should: layer ranges are assigned by measured capability, activations are double-buffered so transfer overlaps compute, and every token is validated. About 23,000 lines of Rust across nine crates, and a gate that refuses to merge a single “TODO”.',
+      ],
+    },
+
+    trialIntro: {
+      title: 'The trial',
+      lead: 'Two laptops, two different home networks, the open internet between them. The volunteer machine was a stock Windows 10 laptop whose hardware nobody had told the host — it measured itself.',
+    },
+
+    stats: [
+      { v: '3 ms', k: 'link round-trip across two home networks' },
+      { v: '26/26', k: 'tokens decoded · zero degradation events' },
+      { v: '64%', k: 'of the model’s layers held by the volunteer' },
+      { v: '283.6 MiB', k: 'of weights streamed over the air to it' },
+      { v: '54 ms', k: 'mean steady token · about 18.5 tok/s' },
+      { v: '60%', k: 'RAM cap — the volunteer kept the rest for its owner' },
+    ] as EntStat[],
+
+    ceremony: [
+      { step: 'Invite', line: 'one code carries the session, rendezvous, host key and expiry' },
+      { step: 'Measure', line: 'the laptop probes its own RAM, CPU, GPU, disk, battery — and signs the report' },
+      { step: 'Admit', line: 'host verifies the signature against the floor; assigns a tier' },
+      { step: 'Shard', line: 'layers split by measured capability, not by promise' },
+      { step: 'Decode', line: 'tokens cross the wire per-token, every one measured' },
+      { step: 'Wipe', line: 'sandbox scratch dies with the session; nothing persists' },
+    ] as EntCeremonyStep[],
+
+    trialStory: [
+      'The volunteer installed a single executable, joined through an encrypted rendezvous, and its signed report arrived at the host: 12th-gen i5, 7,860 MiB of RAM, integrated graphics, on battery. The host kept 9 layers of the model; the laptop took 16 — almost two-thirds of every token flowed through a machine the host had never seen before.',
+      'Weights streamed over the air, tokens flowed back, and when the host closed the session the volunteer wiped its scratch space and exited. The whole ceremony is measured end-to-end; every number on this page comes from those logs.',
+    ],
+
+    finding: {
+      title: 'The finding',
+      paras: [
+        'The single most important result is that the trust stack costs almost nothing. With the model split across two home networks, the volunteer leg decoded tokens in a flat 50–61 ms band — while running at half duty, because Windows could not expose its thermal sensors and the governor chose the safe default. The physics of overlapping transfer with compute roughly halves the cost of distance (+0.99 → +0.48 ms of decode per added ms of round-trip), which is why a volunteer on ordinary Wi-Fi is viable at all.',
+        'Equally: the ceremony mechanics — encrypted join, honest hardware reporting, capability-based sharding, mandatory wipe — all survived first contact with a real consumer Windows machine. That is the boring result that matters most: nothing about the trust floor broke when it met reality.',
+      ],
+    },
+
+    receipts: [
+      {
+        name: 'Quorum',
+        body: 'A poisoned leg was caught at the very first token — output delta 1.176 against a 1e-6 tolerance — ejected in 0.863 s, and the surviving leg finished bit-identical.',
+      },
+      {
+        name: 'Live re-slice',
+        body: 'A running decode was re-split across machines mid-stream: a 1.3–1.8 s stall, then logits resumed bit-identical. The model moved without a restart.',
+      },
+      {
+        name: 'Wipe',
+        body: 'When the host died, the volunteer wiped itself. Four disk-diff audits across full ceremonies found zero agent-attributable artifacts.',
+      },
+    ] as EntReceipt[],
+
+    claim: {
+      title: 'What is new here',
+      paras: [
+        'Pooling machines for inference is not new — Petals did it in 2022, and llama.cpp ships the plumbing. What no shipped system has done is hold the whole trust stack at once: untrusted volunteers running sandboxed, consent-scoped compute, with per-token quorum validation, live re-slicing, and a wipe that is true by construction.',
+        'As far as my prior-art audit can find, the August 2026 run is the first measured demonstration of real pooled inference by an untrusted volunteer machine over the open internet under that entire stack — measured on two laptops, with every number traceable to logs.',
+      ],
+    },
+
+    limits: {
+      title: 'What it is not yet',
+      items: [
+        'The 0.5B model was the proof vehicle, not the target. The destination is a Flash-class MoE around 160 GB, which needs roughly 17–20 such laptops or one rented GPU session — hardware-gated, honestly.',
+        'Quorum ran on local Linux legs; the wide-area version with two remote volunteers is the next unit of work.',
+        'The sandboxed Windows worker path is still open — this trial used the documented conformance path.',
+      ] as string[],
+    },
+
+    footer: 'R1–R10 constitution · 9 crates · ~23k LOC Rust · 306 tests green · private while the trial phase runs',
   },
 };
 
