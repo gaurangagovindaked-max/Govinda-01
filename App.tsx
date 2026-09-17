@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import { LoadingScreen } from './components/LoadingScreen';
 import { RESUME } from './constants';
 import { Hero } from './components/Hero';
+import { NowBuilding } from './components/NowBuilding';
 import { EntSection } from './components/EntSection';
 import { ResearchSurface } from './components/ResearchSurface';
 import { ProjectModal } from './components/ProjectModal';
@@ -53,6 +54,8 @@ function App() {
       {isLoading && <LoadingScreen onComplete={() => setIsLoading(false)} />}
 
       <ProjectModal project={selectedProject} onClose={() => setSelectedProject(null)} />
+
+      <NowBuilding />
 
       {/* overflow-visible: do not clip the lanyard card */}
       <div className="mx-auto w-full max-w-3xl overflow-visible px-3 pt-4 sm:px-4 sm:pt-6 md:px-6 md:pt-8">
