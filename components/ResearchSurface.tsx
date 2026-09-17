@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { RESUME } from '../constants';
+import { ResearchIndex } from './ResearchIndex';
 
 /**
  * ResearchSurface — ONE sticky-rail layout wrapping Ent AND the papers.
@@ -117,7 +118,10 @@ export const ResearchSurface: React.FC<{ children: React.ReactNode }> = ({ child
             </nav>
           </div>
         </aside>
-        <div className="min-w-0 w-full flex-1">{children}</div>
+        <div className="min-w-0 w-full flex-1">
+          <ResearchIndex onJump={scrollTo} />
+          {children}
+        </div>
       </div>
     </section>
   );

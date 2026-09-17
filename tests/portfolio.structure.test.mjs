@@ -18,21 +18,21 @@ const assert = (c, m) => {
 };
 
 assert(hash('components/Hero.tsx') === '8eb30331d555704860f4c0459fd1840f', 'Hero frozen');
-assert(hash('components/LanyardBadge.tsx') === '7339748fd63b44f766745a976d2655dd', 'Lanyard frozen');
+assert(hash('components/LanyardBadge.tsx') === 'c2dfad7587191ee6f877e9f10f0c631e', 'Lanyard frozen');
 
 const app = readFileSync(join(ROOT, 'App.tsx'), 'utf8');
-assert(app.includes('ResearchFirst'), 'research first component');
+assert(app.includes('ResearchIndex'), 'research index component');
 assert(app.includes('ProductShowcase'), 'product showcase');
 assert(app.includes('GitHubSection'), 'github separate');
-assert(app.includes('PapersEnd'), 'papers at end');
+assert(app.includes('OthersEnd'), 'others at end');
 assert(!app.includes('LiveProjectStrip'), 'no ribbon live strip in App');
 assert(!app.includes('TechStack'), 'no skills wall');
 
-const iR = app.indexOf('ResearchFirst');
+const iR = app.indexOf('ResearchIndex');
 const iP = app.indexOf('ProductShowcase');
 const iG = app.indexOf('GitHubSection');
-const iA = app.indexOf('PapersEnd');
-assert(iR < iP && iP < iG && iG < iA, 'section order: research → products → github → papers');
+const iA = app.indexOf('OthersEnd');
+assert(iR < iP && iP < iG && iG < iA, 'section order: research → products → github → others');
 
 assert(existsSync(join(ROOT, 'public/gradient-soft-a.jpg')), 'soft gradient image a');
 assert(existsSync(join(ROOT, 'public/gradient-soft-b.jpg')), 'soft gradient image b');
@@ -55,6 +55,15 @@ assert(
 );
 assert(research.includes('sticky'), 'research sidebar sticky');
 assert(research.includes('scroll') || research.includes('onScroll'), 'scroll-linked sidebar');
+
+const index = readFileSync(join(ROOT, 'components/ResearchIndex.tsx'), 'utf8');
+assert(index.includes('Read more'), 'research read-more links');
+assert(index.includes('ent-01.vercel.app'), 'research ent link');
+
+const others = readFileSync(join(ROOT, 'components/OthersEnd.tsx'), 'utf8');
+assert(/Experience/.test(others), 'others experience');
+assert(/Education/.test(others), 'others education');
+assert(/Publications/.test(others), 'others publications');
 
 const tsx = spawnSync(
   'npx',

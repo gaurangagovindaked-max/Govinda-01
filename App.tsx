@@ -5,13 +5,11 @@ import { LoadingScreen } from './components/LoadingScreen';
 import { RESUME } from './constants';
 import { Hero } from './components/Hero';
 import { NowBuilding } from './components/NowBuilding';
-import { EntSection } from './components/EntSection';
-import { ResearchSurface } from './components/ResearchSurface';
 import { ProjectModal } from './components/ProjectModal';
-import { ResearchFirst } from './components/ResearchFirst';
+import { ResearchIndex } from './components/ResearchIndex';
 import { ProductShowcase } from './components/ProductShowcase';
 import { GitHubSection } from './components/GitHubSection';
-import { PapersEnd } from './components/PapersEnd';
+import { OthersEnd } from './components/OthersEnd';
 import { isGitHubUrl, isLiveProductUrl } from './lib/portfolioData';
 import { Project } from './types';
 
@@ -58,7 +56,7 @@ function App() {
       <NowBuilding />
 
       {/* overflow-visible: do not clip the lanyard card */}
-      <div className="mx-auto w-full max-w-3xl overflow-visible px-3 pt-4 sm:px-4 sm:pt-6 md:px-6 md:pt-8">
+      <div className="mx-auto w-full max-w-3xl overflow-visible px-3 pt-0 sm:px-4 md:px-6">
         <Hero />
         <motion.blockquote
           initial={{ opacity: 0, y: 8 }}
@@ -72,13 +70,10 @@ function App() {
         </motion.blockquote>
       </div>
 
-      <ResearchSurface>
-        <EntSection />
-        <ResearchFirst />
-      </ResearchSurface>
+      <ResearchIndex />
       <ProductShowcase products={products} onExpand={setSelectedProject} />
       <GitHubSection repos={githubRepos} />
-      <PapersEnd papers={RESUME.research} />
+      <OthersEnd />
 
       <footer className="flex flex-col items-center gap-1 bg-[#F5F2EC] px-4 py-8 text-center text-[13px] text-stone-500 sm:flex-row sm:justify-center sm:gap-2 sm:px-5 sm:py-10 sm:text-sm">
         <a

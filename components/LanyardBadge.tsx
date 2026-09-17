@@ -41,7 +41,7 @@ export default function LanyardBadge() {
     // Initialize Verlet nodes
     const rect = stage.getBoundingClientRect();
     const anchorX = rect.width / 2;
-    const anchorY = window.innerWidth < 768 ? 44 : 24;
+    const anchorY = 2;
 
     const currentScale = window.innerWidth < 480 ? 0.65 : (window.innerWidth < 768 ? 0.8 : 1.0);
     const initialSegLen = SEGMENT_LENGTH * currentScale;
@@ -62,7 +62,7 @@ export default function LanyardBadge() {
     const layout = () => {
       const stageRect = stage.getBoundingClientRect();
       const newAnchorX = stageRect.width / 2;
-      const newAnchorY = window.innerWidth < 768 ? 44 : 24;
+      const newAnchorY = 2;
 
       if (state.current.nodes.length === 0) return;
 
